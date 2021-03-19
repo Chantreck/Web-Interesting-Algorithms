@@ -1,5 +1,11 @@
 "use strict";
 
 function main() {
-    prompt("На сколько процентов ты лох?") > 50 ? alert("Ну ты и лох, тьфу!") : alert("Красава, лошара!");
+    let percent = prompt("На сколько процентов ты лох?");
+    if (percent > 50) {
+        alert("Ну ты и лох, тьфу!");
+    } else {
+        alert("Красава, лошара!");
+    }
+    //alert(percent);
 }
