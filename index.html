@@ -1,6 +1,13 @@
 <html>
 <head>
     <script src="test.js"></script>
+    <script>
+        function sizePic() {
+            size = document.getElementById("size").value;
+            img = document.getElementById("pic");
+            img.width = 60 + 20*size;
+        }
+    </script>
     <title>Task Hub</title>
 </head>
 <body>
@@ -13,6 +20,9 @@
         <li>Ant Colony</li>
         <li>Task 5</li>
         <li>Neural Network</li>
+
+        <p>Размер рисунка: <input type="range" min="1" max="5" id="size" oninput="sizePic()" value="3"></p>
+        <p><img src="/img/5htvPmspfAU.jpg" alt="" id="pic" width = "120"></p>
     </ol>
 </body>
 </html>
