@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+}
+
+body{
+    height: 5000px;
+}
+
+.box{
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+
+}
+
+.background-box-black{
+    background-color: black;
+}
+
+.background-box-green{
+    background-color: rgb(0, 255, 128);
+}
+
+#container{
+    margin: 10 auto;
+    width: 600px;
+    height: 600px;
+    border: black 1px solid;
+    padding: 10px;
+    /*position: absolute;*/
+
+}
+
+.point{
+
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    background: crimson;
+    border-radius: 50%;
+    position: fixed;
+
+
+}
