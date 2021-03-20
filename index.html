@@ -2,7 +2,9 @@
 <head>
     <script src="test.js"></script>
     <script>
-        document.body.onload = generateTable;
+        function changeCell(cell) {
+            cell.id = "clicked";
+        }
 
         function generateTable() {
             tableSize = document.getElementById("chooseSize").value;
@@ -21,7 +23,7 @@
                 for (let j = 0; j < tableSize; j++){
                     let cell = row.insertCell(-1);
                     cell.height = 500 / tableSize;
-                    cell.innerHTML = " ";
+                    cell.innerHTML = `<button onClick = "changeCell(cell)"></button>`;
                 }
             }
 
@@ -30,6 +32,14 @@
             dvTable.appendChild(table);
         }
     </script>
+    <style>
+        td:hover {
+            background-color: lightcyan;
+        }
+        td #clicked{
+            background-color: cyan;
+        }
+    </style>
     <title>Task Hub</title>
 </head>
 <body>
