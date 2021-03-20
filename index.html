@@ -2,10 +2,6 @@
 <head>
     <script src="test.js"></script>
     <script>
-        function changeCell(cell) {
-            cell.id = "clicked";
-        }
-
         function generateTable() {
             tableSize = document.getElementById("chooseSize").value;
             
@@ -23,7 +19,7 @@
                 for (let j = 0; j < tableSize; j++){
                     let cell = row.insertCell(-1);
                     cell.height = 500 / tableSize;
-                    cell.innerHTML = `<button onClick = "changeCell(cell)"></button>`;
+                    cell.innerHTML = `<button onClick = "this.id='clicked'"></button>`;
                 }
             }
 

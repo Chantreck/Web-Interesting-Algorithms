@@ -7,5 +7,4 @@ function main() {
     } else {
         alert("Красава, лошара!");
     }
-    //alert(percent);
 }
