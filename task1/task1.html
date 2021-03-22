@@ -30,16 +30,17 @@
                 <li>Запустите алгоритм</li>
             </ul>
             <button id = "startAlgorithm">Запустить</button>
-            <button id = "chooseEndCellButton" style = "width: 75px" onclick="comeBack()">Back</button>
+            <button id = "chooseEndCellButton" style = "width: 75px" onClick="comeBack()">Back</button>
         </div>
         <div class = "field"></div>
         <div class = "settings">
             <h2 style = "text-decoration: underline">Настройки:</h2>
-            <p>размер поля:<br><input id = "chooseSize" type = "range" min = "5" max = "15" value = "10" oninput = "generateField()"></input></p>
+            <p>размер поля: <span id = "fieldSize" style = "font-weight: bold;"></span>
+            <input id = "chooseSize" type = "range" min = "5" max = "15" onInput = "generateField()"></input></p>
             <ul class = "settingsButtons">
-                <li><button id = "chooseLockedCellsButton" onclick = "changeMode('locked')">Выставить преграды</button></li>
-                <li><button id = "chooseStartCellButton" onclick = "changeMode('start')">Выбрать начало</button></li>
-                <li><button id = "chooseEndCellButton" onclick = "changeMode('end')">Выбрать конец</button></li>
+                <li><button id = "chooseLockedCellsButton" onClick = "changeMode('locked')">Выставить преграды</button></li>
+                <li><button id = "chooseStartCellButton" onClick = "changeMode('start')">Выбрать начало</button></li>
+                <li><button id = "chooseEndCellButton" onClick = "changeMode('end')">Выбрать конец</button></li>
             </ul>
         </div>
     </div>

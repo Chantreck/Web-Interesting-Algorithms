@@ -23,7 +23,14 @@
 }
 
 table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 2px solid; 
     margin: 0 auto;
+}
+
+td {
+    border: 1px solid;
 }
 
 body {
@@ -35,7 +42,6 @@ body {
 
 h1 {
     margin: 0;
-    font-family: "SF Display";
     font-weight: 900;
     font-size: 10vw;
     text-decoration: underline;
@@ -43,7 +49,6 @@ h1 {
 
 h2 {
     margin: 0;
-    font-family: "SF Display";
     font-weight: bold;
 }
 
@@ -56,12 +61,32 @@ li {
     padding: 0;
 }
 
-#defaultCell {
-    text-align: center;
+#defaultCell:hover {
+    background-color:azure;
 }
 
-#defaultCell:hover {
-    background-color:beige;
+#blockedCell {
+    background-color:#e9e9e9;
+}
+
+#blockedCell:hover {
+    background-color:#000000;
+}
+
+#startCell {
+    background-color:#dfffe0;
+}
+
+#startCell:hover {
+    background-color:#4CAF50;
+}
+
+#endCell {
+    background-color:#ffe6e4;
+}
+
+#endCell:hover {
+    background-color:#f44336;
 }
 
 button {
@@ -168,4 +193,8 @@ div.container {
 .settings {
     margin-left: 2%;
     width: 20%;
+}
+
+#chooseSize {
+    width: 100%;
 }
