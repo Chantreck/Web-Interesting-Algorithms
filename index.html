@@ -1,46 +1,9 @@
 <html>
 <head>
-    <script src="test.js"></script>
-    <script>
-        function generateTable() {
-            tableSize = document.getElementById("chooseSize").value;
-            
-            let field = new Array(tableSize);
-            for (let i = 0; i < tableSize; i++){
-                field[i] = new Array(tableSize);
-            }
-
-            let table = document.createElement("TABLE");
-            table.width = 500;
-            table.border = 1;
-
-            for (let i = 0; i < tableSize; i++){
-                row = table.insertRow(-1);
-                for (let j = 0; j < tableSize; j++){
-                    let cell = row.insertCell(-1);
-                    cell.height = 500 / tableSize;
-                    cell.innerHTML = `<button onClick = "this.id='clicked'"></button>`;
-                }
-            }
-
-            let dvTable = document.getElementById("field");
-            dvTable.innerHTML = "";
-            dvTable.appendChild(table);
-        }
-    </script>
-    <style>
-        td:hover {
-            background-color: lightcyan;
-        }
-        td #clicked{
-            background-color: cyan;
-        }
-    </style>
     <title>Task Hub</title>
 </head>
 <body>
     <h1>Algorithm List</h1>
-    <button onClick="main()">Хех</button>
     <ol>
         <li><a href="task1/task1.html">A*</a></li>
         <li><a href="task2/task2.html">Clasterization</a></li>
@@ -49,8 +12,5 @@
         <li>Decision Tree</li>
         <li>Neural Network</li>
     </ol>
-
-    <p>Размер поля: <input type="range" min="5" max="15" id="chooseSize" oninput="generateTable()" value="10"></p>
-    <div id="field"></div>
 </body>
 </html>
