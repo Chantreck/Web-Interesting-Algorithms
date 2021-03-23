@@ -170,7 +170,7 @@ button:focus {
     padding-top: 15px;
     padding-bottom: 15px;
     background-color:white;
-    position: fixed;
+    position: absolute;
     display: flex;
 }
 
