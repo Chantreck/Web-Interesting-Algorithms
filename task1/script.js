@@ -1,7 +1,14 @@
-var mode = "default"
+var mode = "default";
+var matrix = [];
 
-function markCell(event) {
-    alert("I was clicked!");
+function buildMatrix() {
+    const MAX_SIZE = document.getElementById("chooseSize").max;
+    for (let i = 0; i < MAX_SIZE; i++) {
+        matrix[i] = [];
+        for (let j = 0; j < MAX_SIZE; j++) {
+            matrix[i][j] = "default";
+        }
+    }
 }
 
 function generateField() {
@@ -21,33 +28,57 @@ function generateField() {
         row = table.insertRow(-1);
         for (let j = 0; j < tableSize; j++){
             let cell = row.insertCell(-1);
-
-            if (i == 2 & j == 5) {
-                cell.id = "blockedCell";
-            }
-            else if (i == 4 & j == 1) {
-                cell.id = "startCell";
-            }
-            else if (i == 7 & j == 9) {
-                cell.id = "endCell";
-            }
-            else {
-                cell.id = "defaultCell";
-            }
-            cell.setAttribute("row", i);
-            cell.setAttribute("column", j);
+            cell.dataset.mode = matrix[i][j];
+            cell.dataset.row = i;
+            cell.dataset.column = j;
             cell.height = width / tableSize;
-            //cell.innerHTML = `${i},${j}`;
         }
     }
+
+    table.addEventListener("click", markCell);
 
     let dvTable = document.querySelector(".field");
     dvTable.innerHTML = "";
     dvTable.appendChild(table);
 }
 
-function changeMode(newMode){
-    //console.log(`Before: ${mode}`);
-    mode = newMode;
-    //console.log(`After: ${mode}`);
+function markCell(event) {
+    let formerCellStart;
+    let formerCellEnd;
+    switch (mode) {
+        case "default":
+            return;
+        case "blocked":
+            if (event.target.dataset.mode == "blocked") {
+                matrix[event.target.dataset.row][event.target.dataset.column] = "default";
+                event.target.dataset.mode = "default";
+            }
+            else {
+                matrix[event.target.dataset.row][event.target.dataset.column] = "blocked";
+                event.target.dataset.mode = "blocked";
+            }
+            break;
+        case "start":
+            formerCellStart = document.querySelector("td[data-mode = 'start']");
+            if (formerCellStart != undefined) {
+                matrix[formerCellStart.dataset.row][formerCellStart.dataset.column] = "default";
+                formerCellStart.dataset.mode = "default";
+            }
+            if (formerCellStart != event.target) {
+                matrix[event.target.dataset.row][event.target.dataset.column] = "start";
+                event.target.dataset.mode = "start";
+            }
+            break;
+        case "end":
+            formerCellEnd = document.querySelector("td[data-mode = 'end']");
+            if (formerCellEnd != undefined) {
+                matrix[formerCellEnd.dataset.row][formerCellEnd.dataset.column] = "default";
+                formerCellEnd.dataset.mode = "default";
+            }
+            if (formerCellEnd != event.target) {
+                matrix[event.target.dataset.row][event.target.dataset.column] = "end";
+                event.target.dataset.mode = "end";
+            }
+            break;
+    }
 }
