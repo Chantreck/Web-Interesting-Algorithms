@@ -181,6 +181,7 @@ button:focus {
     width: 16%;
     border-bottom: 3px solid;
     text-align: center;
+    position: relative;
 }
 
 #settingsButtons li {
@@ -193,6 +194,7 @@ button:focus {
     margin-left: auto;
     margin-right: auto;
     margin-top: 80px;
+    position: relative;
 }
 
 .container div {
