@@ -1,3 +1,9 @@
+export function interact(size){
+let maze;
+maze = build_maze(size);
+return maze;
+}
+
 class Cell
 {
     constructor(x = -1, y = -1)
@@ -48,9 +54,8 @@ function random(min, max)
     return Math.round(rand);
 }
 
-function maze()
-{
-    let n = 15;     ///!!!!!!!!!!!!!!!!!!!!!!!!
+function build_maze(n)
+{    
     let status = [];  // клетка/стена
     let visited = [];
     let unvisited = -1;
@@ -104,5 +109,5 @@ function maze()
             }
         }
     } while(unvisited > 0);
-    
+    return status;
 }
