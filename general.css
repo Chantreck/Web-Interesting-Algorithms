@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 900;
     font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-black.otf");
+    src:url("./fonts/sf-display-black.otf");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     font-style: normal;
     font-weight: bold;
     font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-bold.otf");
+    src:url("./fonts/sf-display-bold.otf");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
     font-style: normal;
     font-weight: normal;
     font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-regular.otf");
+    src:url("./fonts/sf-display-regular.otf");
 }
 
 h1 {
