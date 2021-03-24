@@ -32,45 +32,32 @@
                 <li>Выберите размер поля ползунком</li>
                 <li>Нарисуйте заблокированные поля</li>
                 <li>Выберите поле начала и конца</li>
-                <li>Выберите эвристику</li>
                 <li>Запустите алгоритм</li>
             </ul>
-            <button class = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button>
-            <button style = "width: 150px" onclick="comeBack()">На главную</button>
+            <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button>
+            <button id = "backButton" style = "width: 150px">На главную</button>
         </div>
         <div class = "field"></div>
         <div class = "settings">
             <h2 style = "text-decoration: underline">Настройки:</h2>
-            <p>размер поля: <span id = "fieldSize" style = "font-weight: bold;"></span><br>
-            <input id = "chooseSize" type = "range" min = "5" max = "15" oninput = "generateField()"></input>
-            <ul id = "settingsButtons">
-                <li><button class = "changeCellButton" data-mode="blocked">Выставить преграды</button></li>
-                <li><button class = "changeCellButton" data-mode="start">Выбрать начальную клетку</button></li>
-                <li><button class = "changeCellButton" data-mode="end">Выбрать конечную клетку</button></li>
-                <li><button class = "clearField">Очистить поле</button></li>
-            </ul>
+            <div class = "settingsBlock">
+                <p>размер поля: <span id = "fieldSize" style = "font-weight: bold"></span></p>
+                <input id = "chooseSize" type = "range" min = "5" max = "25"></input>
+            </div>
+            <div class = "settingsBlock">
+                <p>выберите действие: </p>
+                <ul id = "settingsButtons">
+                    <li><button class = "buildMaze">Построить лабиринт</button></li>
+                    <li><button class = "changeCellButton" data-mode="blocked">Выставить преграды</button></li>
+                    <li><button class = "changeCellButton" data-mode="start">Выбрать начальную клетку</button></li>
+                    <li><button class = "changeCellButton" data-mode="end">Выбрать конечную клетку</button></li>
+                    <li><button class = "clearField">Очистить поле</button></li>
+                </ul>
+                <p>текущее действие:<br>
+                <span id = "currentMode" style = "font-weight: bold">не выбрано</span></p>
+            </div>
         </div>
     </div>
-    <script src = "./script.js"></script>
-    <script>
-        buildMatrix();
-        generateField();
-
-        window.onresize = generateField;
-
-        settingsButtons.addEventListener("click", function() {
-            if (event.target.className == "changeCellButton") {
-                window.mode = event.target.dataset.mode;
-            }
-            if (event.target.className == "clearField") {
-                buildMatrix();
-                generateField();
-            }
-        })
-
-        function comeBack() {
-            location.href="../index.html"
-        }
-    </script>
+    <script src = "./script.js" type="module"></script>
 </body>
 </html>

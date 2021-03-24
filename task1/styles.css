@@ -22,6 +22,10 @@
     src:url("../fonts/sf-display-regular.otf");
 }
 
+p {
+    margin-bottom: 10px;
+}
+
 table {
     table-layout: fixed;
     border-collapse: collapse;
@@ -55,6 +59,10 @@ h2 {
 ul {
     margin: 0;
     padding: 0;
+}
+
+.instructionList {
+    margin-bottom: 20px;
 }
 
 .instructionList li {
@@ -94,8 +102,16 @@ td[data-mode = "end"] {
     background-color:#f44336;
 }
 
+td[data-mode = "current"] {
+    background-color: yellow;
+}
+
+td[data-mode = "trace"] {
+    background-color:aquamarine;
+}
+
 button {
-    margin: 10px 0px;
+    margin: 5px 0px;
     background-color:white;
     border: 3px solid black;
     border-radius: 0;
@@ -117,25 +133,31 @@ button:focus {
     box-shadow: 0 0 0 3px #e9e9e9;
 }
 
+.settingsBlock {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 #chooseSize {
     width: 100%;
     max-width: 300px;
 }
 
-.startAlgorithmButton {
+#startAlgorithmButton {
     font-size: 16px;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.changeCellButton[data-mode="start"] {
+.changeCellButton[data-mode="start"], #startAlgorithmButton {
     border-color: #4CAF50;
 }
 
-.changeCellButton[data-mode="start"]:hover {
+.changeCellButton[data-mode="start"]:hover, #startAlgorithmButton:hover {
     background-color:#dfffe0;
 }
 
-.changeCellButton[data-mode="start"]:focus {
+.changeCellButton[data-mode="start"]:focus, #startAlgorithmButton:focus {
     box-shadow: 0 0 0 3px #dfffe0;
 }
 
@@ -168,7 +190,6 @@ button:focus {
     left: 5%;
     width: 90%;
     padding-top: 15px;
-    padding-bottom: 15px;
     background-color:white;
     position: fixed;
     display: flex;
@@ -193,6 +214,7 @@ button:focus {
     margin-left: auto;
     margin-right: auto;
     margin-top: 80px;
+    margin-bottom: 25px;
 }
 
 .container div {
