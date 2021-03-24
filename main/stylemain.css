@@ -1,39 +1,58 @@
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: 900;
+    font-feature-settings: 'case' on;
+    src:url("../fonts/sf-display-black.otf");
+}
 
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: bold;
+    font-feature-settings: 'case' on;
+    src:url("../fonts/sf-display-bold.otf");
+}
+
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: normal;
+    font-feature-settings: 'case' on;
+    src:url("../fonts/sf-display-regular.otf");
+}
 body{
     font-family: "SF Display";
-    font-size: 36px;
-    margin:0;
-    padding:0;
-     font-weight: 700;
-     position: fixed;
-     background-color:white;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
 }
 h1 {
     margin: 0;
     font-weight: 900;
-    font-size: 5vw;
+    font-size: 4vw;
     text-decoration: underline;
 }
-.name{
-    position: relative;
-    height: 400px;
-    top: 637px;
-    right: 137px;
-    position: fixed;
+h1{
+    position: absolute;
+    left: 137px;
+    /* right: 960px; */
+    top: 271px;
+    
 }
 .Autors{
     position: relative;
-    top: 637px;
+    font-size: 1.5vw;
     left: 137px;
-    position: fixed;
+    right: 960px;
+    top: 507px;
+    font-weight: 700;
+
 }
 .photo{
     position: relative;
-    width: 979px;
-    height: 1014px;
-    left: 941px;
-    top: 161px;
-    position: fixed;
+    top: 31px;
+    float: right;
 }
 .menu {
     top: 0;
@@ -42,16 +61,21 @@ h1 {
     padding-top: 15px;
     padding-bottom: 15px;
     background-color:white;
+    position: fixed;
     display: flex;
+    font-weight: 700;
+  
 }
 
+
 .menu div {
-    position: relative;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
     width: 16%;
     border-bottom: 3px solid;
-    text-align: center;
+    text-align: left;
+    
+   
 }
 
