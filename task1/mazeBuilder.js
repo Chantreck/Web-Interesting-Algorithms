@@ -1,22 +1,24 @@
+var n;
+var status;
+var visited;
+var unvisited;
+
 export function interact(size){
+    n = size;
+    status = [];
+    visited = [];
+    unvisited = -1;
     return build_maze(size);
 }
-
-var n;
-var status = [];
-var visited = [];
     
-class Cell
-{
-    constructor(x = -1, y = -1)
-    {
+class Cell {
+    constructor(x = -1, y = -1) {
         this.x=x;
         this.y=y;
     }
 }
 
-function getNeighbours(cell) //возвращаем непосещенных соседей клетки
-{        
+function getNeighbours(cell) { //возвращаем непосещенных соседей клетки 
     let up = new Cell(cell.x, cell.y-2);
     let dw = new Cell(cell.x, cell.y+2);
     let rt = new Cell(cell.x+2, cell.y);
@@ -26,12 +28,9 @@ function getNeighbours(cell) //возвращаем непосещенных с�
     let result = [];
     let size=0;
         
-    for(let i = 0; i < 4; i++)
-    {                  
-        if(d[i].x >= 0 && d[i].x <= n && d[i].y > 0 && d[i].y <= n)
-        {       
-            if(visited[d[i].x][d[i].y] == false && status[d[i].x][d[i].y] == true)
-            {                            
+    for(let i = 0; i < 4; i++) {                  
+        if (d[i].x >= 0 && d[i].x < n && d[i].y >= 0 && d[i].y < n) {       
+            if(visited[d[i].x][d[i].y] == false && status[d[i].x][d[i].y] == "default") {                            
                 result[size] = d[i];
                 size++;
             }
@@ -45,8 +44,8 @@ function RemoveWall(CellFirst, CellSecond) //удаляем стену
 {
     let x = (CellFirst.x+CellSecond.x)/2;
     let y = (CellFirst.y+CellSecond.y)/2;
-    status[x][y]=true;
-    visited[CellSecond.x][CellSecond.y]=true;
+    status[x][y]= "default";
+    visited[CellSecond.x][CellSecond.y]= true;
     unvisited--;
 }
 
@@ -58,7 +57,6 @@ function random(min, max)
 
 function build_maze(fieldSize) {    
     n = fieldSize;
-    let unvisited = -1;
     
     for (let i = 0; i < n; i++) {
         status[i] = [];
@@ -73,6 +71,8 @@ function build_maze(fieldSize) {
                 status[i][j] = "blocked";
         }
     } 
+
+    console.dir(status);
     
     //генерация лабиринта
     let CurrentCell = new Cell(0,0);

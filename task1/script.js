@@ -15,16 +15,16 @@ function buttonClickListener(event) {
         let label = document.getElementById("currentMode");
         mode = event.target.dataset.mode;
         if (mode == "default") {
-            label.innetText = "не выбрано";
+            label.innetText = "Не выбрано";
         }
         else if (mode == "blocked") {
-            label.innerText = "выбор преград";
+            label.innerText = "Выбор преград";
         }
         else if (mode == "start") {
-            label.innerText = "выбор стартовой клетки";
+            label.innerText = "Выбор стартовой клетки";
         }
         else {
-            label.innerText = "выбор конечной клетки";
+            label.innerText = "Выбор конечной клетки";
         }
     }
     if (event.target.className == "clearField") {
@@ -32,6 +32,7 @@ function buttonClickListener(event) {
         generateField();
     }
     if (event.target.className == "buildMaze") {
+        buildMatrix();
         let size = document.getElementById("chooseSize").value;
         let maze = interact(size);
         for (let i = 0; i < size; i++) {
@@ -39,7 +40,7 @@ function buttonClickListener(event) {
                 matrix[i][j] = maze[i][j];
             }
         }
-        
+        generateField();
     }
 }
 

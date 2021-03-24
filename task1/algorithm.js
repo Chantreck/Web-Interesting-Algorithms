@@ -44,7 +44,6 @@ function findPath(matrix, cellMatrix, startCell, endCell) {
         let currentCell = nodesToSee.shift();
         if (currentCell != startCell && currentCell != endCell) {
             changeColor(currentCell, "current");
-
         }
         if (currentCell == endCell) {
             return true;
