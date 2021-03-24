@@ -31,6 +31,16 @@ function buttonClickListener(event) {
         buildMatrix();
         generateField();
     }
+    if (event.target.className == "buildMaze") {
+        let size = document.getElementById("chooseSize").value;
+        let maze = interact(size);
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                matrix[i][j] = maze[i][j];
+            }
+        }
+        
+    }
 }
 
 function Cell(cellObject) {
@@ -158,4 +168,9 @@ function startAlgorithm() {
     runAlgorithm(searchMatrix, startCell, endCell);
 }
 
+function mazeGeneration() {
+
+}
+
 import {runAlgorithm} from './algorithm.js';
+import {interact} from './mazeBuilder.js';
