@@ -21,6 +21,10 @@
     font-feature-settings: 'case' on;
     src:url("../fonts/sf-display-regular.otf");
 }
+A{
+    text-decoration: none; 
+    color: black;
+}
 body{
     font-family: "SF Display";
     font-weight: normal;
@@ -53,6 +57,7 @@ h1{
     position: relative;
     top: 31px;
     float: right;
+    width: 50%;
 }
 .menu {
     top: 0;
