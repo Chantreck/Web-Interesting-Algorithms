@@ -64,10 +64,10 @@ for(let i = 0; i < n; i++)
         if(i % 2 == 0 && j % 2 == 0)
         {
             unvisited++;
-            status[i][j] = true;
+            status[i][j] = "default";
         }
         else
-            status[i][j] = false;
+            status[i][j] = "blocked";
     }
 } 
 
