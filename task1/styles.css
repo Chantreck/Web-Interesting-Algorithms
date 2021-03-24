@@ -1,27 +1,3 @@
-@font-face {
-    font-family: "SF Display";
-    font-style: normal;
-    font-weight: 900;
-    font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-black.otf");
-}
-
-@font-face {
-    font-family: "SF Display";
-    font-style: normal;
-    font-weight: bold;
-    font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-bold.otf");
-}
-
-@font-face {
-    font-family: "SF Display";
-    font-style: normal;
-    font-weight: normal;
-    font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-regular.otf");
-}
-
 .settingsBlock p {
     margin-bottom: 8px;
 }
@@ -37,27 +13,7 @@ td {
     border: 1px solid;
 }
 
-body {
-    font-family: "SF Display";
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    margin: 0;
-    font-weight: 900;
-    font-size: 10vw;
-    text-decoration: underline;
-}
-
-h2 {
-    margin: 10px 0px;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-ul {
+body, ul {
     margin: 0;
     padding: 0;
 }
@@ -69,10 +25,6 @@ ul {
 .instructionList li {
     margin-left: 20px;
     padding: 5px 0px;
-}
-
-td {
-    text-align: center;
 }
 
 td[data-mode = "default"]:hover {
