@@ -9,10 +9,6 @@ class Node {
         this.g = 0;
     }
 
-    isEqual(otherNode) {
-        return (this.x == otherNode.x && this.y == otherNode.y);
-    }
-
     heuristic() {
         return Math.abs(this.x - endCell.x) + Math.abs(this.y - endCell.y);
     }
@@ -114,23 +110,4 @@ export function runAlgorithm(matrix, start, end) {
     else {
         alert("Решений нет");
     }
-}
-
-function test() {
-    let fieldSize = 10;
-    let searchMatrix = new Array(fieldSize);
-    for (let i = 0; i < fieldSize; i++) {
-        searchMatrix[i] = new Array(fieldSize);
-        for (let j = 0; j < fieldSize; j++) {
-            searchMatrix[i][j] = "default";
-        }
-    }
-    let start = {
-        x: 5, y: 5
-    }
-    let end = {
-        x: 7, y: 7
-    }
-    
-    findPath(searchMatrix, start, end);
 }
