@@ -1,0 +1,57 @@
+
+body{
+    font-family: "SF Display";
+    font-size: 36px;
+    margin:0;
+    padding:0;
+     font-weight: 700;
+     position: fixed;
+     background-color:white;
+}
+h1 {
+    margin: 0;
+    font-weight: 900;
+    font-size: 5vw;
+    text-decoration: underline;
+}
+.name{
+    position: relative;
+    height: 400px;
+    top: 637px;
+    right: 137px;
+    position: fixed;
+}
+.Autors{
+    position: relative;
+    top: 637px;
+    left: 137px;
+    position: fixed;
+}
+.photo{
+    position: relative;
+    width: 979px;
+    height: 1014px;
+    left: 941px;
+    top: 161px;
+    position: fixed;
+}
+.menu {
+    top: 0;
+    left: 5%;
+    width: 90%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color:white;
+    display: flex;
+}
+
+.menu div {
+    position: relative;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 16%;
+    border-bottom: 3px solid;
+    text-align: center;
+}
+
