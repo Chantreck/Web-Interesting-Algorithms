@@ -22,8 +22,8 @@
     src:url("../fonts/sf-display-regular.otf");
 }
 
-p {
-    margin-bottom: 10px;
+.settingsBlock p {
+    margin-bottom: 8px;
 }
 
 table {
@@ -53,6 +53,7 @@ h1 {
 
 h2 {
     margin: 10px 0px;
+    text-decoration: underline;
     font-weight: bold;
 }
 

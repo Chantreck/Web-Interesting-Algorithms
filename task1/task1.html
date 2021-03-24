@@ -6,7 +6,7 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "./styles.css">
     <link type="image/png" rel="icon" href="../img/icon64.png">
-    <title>Task 1</title>
+    <title>A*</title>
 </head>
 <body>
     <div class = "menu">
@@ -28,6 +28,7 @@
     <div class = "main container">
         <div class = "about">
             <h1>A*</h1>
+            <p>Алгоритм находит кратчайший путь между заданными клетками в произвольном лабиринте</p>
             <h2>Инструкция:</h2>
             <ul class = "instructionList">
                 <li>Выберите размер поля ползунком</li>
@@ -40,7 +41,7 @@
         </div>
         <div class = "field"></div>
         <div class = "settings">
-            <h2 style = "text-decoration: underline">Настройки:</h2>
+            <h2>Настройки:</h2>
             <div class = "settingsBlock">
                 <p>размер поля: <span id = "fieldSize" style = "font-weight: bold"></span></p>
                 <input id = "chooseSize" type = "range" min = "5" max = "25"></input>
@@ -54,8 +55,8 @@
                     <li><button class = "changeCellButton" data-mode="end">Выбрать конечную клетку</button></li>
                     <li><button class = "clearField">Очистить поле</button></li>
                 </ul>
-                <p>текущее действие:<br>
-                <span id = "currentMode" style = "font-weight: bold">не выбрано</span></p>
+                <p>текущее действие:</p>
+                <span id = "currentMode" style = "font-weight: bold">не выбрано</span>
             </div>
         </div>
     </div>
