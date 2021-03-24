@@ -1,13 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "./styles.css">
     <title>Task 1</title>
 </head>
 <body>
-    <h1>First Task</h1>
-    <a href="../main/main.html">Back</a>
+    <div class = "menu">
+        <div><a>A*</a></div>
+        <div><a href="../task2/task2.html">Алгоритм кластеризации</a></div>
+        <div><a>Муравьиный алгоритм</a></div>
+        <div><a>Генетический алгоритм</a></div>
+        <div><a>Дерево решений</a></div>
+        <div><a>Нейронная сеть</a></div>
+        <!-- <ul>
+            <li><a>A*</a></li>
+            <li><a href="../task2/task2.html">Алгоритм кластеризации</a></li>
+            <li><a>Муравьиный алгоритм</a></li>
+            <li><a>Генетический алгоритм</a></li>
+            <li><a>Дерево решений</a></li>
+            <li><a>Нейронная сеть</a></li>
+        </ul> -->
+    </div>
+    <div class = "main container">
+        <div class = "about">
+            <h1>A*</h1>
+            <h2>Инструкция:</h2>
+            <ul class = "instructionList">
+                <li>Выберите размер поля ползунком</li>
+                <li>Нарисуйте заблокированные поля</li>
+                <li>Выберите поле начала и конца</li>
+                <li>Выберите эвристику</li>
+                <li>Запустите алгоритм</li>
+            </ul>
+            <button class = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button>
+            <button style = "width: 150px" onclick="comeBack()">На главную</button>
+        </div>
+        <div class = "field"></div>
+        <div class = "settings">
+            <h2 style = "text-decoration: underline">Настройки:</h2>
+            <p>размер поля: <span id = "fieldSize" style = "font-weight: bold;"></span><br>
+            <input id = "chooseSize" type = "range" min = "5" max = "15" oninput = "generateField()"></input>
+            <ul id = "settingsButtons">
+                <li><button class = "changeCellButton" data-mode="blocked">Выставить преграды</button></li>
+                <li><button class = "changeCellButton" data-mode="start">Выбрать начальную клетку</button></li>
+                <li><button class = "changeCellButton" data-mode="end">Выбрать конечную клетку</button></li>
+                <li><button class = "clearField">Очистить поле</button></li>
+            </ul>
+        </div>
+    </div>
+    <script src = "./script.js"></script>
+    <script>
+        buildMatrix();
+        generateField();
+
+        window.onresize = generateField;
+
+        settingsButtons.addEventListener("click", function() {
+            if (event.target.className == "changeCellButton") {
+                window.mode = event.target.dataset.mode;
+            }
+            if (event.target.className == "clearField") {
+                buildMatrix();
+                generateField();
+            }
+        })
+
+        function comeBack() {
+            location.href="../index.html"
+        }
+    </script>
 </body>
 </html>
