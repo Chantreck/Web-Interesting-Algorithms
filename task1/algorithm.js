@@ -48,58 +48,61 @@ function random(min, max)
     return Math.round(rand);
 }
 
-
-let n = 15;     ///!!!!!!!!!!!!!!!!!!!!!!!!
-let status = [];  // клетка/стена
-let visited = [];
-let unvisited = -1;
-
-for(let i = 0; i < n; i++)
+function maze()
 {
-    status[i] = [];
-    visited[i] = [];
-    for(let j = 0; j < n; j++)
-    {
-        visited[i][j] = false;
-        if(i % 2 == 0 && j % 2 == 0)
-        {
-            unvisited++;
-            status[i][j] = "default";
-        }
-        else
-            status[i][j] = "blocked";
-    }
-} 
-
-//генерация лабиринта
-let CurrentCell = new Cell(0,0);
-let NeighbourCell = new Cell();
-let Neighbours;
-let stack = [];
-let size=0;
-visited[0][0]=true;
-
-do{         
-    Neighbours = getNeighbours(CurrentCell);
+    let n = 15;     ///!!!!!!!!!!!!!!!!!!!!!!!!
+    let status = [];  // клетка/стена
+    let visited = [];
+    let unvisited = -1;
     
-    if(Neighbours.length > 0)
+    for(let i = 0; i < n; i++)
     {
-        stack[size]=CurrentCell;           
-        size++;        
-        NeighbourCell = Neighbours[random(0, Neighbours.length - 1)];           
-        RemoveWall(CurrentCell, NeighbourCell);
-        CurrentCell=NeighbourCell;
-    }
-    else
-    {
-        if (size > 0)
+        status[i] = [];
+        visited[i] = [];
+        for(let j = 0; j < n; j++)
         {
-            CurrentCell=stack[size-1];
-            size--;
+            visited[i][j] = false;
+            if(i % 2 == 0 && j % 2 == 0)
+            {
+                unvisited++;
+                status[i][j] = "default";
+            }
+            else
+                status[i][j] = "blocked";
+        }
+    } 
+    
+    //генерация лабиринта
+    let CurrentCell = new Cell(0,0);
+    let NeighbourCell = new Cell();
+    let Neighbours;
+    let stack = [];
+    let size=0;
+    visited[0][0]=true;
+    
+    do{         
+        Neighbours = getNeighbours(CurrentCell);
+        
+        if(Neighbours.length > 0)
+        {
+            stack[size]=CurrentCell;           
+            size++;        
+            NeighbourCell = Neighbours[random(0, Neighbours.length - 1)];           
+            RemoveWall(CurrentCell, NeighbourCell);
+            CurrentCell=NeighbourCell;
         }
         else
         {
-            alert("У нас проблемы");
+            if (size > 0)
+            {
+                CurrentCell=stack[size-1];
+                size--;
+            }
+            else
+            {
+                alert("У нас проблемы");
+            }
         }
-    }
-} while(unvisited > 0);
+    } while(unvisited > 0);
+    
+}
