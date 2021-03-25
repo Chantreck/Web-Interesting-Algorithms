@@ -1,10 +1,12 @@
 .title {
+    display: inline-block;
     position: relative;
     font-size: 1.5vw;
-    width: 90%;
-    margin: auto;
+    margin-left: 5%;
     top: 150px;
     z-index: 1;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
 }
 .title p {
     font-size: 2vw; 
