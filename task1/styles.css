@@ -1,25 +1,5 @@
-@font-face {
-    font-family: "SF Display";
-    font-style: normal;
-    font-weight: 900;
-    font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-black.otf");
-}
-
-@font-face {
-    font-family: "SF Display";
-    font-style: normal;
-    font-weight: bold;
-    font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-bold.otf");
-}
-
-@font-face {
-    font-family: "SF Display";
-    font-style: normal;
-    font-weight: normal;
-    font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-regular.otf");
+.settingsBlock p {
+    margin-bottom: 8px;
 }
 
 table {
@@ -33,37 +13,18 @@ td {
     border: 1px solid;
 }
 
-body {
-    font-family: "SF Display";
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    margin: 0;
-    font-weight: 900;
-    font-size: 10vw;
-    text-decoration: underline;
-}
-
-h2 {
-    margin: 10px 0px;
-    font-weight: bold;
-}
-
 ul {
     margin: 0;
     padding: 0;
 }
 
+.instructionList {
+    margin-bottom: 20px;
+}
+
 .instructionList li {
     margin-left: 20px;
     padding: 5px 0px;
-}
-
-td {
-    text-align: center;
 }
 
 td[data-mode = "default"]:hover {
@@ -94,8 +55,16 @@ td[data-mode = "end"] {
     background-color:#f44336;
 }
 
+td[data-mode = "current"] {
+    background-color: yellow;
+}
+
+td[data-mode = "trace"] {
+    background-color:aquamarine;
+}
+
 button {
-    margin: 10px 0px;
+    margin: 5px 0px;
     background-color:white;
     border: 3px solid black;
     border-radius: 0;
@@ -117,25 +86,31 @@ button:focus {
     box-shadow: 0 0 0 3px #e9e9e9;
 }
 
+.settingsBlock {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 #chooseSize {
     width: 100%;
     max-width: 300px;
 }
 
-.startAlgorithmButton {
+#startAlgorithmButton {
     font-size: 16px;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.changeCellButton[data-mode="start"] {
+.changeCellButton[data-mode="start"], #startAlgorithmButton {
     border-color: #4CAF50;
 }
 
-.changeCellButton[data-mode="start"]:hover {
+.changeCellButton[data-mode="start"]:hover, #startAlgorithmButton:hover {
     background-color:#dfffe0;
 }
 
-.changeCellButton[data-mode="start"]:focus {
+.changeCellButton[data-mode="start"]:focus, #startAlgorithmButton:focus {
     box-shadow: 0 0 0 3px #dfffe0;
 }
 
@@ -168,7 +143,6 @@ button:focus {
     left: 5%;
     width: 90%;
     padding-top: 15px;
-    padding-bottom: 15px;
     background-color:white;
     position: fixed;
     display: flex;
@@ -193,6 +167,7 @@ button:focus {
     margin-left: auto;
     margin-right: auto;
     margin-top: 80px;
+    margin-bottom: 25px;
 }
 
 .container div {

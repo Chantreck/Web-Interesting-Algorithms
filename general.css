@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: 900;
+    font-feature-settings: 'case' on;
+    src:url("./fonts/sf-display-black.otf");
+}
+
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: bold;
+    font-feature-settings: 'case' on;
+    src:url("./fonts/sf-display-bold.otf");
+}
+
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: normal;
+    font-feature-settings: 'case' on;
+    src:url("./fonts/sf-display-regular.otf");
+}
+
+h1 {
+    margin: 0;
+    font-weight: 900;
+    font-size: 10vw;
+    text-decoration: underline;
+}
+
+h2 {
+    margin: 10px 0px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+body {
+    font-family: "SF Display";
+    font-weight: normal;
+}
