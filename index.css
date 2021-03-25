@@ -12,8 +12,7 @@
 
 .photo {
     position: absolute;
-    top: 70px;
+    top: 0px;
     left: 941px;
-    width: 80%;
     background-position: right top;
 }
