@@ -196,3 +196,7 @@ button:focus {
     margin-left: 2%;
     width: 20%;
 }
+A{
+    text-decoration: none; 
+    color: black;
+}
