@@ -33,7 +33,7 @@ function findNeibougrhs(matrix, cellMatrix, currentCell, size){
     return result;
 }
 
-function findPath(matrix, cellMatrix, startCell, endCell) {
+async function findPath(matrix, cellMatrix, startCell, endCell, resolve) {
     let size = matrix[0].length;
     let seenNodes = [];
     let nodesToSee = [];
@@ -44,9 +44,10 @@ function findPath(matrix, cellMatrix, startCell, endCell) {
         let currentCell = nodesToSee.shift();
         if (currentCell != startCell && currentCell != endCell) {
             changeColor(currentCell, "current");
+            await sleep(300);
         }
         if (currentCell == endCell) {
-            return true;
+            return resolve("true");
         }
         seenNodes.push(currentCell);
         
@@ -72,29 +73,16 @@ function findPath(matrix, cellMatrix, startCell, endCell) {
             }
         }
     }
-    return false;
+    return resolve("false");
 }
 
-function changeColor(current, mode){
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
+function changeColor (current, mode) {
     document.querySelector(`td[data-row = '${current.x}'][data-column = '${current.y}']`).dataset.mode = mode;
 }
 
-export function runAlgorithm(matrix, start, end) {
-    let size = matrix[0].length;
-    let cellMatrix = new Array(size);
-    for (let i = 0; i < size; i++) {
-        cellMatrix[i] = new Array(size);
-        for (let j = 0; j < size; j++) {
-            cellMatrix[i][j] = new Node(i, j);
-        }
-    }
-
-    console.dir(cellMatrix);
-    startCell = cellMatrix[start.x][start.y];
-    endCell = cellMatrix[end.x][end.y];
-
-    let check = findPath(matrix, cellMatrix, startCell, endCell);
-
+async function showSolution(check, startCell, endCell) {
     if (check) {
         let trace = [];
         let currentCell = endCell.parent;
@@ -104,9 +92,27 @@ export function runAlgorithm(matrix, start, end) {
         }
         for (let step of trace) {
             changeColor(step, "trace");
+            await sleep(50);
         }
     }
     else {
         alert("Решений нет");
     }
+}
+
+export async function runAlgorithm(matrix, start, end) {
+    let size = matrix[0].length;
+    let cellMatrix = new Array(size);
+    for (let i = 0; i < size; i++) {
+        cellMatrix[i] = new Array(size);
+        for (let j = 0; j < size; j++) {
+            cellMatrix[i][j] = new Node(i, j);
+        }
+    }
+
+    startCell = cellMatrix[start.x][start.y];
+    endCell = cellMatrix[end.x][end.y];
+
+    let promise = new Promise((resolve) => findPath(matrix, cellMatrix, startCell, endCell, resolve));
+    promise.then(result => setTimeout(showSolution(result, startCell, endCell), 500));
 }
