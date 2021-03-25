@@ -1,0 +1,131 @@
+/* ОСНОВНОЙ КОНТЕЙНЕР */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 800px) {
+    .container div {
+        display: block; 
+        width: 100%;
+    }
+}
+
+.main {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 25px;
+}
+
+.container div {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+.about {
+    margin-right: 2%;
+    width: 30%;
+}
+
+.field {
+    width: 45%;
+}
+
+.settings {
+    margin-left: 2%;
+    width: 20%;
+}
+
+/* ПАНЕЛЬ ИНФОРМАЦИИ */
+
+.instructionList {
+    margin-bottom: 20px;
+}
+
+.instructionList li {
+    margin-left: 20px;
+    padding: 5px 0px;
+}
+
+/* ПОЛЕ */
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 2px solid; 
+    margin: 0 auto;
+    width: 100%;
+}
+
+td {
+    border: 1px solid;
+}
+
+/* НАСТРОЙКИ */
+
+.settingsBlock {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.settingsBlock p {
+    margin-bottom: 8px;
+}
+
+.settingsBlock li {
+    list-style-type: none;
+    display: inline;
+}
+
+#chooseSize {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* КНОПКИ */
+
+#startAlgorithmButton {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.changeCellButton[data-mode="start"], #startAlgorithmButton {
+    border-color: var(--green);
+}
+
+.changeCellButton[data-mode="start"]:hover, #startAlgorithmButton:hover {
+    background-color: var(--light-green);
+}
+
+.changeCellButton[data-mode="start"]:focus, #startAlgorithmButton:focus {
+    box-shadow: 0 0 0 3px var(--light-green);
+}
+
+.changeCellButton[data-mode="end"] {
+    border-color: var(--red);
+}
+
+.changeCellButton[data-mode="end"]:hover {
+    background-color:var(--light-red);
+}
+
+.changeCellButton[data-mode="end"]:focus {
+    box-shadow: 0 0 0 3px var(--light-red);
+}
+
+.clearField {
+    border-color: var(--blue);
+}
+
+.clearField:hover {
+    background-color: var(--light-blue);
+}
+
+.clearField:focus {
+    box-shadow: 0 0 0 3px var(--light-blue);
+}

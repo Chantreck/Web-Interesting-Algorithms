@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../general.css">
+        <link rel = "stylesheet" href = "./styles.css">
+        <link type="image/png" rel="icon" href="../img/icon64.png">
+        <title>Дерево решений</title>
+    </head>
+    <body>
+        <div class = "menu">
+            <div><a href="../task1/index.html">A*</a></div>
+            <div><a href="../task2/index.html">Алгоритм кластеризации</a></div>
+            <div><a href="../task3/index.html">Муравьиный алгоритм</a></div>
+            <div><a href="../task4/index.html">Генетический алгоритм</a></div>
+            <div><a>Дерево решений</a></div>
+            <div><a href="../task6/index.html">Нейронная сеть</a></div>
+        </div>
+        <div class = "main container">
+            <div class = "about">
+                <h1>Алгоритм кластеризации</h1>
+                <p>Алгоритм разбивает точки на кластеры так, что объекты из одного кластера похожи друг на друга больше, чем на любой объект из другого кластера.</p>
+                <h2>Инструкция:</h2>
+                <ul class = "instructionList">
+                    <li>Выставьте точки на плоскости</li>
+                    <li>Выберите алгоритм кластеризации</li>
+                    <li>Запустите алгоритм</li>
+                </ul>
+                <button id = "startAlgorithmButton">Запустить</button><br>
+                <button id = "backButton" style = "width: 50%">На главную</button>
+            </div>
+            <div class = "field">
+                <table>
+                    <tbody>
+                        <tr><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class = "settings">
+                <h2>Настройки:</h2>
+                <div class = "settingsBlock">
+                    <p>выберите алгоритм: </p>
+                    <ul id = "settingsButtons">
+                        <li><button>K-средних</button></li>
+                        <li><button>K-медиан</button></li>
+                        <li><button>...</button></li>
+                    </ul>
+                </div>
+                <div class = "settingsBlock">
+                    <p>выберите действие: </p>
+                    <ul id = "settingsButtons">
+                        <li><button>Добавить точку</button></li>
+                        <li><button>Удалить точку</button></li>
+                        <li><button class = "clearField">Очистить поле</button></li>
+                    </ul>
+                    <p>текущее действие:</p>
+                    <span id = "currentMode" style = "font-weight: bold">Не выбрано</span>
+                </div>
+            </div>
+        </div>
+        <script src = "./script.js" type="module"></script>
+    </body>
+</html>
