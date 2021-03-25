@@ -69,7 +69,7 @@ function generateField() {
     }
 
     let table = document.createElement("TABLE");
-    let width = 0.4 * document.documentElement.clientWidth;
+    let width = 0.35 * document.documentElement.clientWidth;
     table.width = width;
 
     for (let i = 0; i < fieldSize; i++){
