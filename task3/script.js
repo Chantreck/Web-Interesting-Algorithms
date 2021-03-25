@@ -1,0 +1,1 @@
+window.backButton.onclick = () => location.href="../index.html";

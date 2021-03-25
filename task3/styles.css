@@ -1,8 +1,3 @@
-:root {
-    --current-color: yellow;
-    --trace-color: aquamarine;
-}
-
 /* ОСНОВНОЙ КОНТЕЙНЕР */
 
 ul {
@@ -63,46 +58,11 @@ table {
     border-collapse: collapse;
     border: 2px solid; 
     margin: 0 auto;
+    width: 100%;
 }
 
 td {
     border: 1px solid;
-}
-
-td[data-mode = "default"]:hover {
-    background-color:azure;
-}
-
-td[data-mode = "blocked"] {
-    background-color:gray;
-}
-
-td[data-mode = "blocked"]:hover {
-    background-color:lightgray;
-}
-
-td[data-mode = "start"] {
-    background-color:var(--green);
-}
-
-td[data-mode = "start"]:hover {
-    background-color:var(--light-green);
-}
-
-td[data-mode = "end"] {
-    background-color:var(--red);
-}
-
-td[data-mode = "end"]:hover {
-    background-color:var(--light-red);
-}
-
-td[data-mode = "current"] {
-    background-color: var(--current-color);
-}
-
-td[data-mode = "trace"] {
-    background-color: var(--trace-color);
 }
 
 /* НАСТРОЙКИ */
