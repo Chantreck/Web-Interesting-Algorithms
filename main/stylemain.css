@@ -21,6 +21,15 @@
     font-feature-settings: 'case' on;
     src:url("../fonts/sf-display-regular.otf");
 }
+
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: 700;
+    font-feature-settings: 'case' on;
+    src:url("../fonts/sf-display-medium.otf");
+}
+
 A{
     text-decoration: none; 
     color: black;
@@ -30,57 +39,62 @@ body{
     font-weight: normal;
     margin: 0;
     padding: 0;
-}
-h1 {
-    margin: 0;
-    font-weight: 900;
-    font-size: 4vw;
-    text-decoration: underline;
-}
-h1{
-    position: absolute;
-    left: 137px;
-    /* right: 960px; */
-    top: 271px;
     
 }
-.Autors{
+
+h1 {
+    font-weight: 900;
+    font-size: 6vw;
+    text-decoration: underline;
+   
+}
+
+.title {
     position: relative;
     font-size: 1.5vw;
-    left: 137px;
-    right: 960px;
-    top: 507px;
+    
+}
+.title p{
+    font-size: 2vw; 
     font-weight: 700;
+}
 
-}
 .photo{
-    position: relative;
-    top: 31px;
-    float: right;
-    width: 50%;
+    position: absolute;
+    top: 70px;
+    left: 941px;
+    width: 80%;
+    background-position: right top;
 }
+
+.title {
+    width: 90%;
+    margin: auto;
+    top:150px;
+}
+
 .menu {
     top: 0;
     left: 5%;
     width: 90%;
     padding-top: 15px;
     padding-bottom: 15px;
+    font-weight: 700;
     background-color:white;
     position: fixed;
     display: flex;
-    font-weight: 700;
-  
+    cursor:pointer;
+    z-index: 1;
 }
 
-
 .menu div {
-    padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
     width: 16%;
-    border-bottom: 3px solid;
+    border-left: 3px solid;
     text-align: left;
-    
-   
 }
 
+.menu div:hover {
+    background-color: azure;
+}
