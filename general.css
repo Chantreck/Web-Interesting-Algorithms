@@ -1,3 +1,13 @@
+:root {
+    --default-font: "SF Display";
+    --green: #4CAF50;
+    --light-green: #dfffe0;
+    --red: #f44336;
+    --light-red: #ffe6e4;
+    --blue: #2c7ac2;
+    --light-blue: #dff6ff;
+}
+
 @font-face {
     font-family: "SF Display";
     font-style: normal;
@@ -25,7 +35,7 @@
 h1 {
     margin: 0;
     font-weight: 900;
-    font-size: 10vw;
+    font-size: 3vw;
     text-decoration: underline;
 }
 
@@ -36,7 +46,7 @@ h2 {
 }
 
 body {
-    font-family: "SF Display";
+    font-family: var(--default-font);
     font-weight: normal;
 }
 
@@ -49,7 +59,7 @@ button {
     border-radius: 0;
     height: 50px;
     cursor: pointer;
-    font-family: "SF Display";
+    font-family: var(--default-font);
     font-weight: "regular";
     width: 100%;
     max-width: 300px;
@@ -84,4 +94,8 @@ button:focus {
     width: 16%;
     border-bottom: 3px solid;
     text-align: center;
+}
+
+#currentTask {
+    font-weight: bold;
 }
