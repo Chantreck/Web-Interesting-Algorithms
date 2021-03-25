@@ -32,17 +32,13 @@
                 <button id = "backButton" style = "width: 50%">На главную</button>
             </div>
             <div class = "field">
-                <table>
-                    <tbody>
-                        <tr><td></td></tr>
-                    </tbody>
-                </table>
+                <canvas class = "fieldCanvas"></canvas>
             </div>
             <div class = "settings">
                 <h2>Настройки:</h2>
                 <div class = "settingsBlock">
                     <p>выберите алгоритм: </p>
-                    <ul id = "settingsButtons">
+                    <ul id = "algorithmButtons">
                         <li><button>K-средних</button></li>
                         <li><button>K-медиан</button></li>
                         <li><button>...</button></li>
@@ -50,13 +46,13 @@
                 </div>
                 <div class = "settingsBlock">
                     <p>выберите действие: </p>
-                    <ul id = "settingsButtons">
-                        <li><button>Добавить точку</button></li>
-                        <li><button>Удалить точку</button></li>
+                    <ul id = "actionButtons">
+                        <li><button class = "selectActionButton" data-action = "add">Добавить точку</button></li>
+                        <li><button class = "selectActionButton" data-action = "remove">Удалить точку</button></li>
                         <li><button class = "clearField">Очистить поле</button></li>
                     </ul>
                     <p>текущее действие:</p>
-                    <span id = "currentMode" style = "font-weight: bold">Не выбрано</span>
+                    <span id = "currentAction" style = "font-weight: bold">Не выбрано</span>
                 </div>
             </div>
         </div>
