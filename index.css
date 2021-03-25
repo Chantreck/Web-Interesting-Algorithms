@@ -1,4 +1,6 @@
 .title {
+    padding-left: 10px;
+    padding-right: 50px;
     display: inline-block;
     position: relative;
     font-size: 1.5vw;
