@@ -1,0 +1,19 @@
+.title {
+    position: relative;
+    font-size: 1.5vw;
+    width: 90%;
+    margin: auto;
+    top: 150px;
+}
+.title p {
+    font-size: 2vw; 
+    font-weight: 700;
+}
+
+.photo {
+    position: absolute;
+    top: 70px;
+    left: 941px;
+    width: 80%;
+    background-position: right top;
+}

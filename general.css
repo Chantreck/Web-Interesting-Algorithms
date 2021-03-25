@@ -32,6 +32,14 @@
     src:url("./fonts/sf-display-regular.otf");
 }
 
+@font-face {
+    font-family: "SF Display";
+    font-style: normal;
+    font-weight: 700;
+    font-feature-settings: 'case' on;
+    src:url("../fonts/sf-display-medium.otf");
+}
+
 h1 {
     margin: 0;
     font-weight: 900;
@@ -43,6 +51,11 @@ h2 {
     margin: 10px 0px;
     text-decoration: underline;
     font-weight: bold;
+}
+
+a {
+    text-decoration: none; 
+    color: black;
 }
 
 body {
@@ -82,18 +95,26 @@ button:focus {
     left: 5%;
     width: 90%;
     padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 700;
     background-color:white;
     position: fixed;
     display: flex;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .menu div {
-    padding-bottom: 10px;
+    min-width: 150px;
     padding-left: 10px;
     padding-right: 10px;
     width: 16%;
-    border-bottom: 3px solid;
-    text-align: center;
+    border-left: 3px solid;
+    text-align: left;
+}
+
+.menu div:hover {
+    background-color: var(--light-blue);
 }
 
 #currentTask {
