@@ -40,9 +40,20 @@
     src:url("../fonts/sf-display-medium.otf");
 }
 
+
+.background {  
+    position: absolute; 
+    display: block;
+    top: 0;
+    left: 0;  
+    z-index: 0;
+}
+
 body {
     font-family: var(--default-font);
     font-weight: normal;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {

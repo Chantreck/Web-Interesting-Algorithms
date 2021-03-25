@@ -4,6 +4,7 @@
     width: 90%;
     margin: auto;
     top: 150px;
+    z-index: 1;
 }
 .title p {
     font-size: 2vw; 

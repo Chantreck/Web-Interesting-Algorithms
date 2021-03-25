@@ -21,6 +21,13 @@
         <h1 style = "font-size: 6vw">Интересные <br>алгоритмы</h1>
         <p>Проектная работа по программированию<br>Владислава Нетаева,<br>Максима Неверовского,<br>Елены Ситниковой.</p>
     </div>
-    <p class="photo"><img src="./img/index-background.png"></p>
+    <!-- <p class="photo"><img src="./img/index-background.png"></p> -->
+    <canvas class = "background"></canvas>
+    <script src="./particles.min.js"></script>
+    <script>
+        window.onload= function() {
+            Particles.init({ selector: '.background', connectParticles: true, color: '#aaaaaa' });
+        };
+    </script>
 </body>
 </html>
