@@ -116,12 +116,18 @@ button:focus {
     z-index: 1;
 }
 
-.menu div {
+.menu div{
     padding-left: 10px;
     padding-right: 10px;
     width: 16%;
     border-left: 3px solid;
     text-align: left;
+}
+
+.menu div a{
+    display: block;
+    height: 100%;
+
 }
 
 .menu div:hover {
