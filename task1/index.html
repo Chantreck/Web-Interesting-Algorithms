@@ -32,7 +32,7 @@
             <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
             <button id = "backButton" style = "width: 50%">На главную</button>
         </div>
-        <div class = "field"></div>
+        <div id = "field"></div>
         <div class = "settings">
             <h2>Настройки:</h2>
             <div class = "settingsBlock">
@@ -53,6 +53,13 @@
             </div>
         </div>
     </div>
+    <canvas class = "background"></canvas>
+    <script src="../particles.min.js"></script>
+    <script>
+        window.onload= function() {
+            Particles.init({ selector: '.background', connectParticles: true, color: '#aaaaaa' });
+        };
+    </script>
     <script src = "./script.js" type="module"></script>
 </body>
 </html>

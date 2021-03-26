@@ -10,6 +10,7 @@
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(2px);
 }
+
 .title p {
     font-size: 2vw; 
     font-weight: 700;

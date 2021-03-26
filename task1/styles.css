@@ -10,16 +10,6 @@ ul {
     padding: 0;
 }
 
-@media (max-width: 800px) {
-    .container div {
-        display: block; 
-        width: 100%;
-    }
-    h1 {
-        font-size: 10vw;
-    }
-}
-
 .main {
     width: 90%;
     margin-left: auto;
@@ -28,24 +18,9 @@ ul {
     margin-bottom: 25px;
 }
 
-.container div {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 16px;
-}
-
-.about {
-    margin-right: 2%;
-    width: 30%;
-}
-
-.field {
+#field {
     width: 40%;
-}
-
-.settings {
-    margin-left: 2%;
-    width: 25%;
+    box-sizing: border-box;
 }
 
 /* ПАНЕЛЬ ИНФОРМАЦИИ */
@@ -62,10 +37,10 @@ ul {
 /* ПОЛЕ */
 
 table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    border: 2px solid; 
     margin: 0 auto;
+    table-layout: fixed;
+    border: 2px solid;
+    border-collapse: collapse;
 }
 
 td {

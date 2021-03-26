@@ -57,7 +57,7 @@
     display: block;
     top: 0;
     left: 0;  
-    z-index: 0;
+    z-index: -1;
 }
 
 body {
@@ -173,7 +173,8 @@ button:focus {
 .container > div {
     display: inline-block;
     vertical-align: top;
-    background-color: white;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(2px);
     border-radius: 10px;
     font-size: 16px;
 }

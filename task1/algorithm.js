@@ -43,7 +43,7 @@ async function findPath(matrix, cellMatrix, startCell, endCell, size) {
         let currentCell = nodesToSee.shift();
         if (currentCell != startCell && currentCell != endCell) {
             changeColor(currentCell, "current");
-            await sleep(300);
+            await sleep(200);
         }
         if (currentCell == endCell) {
             return true;

@@ -1,13 +1,13 @@
 var mode = "default";
 var matrix = [];
 
-window.onload = () => {
+window.addEventListener("load", () => {
     buildMatrix();
     generateField();
     setEventListeners();
     window.onresize = generateField;
     window.backButton.onclick = () => location.href="../index.html";
-}
+})
 
 function setEventListeners() {
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
@@ -71,6 +71,7 @@ function buildMatrix() {
 }
 
 function generateField() {
+    let fieldPlaceHolder = document.getElementById("field");
     let fieldSize = document.getElementById("chooseSize").value;
     document.getElementById("fieldSize").innerText = fieldSize;
     
@@ -80,7 +81,7 @@ function generateField() {
     }
 
     let table = document.createElement("TABLE");
-    let width = 0.35 * document.documentElement.clientWidth;
+    let width = fieldPlaceHolder.clientWidth;
     table.width = width;
 
     for (let i = 0; i < fieldSize; i++){
@@ -95,10 +96,8 @@ function generateField() {
     }
 
     table.addEventListener("click", markCell);
-
-    let tableHolder = document.querySelector(".field");
-    tableHolder.innerHTML = "";
-    tableHolder.appendChild(table);
+    fieldPlaceHolder.innerHTML = "";
+    fieldPlaceHolder.appendChild(table);
 }
 
 function clearSolutions(){
