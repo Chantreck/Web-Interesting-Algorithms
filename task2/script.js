@@ -22,4 +22,8 @@ function changeAction(actionName) {
     label.innerText = statusMap.get(window.action);
 }
 
+function clearField() {
+    window.dotsCollection = new DotCollection();
+}
+
 import {DotCollection} from '../dots.js'
