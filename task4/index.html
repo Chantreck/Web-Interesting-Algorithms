@@ -35,11 +35,20 @@
             <div class = "settings">
                 <h2>Настройки:</h2>
                 <div class = "settingsBlock">
-
+                    <p>выберите действие: </p>
+                    <ul id = "actionButtons">
+                        <li><button class = "selectActionButton" data-action = "add">Добавить город</button></li>
+                        <li><button class = "selectActionButton" data-action = "remove">Удалить город</button></li>
+                        <li><button class = "clearField">Очистить поле</button></li>
+                    </ul>
+                    <p>текущее действие:</p>
+                    <span id = "currentAction" style = "font-weight: bold">Не выбрано</span>
                 </div>
             </div>
         </div>
         <script src = "./script.js" type="module"></script>
+        <script src = "../sketch.js"></script>
+        <script src = "../p5.min.js"></script>
         <canvas class = "background"></canvas>
         <script src="../particles.min.js"></script>
         <script>

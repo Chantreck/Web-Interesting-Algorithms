@@ -1,30 +1,6 @@
-class DotCollection extends Map {
-    get(x, y) {
-        return super.get(`${x},${y}`);
-    }
-    add(x, y) {
-        let coordId = `${x},${y}`;
-        if (!this.has(coordId)) {
-            this.set(coordId, new Dot(x, y));
-        }
-    }
-    remove(x, y) {
-        let coordId = `${x},${y}`;
-        this.delete(coordId);
-    }
-}
-
-class Dot {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
-var dots = new DotCollection();
-
 window.addEventListener("load", () => {
     window.action = "default";
+    window.dotsCollection = new DotCollection();
     window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", buttonClickHandler);
 })
@@ -46,17 +22,4 @@ function changeAction(actionName) {
     label.innerText = statusMap.get(window.action);
 }
 
-//canvas.addEventListener("click", manageDots);
-
-/* function manageDots(event) {
-    switch (action) {
-        case "default":
-            return;
-        case "add":
-            dots.add(event.offsetX, event.offsetY, context);
-            break;
-        case "remove":
-            dots.remove(event.offsetX, event.offsetY, context);
-            break;
-    }
-} */
+import {DotCollection} from '../dots.js'

@@ -8,3 +8,29 @@
     box-sizing: border-box;
     border-radius: 10px;
 }
+
+/* КНОПКИ */
+
+.selectActionButton[data-action="add"] {
+    border-color: var(--green);
+}
+
+.selectActionButton[data-action="add"]:hover {
+    background-color: var(--light-green);
+}
+
+.selectActionButton[data-action="add"]:focus {
+    box-shadow: 0 0 0 3px var(--light-green);
+}
+
+.selectActionButton[data-action="remove"] {
+    border-color: var(--red);
+}
+
+.selectActionButton[data-action="remove"]:hover {
+    background-color:var(--light-red);
+}
+
+.selectActionButton[data-action="remove"]:focus {
+    box-shadow: 0 0 0 3px var(--light-red);
+}
