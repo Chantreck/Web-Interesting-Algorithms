@@ -1,27 +1,7 @@
-/* ОСНОВНОЙ КОНТЕЙНЕР */
-
-ul {
-    margin: 0;
-    padding: 0;
-}
-
-/* ПАНЕЛЬ ИНФОРМАЦИИ */
-
-.instructionList {
-    margin-bottom: 20px;
-}
-
-.instructionList li {
-    margin-left: 20px;
-    padding: 5px 0px;
-}
-
 /* ПОЛЕ */
 
 #field {
     border: 3px solid;
-    width: 40%;
-    box-sizing: border-box;
 }
 
 .p5Canvas {
@@ -29,44 +9,17 @@ ul {
     border-radius: 10px;
 }
 
-/* НАСТРОЙКИ */
-
-.settingsBlock {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.settingsBlock p {
-    margin-bottom: 8px;
-}
-
-.settingsBlock li {
-    list-style-type: none;
-    display: inline;
-}
-
-#chooseSize {
-    width: 100%;
-    max-width: 300px;
-}
-
 /* КНОПКИ */
 
-#startAlgorithmButton {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.selectActionButton[data-action="add"], #startAlgorithmButton {
+.selectActionButton[data-action="add"] {
     border-color: var(--green);
 }
 
-.selectActionButton[data-action="add"]:hover, #startAlgorithmButton:hover {
+.selectActionButton[data-action="add"]:hover {
     background-color: var(--light-green);
 }
 
-.selectActionButton[data-action="add"]:focus, #startAlgorithmButton:focus {
+.selectActionButton[data-action="add"]:focus {
     box-shadow: 0 0 0 3px var(--light-green);
 }
 
@@ -80,16 +33,4 @@ ul {
 
 .selectActionButton[data-action="remove"]:focus {
     box-shadow: 0 0 0 3px var(--light-red);
-}
-
-.clearField {
-    border-color: var(--blue);
-}
-
-.clearField:hover {
-    background-color: var(--light-blue);
-}
-
-.clearField:focus {
-    box-shadow: 0 0 0 3px var(--light-blue);
 }
