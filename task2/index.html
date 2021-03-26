@@ -31,8 +31,8 @@
                 <button id = "startAlgorithmButton">Запустить</button><br>
                 <button id = "backButton" style = "width: 50%">На главную</button>
             </div>
-            <div class = "field">
-                <canvas class = "fieldCanvas"></canvas>
+            <div id = "field">
+                <!-- <canvas class = "fieldCanvas"></canvas> -->
             </div>
             <div class = "settings">
                 <h2>Настройки:</h2>
@@ -49,6 +49,7 @@
                     <ul id = "actionButtons">
                         <li><button class = "selectActionButton" data-action = "add">Добавить точку</button></li>
                         <li><button class = "selectActionButton" data-action = "remove">Удалить точку</button></li>
+                        <li><button class = "selectActionButton" data-action = "info">Информация о точке</button></li>
                         <li><button class = "clearField">Очистить поле</button></li>
                     </ul>
                     <p>текущее действие:</p>
@@ -57,5 +58,14 @@
             </div>
         </div>
         <script src = "./script.js" type="module"></script>
+        <script src = "./sketch.js"></script>
+        <script src = "../p5.min.js"></script>
+        <canvas class = "background"></canvas>
+        <script src="../particles.min.js"></script>
+        <script>
+            window.onload= function() {
+                Particles.init({ selector: '.background', connectParticles: true, color: '#aaaaaa' });
+            };
+        </script>
     </body>
 </html>
