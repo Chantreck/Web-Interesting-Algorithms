@@ -18,7 +18,7 @@ function draw() {
 }
 
 function manageDots(x, y) {
-    switch (action) {
+    switch (window.action) {
         case "default":
             return;
         case "add":
