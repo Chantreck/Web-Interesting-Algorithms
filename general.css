@@ -20,7 +20,7 @@
 @font-face {
     font-family: "SF Display";
     font-style: normal;
-    font-weight: bold;
+    font-weight: 800;
     font-feature-settings: 'case' on;
     src:url("./fonts/sf-display-bold.otf");
 }
@@ -42,14 +42,17 @@
 }
 
 @media (max-width: 800px) {
+    .background {
+        position: fixed;
+    }
     .container > div {
         margin: 10px 0px;
         display: block; 
-        width: 100%;
+        width: 100% !important;
     }
     
     h1 {
-        font-size: 32px;
+        font-size: 32px !important;
     }
 }
 
@@ -79,12 +82,16 @@ h1 {
 h2 {
     margin: 0;
     text-decoration: underline;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 a {
     text-decoration: none; 
     color: black;
+}
+
+span {
+    font-weight: 800;
 }
 
 ul {
@@ -121,7 +128,7 @@ button:focus {
 
 #startAlgorithmButton {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 800;
     margin-bottom: 15px;
     border-color: var(--green);
 }
@@ -146,6 +153,10 @@ button:focus {
     box-shadow: 0 0 0 3px var(--light-blue);
 }
 
+#backButton {
+    display: none;
+}
+
 /* ОФОРМЛЕНИЕ МЕНЮ */
 
 .menu {
@@ -160,7 +171,6 @@ button:focus {
     backdrop-filter: blur(2px);
     position: fixed;
     display: flex;
-    cursor: pointer;
     z-index: 1;
     border-radius: 0 0 5px 5px;
 }
@@ -176,6 +186,7 @@ button:focus {
 .menu div a {
     display: block;
     height: 100%;
+    cursor: pointer;
 }
 
 .menu div:hover {
@@ -183,7 +194,7 @@ button:focus {
 }
 
 #currentTask {
-    font-weight: bold;
+    font-weight: 800;
 }
 
 /* КОНТЕЙНЕР */
