@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class = "menu">
-        <div><a>A*</a></div>
-        <div><a href="../task2/task2.html">Алгоритм кластеризации</a></div>
-        <div><a>Муравьиный алгоритм</a></div>
-        <div><a>Генетический алгоритм</a></div>
-        <div><a>Дерево решений</a></div>
-        <div><a>Нейронная сеть</a></div>
+        <div><a id = "currentTask">A*</a></div>
+        <div><a href="../task2/index.html">Алгоритм<br>кластеризации</a></div>
+        <div><a href="../task3/index.html">Муравьиный<br>алгоритм</a></div>
+        <div><a href="../task4/index.html">Генетический<br>алгоритм</a></div>
+        <div><a href="../task5/index.html">Дерево решений</a></div>
+        <div><a href="../task6/index.html">Нейронная сеть</a></div>
     </div>
     <div class = "main container">
         <div class = "about">
@@ -29,14 +29,14 @@
                 <li>Выберите поле начала и конца</li>
                 <li>Запустите алгоритм</li>
             </ul>
-            <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button>
-            <button id = "backButton" style = "width: 150px">На главную</button>
+            <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
+            <button id = "backButton" style = "width: 50%">На главную</button>
         </div>
-        <div class = "field"></div>
+        <div id = "field"></div>
         <div class = "settings">
             <h2>Настройки:</h2>
             <div class = "settingsBlock">
-                <p>размер поля: <span id = "fieldSize" style = "font-weight: bold"></span></p>
+                <p>размер поля: <span id = "fieldSize"></span></p>
                 <input id = "chooseSize" type = "range" min = "5" max = "25"></input>
             </div>
             <div class = "settingsBlock">
@@ -49,10 +49,17 @@
                     <li><button class = "clearField">Очистить поле</button></li>
                 </ul>
                 <p>текущее действие:</p>
-                <span id = "currentMode" style = "font-weight: bold">Не выбрано</span>
+                <span id = "currentMode">Не выбрано</span>
             </div>
         </div>
     </div>
+    <canvas class = "background"></canvas>
+    <script src="../particles.min.js"></script>
+    <script>
+        window.onload= function() {
+            Particles.init({ selector: '.background', connectParticles: true, color: '#aaaaaa' });
+        };
+    </script>
     <script src = "./script.js" type="module"></script>
 </body>
 </html>

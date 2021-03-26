@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../general.css">
+        <link rel = "stylesheet" href = "./styles.css">
+        <link type="image/png" rel="icon" href="../img/icon64.png">
+        <title>Нейронная сеть</title>
+    </head>
+    <body>
+        <div class = "menu">
+            <div><a href="../task1/index.html">A*</a></div>
+            <div><a href="../task2/index.html">Алгоритм<br>кластеризации</a></div>
+            <div><a href="../task3/index.html">Муравьиный<br>алгоритм</a></div>
+            <div><a href="../task4/index.html">Генетический<br>алгоритм</a></div>
+            <div><a href="../task5/index.html">Дерево решений</a></div>
+            <div><a id = "currentTask">Нейронная сеть</a></div>
+        </div>
+        <div class = "main container">
+            <div class = "about">
+                <h1>Нейронная сеть</h1>
+                <p>Алгоритм определяет, какая цифра изображена</p>
+                <h2>Инструкция:</h2>
+                <ul class = "instructionList">
+                    <li>Выберите режим работы (обычный или продвинутый)</li>
+                    <li>Нарисуйте цифру</li>
+                    <li>Запустите алгоритм</li>
+                </ul>
+                <button id = "startAlgorithmButton">Запустить</button><br>
+                <button id = "backButton" style = "width: 50%">На главную</button>
+            </div>
+<!--             <div id = "field">
+            </div> -->
+            <div class = "settings">
+                <h2>Настройки:</h2>
+                <div class = "settingsBlock">
+
+                </div>
+            </div>
+        </div>
+        <script src = "./script.js" type="module"></script>
+        <canvas class = "background"></canvas>
+        <script src="../particles.min.js"></script>
+        <script>
+            window.onload= function() {
+                Particles.init({ selector: '.background', connectParticles: true, color: '#aaaaaa' });
+            };
+        </script>
+    </body>
+</html>

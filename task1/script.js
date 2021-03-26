@@ -1,30 +1,41 @@
 var mode = "default";
 var matrix = [];
 
-buildMatrix();
-generateField();
-    
-window.onresize = generateField;
-window.backButton.onclick = () => location.href="../index.html";
-window.startAlgorithmButton.onclick = startAlgorithm;
-window.chooseSize.oninput = generateField;
-window.settingsButtons.addEventListener("click", buttonClickListener);
+window.addEventListener("load", () => {
+    buildMatrix();
+    generateField();
+    setEventListeners();
+    window.onresize = generateField;
+    window.backButton.onclick = () => location.href="../index.html";
+})
+
+function setEventListeners() {
+    window.startAlgorithmButton.addEventListener("click", startAlgorithm);
+    window.settingsButtons.addEventListener("click", buttonClickListener);
+    window.chooseSize.addEventListener("input", generateField);
+}
+
+function removeEventListeners() {
+    window.startAlgorithmButton.removeEventListener("click", startAlgorithm);
+    window.settingsButtons.removeEventListener("click", buttonClickListener);
+    window.chooseSize.removeEventListener("input", generateField);
+}
 
 function buttonClickListener(event) {
     if (event.target.className == "changeCellButton") {
         let label = document.getElementById("currentMode");
         mode = event.target.dataset.mode;
-        if (mode == "default") {
-            label.innetText = "Не выбрано";
-        }
-        else if (mode == "blocked") {
-            label.innerText = "Выбор преград";
-        }
-        else if (mode == "start") {
-            label.innerText = "Выбор стартовой клетки";
-        }
-        else {
-            label.innerText = "Выбор конечной клетки";
+
+        switch(mode) {
+            case 'blocked':
+                label.innerText = "Выбор преград";
+                break;
+            case 'start':
+                label.innerText = "Выбор стартовой клетки";
+                break;
+            case 'end':
+                label.innerText = "Выбор конечной клетки";
+                break;
         }
     }
     if (event.target.className == "clearField") {
@@ -60,6 +71,7 @@ function buildMatrix() {
 }
 
 function generateField() {
+    let fieldPlaceHolder = document.getElementById("field");
     let fieldSize = document.getElementById("chooseSize").value;
     document.getElementById("fieldSize").innerText = fieldSize;
     
@@ -69,7 +81,7 @@ function generateField() {
     }
 
     let table = document.createElement("TABLE");
-    let width = 0.4 * document.documentElement.clientWidth;
+    let width = fieldPlaceHolder.clientWidth;
     table.width = width;
 
     for (let i = 0; i < fieldSize; i++){
@@ -84,10 +96,8 @@ function generateField() {
     }
 
     table.addEventListener("click", markCell);
-
-    let tableHolder = document.querySelector(".field");
-    tableHolder.innerHTML = "";
-    tableHolder.appendChild(table);
+    fieldPlaceHolder.innerHTML = "";
+    fieldPlaceHolder.appendChild(table);
 }
 
 function clearSolutions(){
@@ -101,8 +111,6 @@ function markCell(event) {
     let formerCellStart;
     let formerCellEnd;
     switch (mode) {
-        case "default":
-            return;
         case "blocked":
             clearSolutions();
             if (event.target.dataset.mode == "blocked") {
@@ -141,12 +149,15 @@ function markCell(event) {
     }
 }
 
-function startAlgorithm() {
+async function startAlgorithm() {
     let startCell = document.querySelector("td[data-mode = 'start']");
     let endCell = document.querySelector("td[data-mode = 'end']");
     let fieldSize = document.getElementById("chooseSize").value;
 
+    document.getElementById("currentMode").innerText = "Выполняется алгоритм";
+    removeEventListeners();
     clearSolutions();
+
     //Проверка на доступность начала и конца
     if (startCell == undefined || startCell.x > fieldSize || startCell.y > fieldSize) {
         alert("Выберите корректную начальную клетку.");
@@ -157,20 +168,14 @@ function startAlgorithm() {
         return;
     }
     
-    //создаем уменьшенную версию матрицы для алгоритма
-    let searchMatrix = new Array(fieldSize);
-    for (let i = 0; i < fieldSize; i++) {
-        searchMatrix[i] = new Array(fieldSize);
-        searchMatrix[i] = matrix[i].slice(0, fieldSize);
-    }
-
+    //Создаем уменьшенную версию матрицы для алгоритма
     startCell = new Cell(startCell);
     endCell = new Cell(endCell);
-    runAlgorithm(searchMatrix, startCell, endCell);
-}
 
-function mazeGeneration() {
-
+    await runAlgorithm(matrix, startCell, endCell, fieldSize);
+    mode = "default";
+    document.getElementById("currentMode").innerText = "Не выбрано";
+    setEventListeners();
 }
 
 import {runAlgorithm} from './algorithm.js';

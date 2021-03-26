@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "../general.css">
+        <link rel = "stylesheet" href = "./styles.css">
+        <link type="image/png" rel="icon" href="../img/icon64.png">
+        <title>Генетический алгоритм</title>
+    </head>
+    <body>
+        <div class = "menu">
+            <div><a href="../task1/index.html">A*</a></div>
+            <div><a href="../task2/index.html">Алгоритм<br>кластеризации</a></div>
+            <div><a href="../task3/index.html">Муравьиный<br>алгоритм</a></div>
+            <div><a id = "currentTask">Генетический<br>алгоритм</a></div>
+            <div><a href="../task5/index.html">Дерево решений</a></div>
+            <div><a href="../task6/index.html">Нейронная сеть</a></div>
+        </div>
+        <div class = "main container">
+            <div class = "about">
+                <h1>Генетический алгоритм</h1>
+                <p>Алгоритм решает задачу коммивояжера на плоскости с помощью генетического алгоритма</p>
+                <h2>Инструкция:</h2>
+                <ul class = "instructionList">
+                    <li>Выставьте точки на плоскости</li>
+                    <li>Запустите алгоритм</li>
+                </ul>
+                <button id = "startAlgorithmButton">Запустить</button><br>
+                <button id = "backButton" style = "width: 50%">На главную</button>
+            </div>
+            <div id = "field">
+            </div>
+            <div class = "settings">
+                <h2>Настройки:</h2>
+                <div class = "settingsBlock">
+                    <p>выберите действие: </p>
+                    <ul id = "actionButtons">
+                        <li><button class = "selectActionButton" data-action = "add">Добавить город</button></li>
+                        <li><button class = "selectActionButton" data-action = "remove">Удалить город</button></li>
+                        <li><button class = "clearField">Очистить поле</button></li>
+                    </ul>
+                    <p>текущее действие:</p>
+                    <span id = "currentAction">Не выбрано</span>
+                </div>
+            </div>
+        </div>
+        <script src = "./script.js" type="module"></script>
+        <script src = "../sketch.js"></script>
+        <script src = "../p5.min.js"></script>
+        <canvas class = "background"></canvas>
+        <script src="../particles.min.js"></script>
+        <script>
+            window.onload= function() {
+                Particles.init({ selector: '.background', connectParticles: true, color: '#aaaaaa' });
+            };
+        </script>
+    </body>
+</html>
