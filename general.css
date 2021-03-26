@@ -38,7 +38,7 @@
     font-style: normal;
     font-weight: 700;
     font-feature-settings: 'case' on;
-    src:url("../fonts/sf-display-medium.otf");
+    src:url("./fonts/sf-display-medium.otf");
 }
 
 @media (max-width: 800px) {
