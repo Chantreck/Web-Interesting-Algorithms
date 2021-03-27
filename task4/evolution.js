@@ -1,3 +1,5 @@
+var distances = [[Infinity, 3, 5], [3, Infinity, 4], [5, 4, Infinity]];
+
 class Chromosome {
     constructor(genesArray) {
         if (genesArray) {
@@ -13,7 +15,13 @@ class Chromosome {
     }
 
     calculateFitness() {
-
+        let tour = this.genes;
+        let tourLength = 0;
+        for (let i = 0; i < tour.length - 1; i++) {
+            tourLength += distances[tour[i]][tour[i+1]];
+        }
+        tourLength += distances[tour[tour.length - 1]][tour[0]];
+        return tourLength;
     }
 
     static crossover(parent1, parent2, swapSize) { //передавать genesArray!
@@ -65,3 +73,4 @@ class Chromosome {
 function getRandom(max) {
     return Math.floor(Math.random() * max);
 }
+
