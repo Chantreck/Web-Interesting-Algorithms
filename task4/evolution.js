@@ -1,6 +1,7 @@
-var distances = [[Infinity, 3, 5], [3, Infinity, 4], [5, 4, Infinity]];
+var distances;
+var citiesCount;
 
-class Chromosome {
+export class Chromosome {
     constructor(genesArray) {
         if (genesArray) {
             this.genes = genesArray;
@@ -11,7 +12,16 @@ class Chromosome {
     }
 
     combinateGenes() {
-
+        let citiesToAdd = [];
+        for (let i = 0; i < citiesCount; i++) {
+            citiesToAdd.push(i);
+        }
+        let combination = [];
+        while (citiesToAdd.length) {
+            let position = getRandom(citiesToAdd.length);
+            combination.push(+citiesToAdd.splice(position, 1));
+        }
+        return combination;
     }
 
     calculateFitness() {
