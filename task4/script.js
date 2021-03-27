@@ -3,6 +3,7 @@ window.addEventListener("load", () => {
     window.dotsCollection = new DotCollection();
     window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", buttonClickHandler);
+    window.startAlgorithmButton.addEventListener("click", startAlgorithm);
 })
 
 function buttonClickHandler(event) {
@@ -26,4 +27,11 @@ function clearField() {
     window.dotsCollection = new DotCollection();
 }
 
+function startAlgorithm() {
+    /* var parent1 = "A B C D E F G H I J".split(' ');
+    var parent2 = "I J D A G H B F C E".split(' ');
+    crossover(parent1, parent2, 5); */
+}
+
 import {DotCollection} from '../dots.js'
+// import {crossover} from './evolution.js'
