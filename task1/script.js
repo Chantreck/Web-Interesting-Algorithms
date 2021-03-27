@@ -154,10 +154,6 @@ async function startAlgorithm() {
     let endCell = document.querySelector("td[data-mode = 'end']");
     let fieldSize = document.getElementById("chooseSize").value;
 
-    document.getElementById("currentMode").innerText = "Выполняется алгоритм";
-    removeEventListeners();
-    clearSolutions();
-
     //Проверка на доступность начала и конца
     if (startCell == undefined || startCell.x > fieldSize || startCell.y > fieldSize) {
         alert("Выберите корректную начальную клетку.");
@@ -168,6 +164,10 @@ async function startAlgorithm() {
         return;
     }
     
+    document.getElementById("currentMode").innerText = "Выполняется алгоритм";
+    clearSolutions();
+    removeEventListeners();
+
     //Создаем уменьшенную версию матрицы для алгоритма
     startCell = new Cell(startCell);
     endCell = new Cell(endCell);
