@@ -33,17 +33,12 @@
                     <li>Запустите алгоритм</li>
                 </ul>
                 <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
-                <button id = "backButton" style = "width: 50%">На главную</button>
             </div>
             <div class = "block error">
                 <h2>Ошибка!</h2>
                 <p>Выберите корректную начальную клетку</p>
             </div>
-            <div class = "block">
-                <h2>Решение:</h2>
-                <p>Длина пути:</p>
-                <p>Алгоритм сработал за:</p>
-            </div>
+            <button id = "backButton">На главную</button>
         </div>
         <div class = "secondColumn">
             <div id = "field"></div>
@@ -71,8 +66,11 @@
                     <li><button id = "clearField">Очистить поле</button></li>
                 </ul>
             </div>
-
-            
+            <div class = "block">
+                <h2>Решение:</h2>
+                <p>Длина пути:</p>
+                <p>Алгоритм сработал за:</p>
+            </div>
         </div>
     </div>
     <canvas class = "background"></canvas>

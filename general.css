@@ -133,7 +133,7 @@ button:focus {
 #startAlgorithmButton {
     font-size: 18px;
     font-weight: 800;
-    margin-bottom: 15px;
+    margin: 0;
     border-color: var(--green);
 }
 
@@ -158,7 +158,9 @@ button:focus {
 }
 
 #backButton {
-    display: none;
+    max-width: none;
+    width: 50%;
+    margin: 0 auto;
 }
 
 /* ОФОРМЛЕНИЕ МЕНЮ */
@@ -253,16 +255,18 @@ button:focus {
 
 .error {
     border: 3px solid var(--red);
+    display: none;
 }
 
 #field {
+    border-radius: 10px;
     background: white;
 }
 
 /* ПАНЕЛЬ ИНФОРМАЦИИ */
 
 .instructionList {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .instructionList li {

@@ -6,14 +6,12 @@ window.addEventListener("load", () => {
     window.actionButtons.addEventListener("click", buttonClickHandler);
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
     window.test.addEventListener("click", startTest);
+    window.clearField.addEventListener("click", clearField);
 })
 
 function buttonClickHandler(event) {
     if (event.target.className == "selectActionButton") {
         changeAction(event.target.dataset.action);
-    }
-    if (event.target.className == "clearField") {
-        clearField();
     }
 }
 

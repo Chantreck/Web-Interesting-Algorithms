@@ -12,12 +12,6 @@ function setup() {
 
 function draw() {
     background("white");
-    for (let line of window.lineCollection) {
-        line(line.x1, line.y1, line.x2, line.y2);
-        console.log("smth");
-        console.log(line);
-        stroke("black");
-    }
     let i = 0;
     for (let dot of window.dotsCollection) {
         circle(dot.x, dot.y, 20);

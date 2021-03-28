@@ -3,18 +3,14 @@ window.addEventListener("load", () => {
     window.dotsCollection = new DotCollection();
     window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", buttonClickHandler);
+    window.clearField.addEventListener("click", clearField);
 })
 
 function buttonClickHandler(event) {
-    if (event.target.className == "selectActionButton") {
-        changeAction(event.target.dataset.action);
-    }
-    if (event.target.className == "clearField") {
-        clearField();
-    }
+    changeAction(event.target.dataset.action);
 }
 
-let statusMap = new Map([['default', 'Не выбрано'], ['add', 'Добавление городов'], ['remove', 'Удаление городов']]);
+let statusMap = new Map([['default', 'Не выбрано'], ['add', 'Добавление города'], ['remove', 'Удаление города']]);
 
 function changeAction(actionName) {
     let label = document.getElementById("currentAction");
