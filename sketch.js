@@ -1,6 +1,7 @@
 var size;
 var placeHolder = window.field;
-var dotsCollection = window.dotsCollection;
+var dots = window.dotsCollection;
+var lines = window.lineCollection;
 
 function setup() {
     size = placeHolder.clientWidth;
@@ -11,9 +12,18 @@ function setup() {
 
 function draw() {
     background("white");
-    let dots = dotsCollection.values();
-    for (let dot of dots) {
+    for (let line of window.lineCollection) {
+        line(line.x1, line.y1, line.x2, line.y2);
+        console.log("smth");
+        console.log(line);
+        stroke("black");
+    }
+    let i = 0;
+    for (let dot of window.dotsCollection) {
         circle(dot.x, dot.y, 20);
+        text(`${i}`, dot.x, dot.y);
+        textAlign(CENTER, CENTER);
+        i++;
     }
 }
 
