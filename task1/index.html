@@ -21,7 +21,7 @@
     <div class = "main container">
         <div class = "firstColumn">
             <div class = "block">
-                <h1>A*</h1>
+                <div><h1>A*</h1><span class = "advanced">бонусный вариант</span></div>
                 <p>Алгоритм находит кратчайший путь между заданными клетками в произвольном лабиринте</p>
             </div>
             <div class = "block">
@@ -33,6 +33,11 @@
                     <li>Запустите алгоритм</li>
                 </ul>
                 <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
+            </div>
+            <div class = "block">
+                <h2>Решение:</h2>
+                <p>Длина пути:</p>
+                <p>Алгоритм сработал за:</p>
             </div>
             <div class = "block error">
                 <h2>Ошибка!</h2>
@@ -47,7 +52,7 @@
             <div class="block settingsBlock">
                 <h2>Настройки:</h2>
                 <p>размер поля: <span id = "fieldSize"></span></p>
-                <input id = "chooseSize" type = "range" min = "5" max = "25"></input>
+                <input id = "chooseSize" type = "range" min = "5" max = "35"></input>
                 <div class = "deliminator"></div>
 
                 <p>выберите действие: </p>
@@ -62,14 +67,9 @@
 
                 <p>особые действия:</p>
                 <ul class="settingsButtons">
-                    <li><button id = "buildMaze">Построить лабиринт</button></li>
+                    <li><button id = "buildMaze">Построить лабиринт <span class = "advanced">бонус</span></button></li>
                     <li><button id = "clearField">Очистить поле</button></li>
                 </ul>
-            </div>
-            <div class = "block">
-                <h2>Решение:</h2>
-                <p>Длина пути:</p>
-                <p>Алгоритм сработал за:</p>
             </div>
         </div>
     </div>
