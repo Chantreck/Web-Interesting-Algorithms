@@ -47,3 +47,12 @@ class Dot {
         this.y = y;
     }
 }
+
+export class Line {
+    constructor(dot1, dot2) {
+        this.x1 = dot1.x;
+        this.x2 = dot2.x;
+        this.y1 = dot1.y;
+        this.y2 = dot2.y;
+    }
+}
