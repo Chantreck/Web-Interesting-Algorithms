@@ -3,7 +3,7 @@
     --green: #4CAF50;
     --light-green: #dfffe0;
     --red: #f44336;
-    --light-red: #ffe6e4;
+    --light-red: rgb(255, 230, 228);
     --blue: #2c7ac2;
     --light-blue: #e0f6ff;
     --light-gray: rgb(237,238,240);
@@ -90,6 +90,10 @@ a {
     color: black;
 }
 
+p {
+    margin: 8px 0px;
+}
+
 span {
     font-weight: 800;
 }
@@ -141,15 +145,15 @@ button:focus {
     box-shadow: 0 0 0 3px var(--light-green);
 }
 
-.clearField {
+#clearField {
     border-color: var(--blue);
 }
 
-.clearField:hover {
+#clearField:hover {
     background-color: var(--light-blue);
 }
 
-.clearField:focus {
+#clearField:focus {
     box-shadow: 0 0 0 3px var(--light-blue);
 }
 
@@ -210,33 +214,49 @@ button:focus {
 .container > div {
     display: inline-block;
     vertical-align: top;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(2px);
-    border-radius: 10px;
+    box-sizing: border-box;
     font-size: 16px;
 }
 
-.about {
-    padding: 15px;
+.firstColumn {
     margin-right: 1%;
     width: 33%;
-    box-sizing: border-box;
 }
 
-.about h2 {
+.firstColumn h2 {
     margin-bottom: 10px;
 }
 
-#field {
+.secondColumn {
     width: 40%;
-    box-sizing: border-box;
 }
 
-.settings {
-    padding: 15px;
+.thirdColumn {
     margin-left: 1%;
     width: 25%;
-    box-sizing: border-box;
+}
+
+.block {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.deliminator {
+    height: 0;
+    width: 100%;
+    margin: 20px 0px;
+    border: 1px solid lightgray;
+}
+
+.error {
+    border: 3px solid var(--red);
+}
+
+#field {
+    background: white;
 }
 
 /* ПАНЕЛЬ ИНФОРМАЦИИ */
@@ -253,12 +273,7 @@ button:focus {
 /* НАСТРОЙКИ */
 
 .settingsBlock {
-    width: 100%;
     margin-bottom: 10px;
-}
-
-.settingsBlock p {
-    margin-bottom: 8px;
 }
 
 .settingsBlock li {

@@ -19,38 +19,60 @@
         <div><a href="../task6/index.html">Нейронная сеть</a></div>
     </div>
     <div class = "main container">
-        <div class = "about">
-            <h1>A*</h1>
-            <p>Алгоритм находит кратчайший путь между заданными клетками в произвольном лабиринте</p>
-            <h2>Инструкция:</h2>
-            <ul class = "instructionList">
-                <li>Выберите размер поля ползунком</li>
-                <li>Нарисуйте заблокированные поля или создайте лабиринт</li>
-                <li>Выберите поле начала и конца</li>
-                <li>Запустите алгоритм</li>
-            </ul>
-            <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
-            <button id = "backButton" style = "width: 50%">На главную</button>
+        <div class = "firstColumn">
+            <div class = "block">
+                <h1>A*</h1>
+                <p>Алгоритм находит кратчайший путь между заданными клетками в произвольном лабиринте</p>
+            </div>
+            <div class = "block">
+                <h2>Инструкция:</h2>
+                <ul class = "instructionList">
+                    <li>Выберите размер поля ползунком</li>
+                    <li>Нарисуйте заблокированные поля или создайте лабиринт</li>
+                    <li>Выберите поле начала и конца</li>
+                    <li>Запустите алгоритм</li>
+                </ul>
+                <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
+                <button id = "backButton" style = "width: 50%">На главную</button>
+            </div>
+            <div class = "block error">
+                <h2>Ошибка!</h2>
+                <p>Выберите корректную начальную клетку</p>
+            </div>
+            <div class = "block">
+                <h2>Решение:</h2>
+                <p>Длина пути:</p>
+                <p>Алгоритм сработал за:</p>
+            </div>
         </div>
-        <div id = "field"></div>
-        <div class = "settings">
-            <h2>Настройки:</h2>
-            <div class = "settingsBlock">
+        <div class = "secondColumn">
+            <div id = "field"></div>
+        </div>
+        <div class = "thirdColumn">
+            <div class="block settingsBlock">
+                <h2>Настройки:</h2>
                 <p>размер поля: <span id = "fieldSize"></span></p>
                 <input id = "chooseSize" type = "range" min = "5" max = "25"></input>
-            </div>
-            <div class = "settingsBlock">
+                <div class = "deliminator"></div>
+
                 <p>выберите действие: </p>
                 <ul id = "settingsButtons">
-                    <li><button class = "buildMaze">Построить лабиринт</button></li>
                     <li><button class = "changeCellButton" data-mode="blocked">Выставить преграды</button></li>
                     <li><button class = "changeCellButton" data-mode="start">Выбрать начальную клетку</button></li>
                     <li><button class = "changeCellButton" data-mode="end">Выбрать конечную клетку</button></li>
-                    <li><button class = "clearField">Очистить поле</button></li>
                 </ul>
                 <p>текущее действие:</p>
                 <span id = "currentMode">Не выбрано</span>
+                <div class = "deliminator"></div>
+
+                <p>особые действия:</p>
+                <ul class="settingsButtons">
+                    <li><button id = "buildMaze">Построить лабиринт</button></li>
+                    <li><button id = "clearField">Очистить поле</button></li>
+                </ul>
             </div>
+
+            
         </div>
     </div>
     <canvas class = "background"></canvas>

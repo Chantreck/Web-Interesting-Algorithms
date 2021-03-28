@@ -11,48 +11,52 @@ window.addEventListener("load", () => {
 
 function setEventListeners() {
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
+    window.clearField.addEventListener("click", cleanField);
+    window.buildMaze.addEventListener("click", mazeBuilder);
     window.settingsButtons.addEventListener("click", buttonClickListener);
     window.chooseSize.addEventListener("input", generateField);
 }
 
 function removeEventListeners() {
     window.startAlgorithmButton.removeEventListener("click", startAlgorithm);
+    window.clearField.removeEventListener("click", cleanField);
+    window.buildMaze.removeEventListener("click", mazeBuilder);
     window.settingsButtons.removeEventListener("click", buttonClickListener);
     window.chooseSize.removeEventListener("input", generateField);
 }
 
 function buttonClickListener(event) {
-    if (event.target.className == "changeCellButton") {
-        let label = document.getElementById("currentMode");
-        mode = event.target.dataset.mode;
+    let label = document.getElementById("currentMode");
+    mode = event.target.dataset.mode;
 
-        switch(mode) {
-            case 'blocked':
-                label.innerText = "Выбор преград";
-                break;
-            case 'start':
-                label.innerText = "Выбор стартовой клетки";
-                break;
-            case 'end':
-                label.innerText = "Выбор конечной клетки";
-                break;
+    switch(mode) {
+        case 'blocked':
+            label.innerText = "Выбор преград";
+            break;
+        case 'start':
+            label.innerText = "Выбор стартовой клетки";
+            break;
+        case 'end':
+            label.innerText = "Выбор конечной клетки";
+            break;
+    }
+}
+
+function cleanField() {
+    buildMatrix();
+    generateField();
+}
+
+function mazeBuilder() {
+    buildMatrix();
+    let size = document.getElementById("chooseSize").value;
+    let maze = interact(size);
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            matrix[i][j] = maze[i][j];
         }
     }
-    if (event.target.className == "clearField") {
-        buildMatrix();
-        generateField();
-    }
-    if (event.target.className == "buildMaze") {
-        buildMatrix();
-        let size = document.getElementById("chooseSize").value;
-        let maze = interact(size);
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
-                matrix[i][j] = maze[i][j];
-            }
-        }
-        generateField();
-    }
+    generateField();
 }
 
 function Cell(cellObject) {
