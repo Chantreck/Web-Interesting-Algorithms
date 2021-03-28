@@ -57,8 +57,8 @@ function startTest() {
     window.dotsCollection.add(298.20001220703125,179);
     window.dotsCollection.add(395.20001220703125,75);
     //window.dotsCollection.add();
-    test(window.dotsCollection, window.lineCollection)
+    //test(window.dotsCollection, window.lineCollection)
 }
 
 import {DotCollection} from '../dots.js'
-import {evolution, test} from './evolution.js'
+import {evolution} from './evolution.js'
