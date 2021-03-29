@@ -1,8 +1,8 @@
 var citiesCount;
 var distances;
 var crossoverConstant;
-var mutationRate = 0.1;
-var populationSize = 1000;
+var mutationRate = 0.15;
+var populationSize = 10000;
 var calculatedFitness = new Map();
 
 class Chromosome {
@@ -37,6 +37,7 @@ class Chromosome {
                 fitness += distances[tour[i]][tour[i+1]];
             }
             fitness += distances[tour[tour.length - 1]][tour[0]];
+            fitness = +fitness.toFixed(3);
             calculatedFitness.set(tour, fitness);
         }
         else {
@@ -46,7 +47,7 @@ class Chromosome {
     }
 
     mutation() {
-        let genes = this.genes;
+        let genes = this.genes.slice();
 
         let firstPosition = getRandom(genes.length);
         let secondPosition = getRandom(genes.length);
@@ -57,7 +58,7 @@ class Chromosome {
         let firstSite = genes.slice(0, reverseStart);
         let invertedSite = genes.slice(reverseStart, reverseEnd + 1).reverse();
         let secondSite = genes.slice(reverseEnd + 1);
-        let newGenesCombination = firstSite.concat(invertedSite, secondSite);
+        let newGenesCombination = firstSite.concat(invertedSite, secondSite);  
 
         return new Chromosome(newGenesCombination);
     }
@@ -123,11 +124,9 @@ class Population extends Array {
             children.push(Chromosome.crossover(this[firstParent], this[secondParent]));
         }
 
-        let childrenCount = children.length;
         let mutatedChildrenCount = Math.floor(populationSize * mutationRate);
-
         for (let i = 0; i < mutatedChildrenCount; i++) {
-            let victim = getRandom(childrenCount);
+            let victim = getRandom(populationSize);
             children[victim] = children[victim].mutation();
         }
         
@@ -140,15 +139,15 @@ class Population extends Array {
     }
 
     visualize(cities, lines) {
-        lines = [];
+        window.lines = [];
         let tour = this[0].genes;
         for (let i = 0; i < tour.length - 1; i++) {
             let departure = tour[i];
             let arrival = tour[i + 1];
-            lines.push(new Line(cities[departure], cities[arrival]));
+            window.lines.push(new Line(cities[departure], cities[arrival]));
         }
         let lastCity = tour[tour.length - 1];
-        lines.push(new Line(cities[lastCity], cities[tour[0]]));
+        window.lines.push(new Line(cities[lastCity], cities[tour[0]]));
     }
 
     static isEqual(population1, population2) {
@@ -182,29 +181,40 @@ function calculateDistances(cities) {
     return distances;
 }
 
-export function evolution(cities, lines) {
+export function showInfo(state) {
+    window.hiddenInfo.style.display = state;
+}
+
+function updateInfo(generationNumber, tourLength) {
+    window.generationNumber.innerText = generationNumber;
+    window.tourLength.innerText = tourLength;
+}
+
+export async function evolution(cities, lines) {
     citiesCount = cities.length;
     crossoverConstant = getRandom(citiesCount / 2);
     distances = calculateDistances(cities);
 
+    let generationNumber = 0;
     let generation = new Population();
     let newGeneration = new Population();
     newGeneration.makeGeneration(populationSize);
-    let generationNumber = 0;
 
-    let evolutionStart = Date.now();
-    while(!Population.isEqual(generation, newGeneration)) {
+    showInfo("block");
+    updateInfo(generationNumber, newGeneration[0].fitness);
+    newGeneration.visualize(cities, window.lines);
+    await sleep(250);
+
+    while(!Population.isEqual(generation, newGeneration) && generationNumber < 1000) {
         generation = newGeneration.slice();
-
         newGeneration = generation.breeding();
-
         newGeneration = newGeneration.selection();
+        newGeneration.visualize(cities, lines);
         generationNumber++;
+        updateInfo(generationNumber, newGeneration[0].fitness);
+        await sleep(100);
     }
-    
-    console.log(`Evolution ended in ${Date.now() - evolutionStart} ms`);
-    console.log(`Generations passed: ${generationNumber}`);
-    console.log(`Solution:`, generation[0]);
 }
 
 import {Line} from '../dots.js';
+import {sleep, buttonsActivity} from '../general.js'
