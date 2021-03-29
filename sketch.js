@@ -1,7 +1,7 @@
 var size;
 var placeHolder = window.field;
-var dots = window.dotsCollection;
-var lines = window.lineCollection;
+var dots = window.dots;
+var lines = window.lines;
 
 function setup() {
     size = placeHolder.clientWidth;
@@ -13,7 +13,11 @@ function setup() {
 function draw() {
     background("white");
     let i = 0;
-    for (let dot of window.dotsCollection) {
+    for (let curLine of lines) {
+        line(curLine.x1, curLine.y1, curLine.x2, curLine.y2);
+        stroke("black");
+    }
+    for (let dot of dots) {
         circle(dot.x, dot.y, 20);
         text(`${i}`, dot.x, dot.y);
         textAlign(CENTER, CENTER);
@@ -26,16 +30,13 @@ function manageDots(x, y) {
         case "default":
             return;
         case "add":
-            dotsCollection.add(x, y);
-            // window.dotsCount.innerText = dotsCollection.size;
+            dots.add(x, y);
             break;
         case "remove":
-            dotsCollection.remove(x, y);
-            // window.dotsCount.innerText = dotsCollection.size;
+            dots.remove(x, y);
             break;
-        case "info":
-
     }
+    window.objectCount.innerText = dots.length;
 }
 
 function mouseClicked() {
