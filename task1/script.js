@@ -4,42 +4,23 @@ var matrix = [];
 window.addEventListener("load", () => {
     buildMatrix();
     generateField();
-    setEventListeners();
-    window.onresize = generateField;
-    window.backButton.onclick = () => location.href="../index.html";
-})
-
-function setEventListeners() {
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
     window.clearField.addEventListener("click", cleanField);
     window.buildMaze.addEventListener("click", mazeBuilder);
     window.settingsButtons.addEventListener("click", buttonClickListener);
     window.chooseSize.addEventListener("input", generateField);
-}
+    window.onresize = generateField;
+    window.backButton.onclick = () => location.href="../index.html";
+});
 
-function removeEventListeners() {
-    window.startAlgorithmButton.removeEventListener("click", startAlgorithm);
-    window.clearField.removeEventListener("click", cleanField);
-    window.buildMaze.removeEventListener("click", mazeBuilder);
-    window.settingsButtons.removeEventListener("click", buttonClickListener);
-    window.chooseSize.removeEventListener("input", generateField);
+function changeAction(action) {
+    let statusMap = new Map([['default', 'Не выбрано'], ['blocked', 'Выбор преград'], ['start', 'Выбор стартовой клетки'], ['end', 'Выбор конечной клетки'], ['running', 'Поиск пути']]);
+    mode = action;
+    document.getElementById("currentMode").innerText = statusMap.get(action);
 }
 
 function buttonClickListener(event) {
-    let label = document.getElementById("currentMode");
-    mode = event.target.dataset.mode;
-
-    switch(mode) {
-        case 'blocked':
-            label.innerText = "Выбор преград";
-            break;
-        case 'start':
-            label.innerText = "Выбор стартовой клетки";
-            break;
-        case 'end':
-            label.innerText = "Выбор конечной клетки";
-            break;
-    }
+   changeAction(event.target.dataset.mode);
 }
 
 function cleanField() {
@@ -153,34 +134,35 @@ function markCell(event) {
     }
 }
 
+function checkStart(startCell, endCell, fieldSize) {
+    if (startCell == undefined || startCell.x > fieldSize || startCell.y > fieldSize) {
+        showError("block", "Выберите корректную начальную клетку");
+        return false;
+    }
+    if (endCell == undefined || endCell.x > fieldSize || endCell.y > fieldSize) {
+        showError("block", "Выберите корректную конечную клетку");
+        return false;
+    }
+    showError("none");
+    return true;
+}
+
 async function startAlgorithm() {
     let startCell = document.querySelector("td[data-mode = 'start']");
     let endCell = document.querySelector("td[data-mode = 'end']");
     let fieldSize = document.getElementById("chooseSize").value;
 
-    //Проверка на доступность начала и конца
-    if (startCell == undefined || startCell.x > fieldSize || startCell.y > fieldSize) {
-        alert("Выберите корректную начальную клетку.");
-        return;
-    }
-    if (endCell == undefined || endCell.x > fieldSize || endCell.y > fieldSize) {
-        alert("Выберите корректную конечную клетку.");
-        return;
-    }
+    if (!checkStart(startCell, endCell, fieldSize)) return;
     
-    document.getElementById("currentMode").innerText = "Выполняется алгоритм";
+    changeAction("running");
     clearSolutions();
-    removeEventListeners();
+    buttonsActivity(true);
 
-    //Создаем уменьшенную версию матрицы для алгоритма
-    startCell = new Cell(startCell);
-    endCell = new Cell(endCell);
-
-    await runAlgorithm(matrix, startCell, endCell, fieldSize);
-    mode = "default";
-    document.getElementById("currentMode").innerText = "Не выбрано";
-    setEventListeners();
+    await runAlgorithm(matrix, new Cell(startCell), new Cell(endCell), fieldSize);
+    changeAction("default");
+    buttonsActivity(false);
 }
 
-import {runAlgorithm} from './algorithm.js';
-import {interact} from './mazeBuilder.js';
+import {runAlgorithm} from './algorithm.js'
+import {interact} from './mazeBuilder.js'
+import {buttonsActivity, showError} from '../general.js'

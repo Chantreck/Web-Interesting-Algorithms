@@ -32,16 +32,11 @@
                     <li>Выберите поле начала и конца</li>
                     <li>Запустите алгоритм</li>
                 </ul>
-                <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
+                <button class = "blockable" id = "startAlgorithmButton">Запустить</button><br>
             </div>
-            <div class = "block">
-                <h2>Решение:</h2>
-                <p>Длина пути:</p>
-                <p>Алгоритм сработал за:</p>
-            </div>
-            <div class = "block error">
+            <div class = "block" id = "error" style = "display: none;">
                 <h2>Ошибка!</h2>
-                <p>Выберите корректную начальную клетку</p>
+                <p id = "errorMessage">Выберите корректную начальную клетку</p>
             </div>
             <button id = "backButton">На главную</button>
         </div>
@@ -52,14 +47,14 @@
             <div class="block settingsBlock">
                 <h2>Настройки:</h2>
                 <p>размер поля: <span id = "fieldSize"></span></p>
-                <input id = "chooseSize" type = "range" min = "5" max = "35"></input>
+                <input class = "blockable" id = "chooseSize" type = "range" min = "5" max = "35"></input>
                 <div class = "deliminator"></div>
 
                 <p>выберите действие: </p>
                 <ul id = "settingsButtons">
-                    <li><button class = "changeCellButton" data-mode="blocked">Выставить преграды</button></li>
-                    <li><button class = "changeCellButton" data-mode="start">Выбрать начальную клетку</button></li>
-                    <li><button class = "changeCellButton" data-mode="end">Выбрать конечную клетку</button></li>
+                    <li><button class = "changeCellButton blockable" data-mode="blocked">Выставить преграды</button></li>
+                    <li><button class = "changeCellButton blockable" data-mode="start">Выбрать начальную клетку</button></li>
+                    <li><button class = "changeCellButton blockable" data-mode="end">Выбрать конечную клетку</button></li>
                 </ul>
                 <p>текущее действие:</p>
                 <span id = "currentMode">Не выбрано</span>
@@ -67,8 +62,8 @@
 
                 <p>особые действия:</p>
                 <ul class="settingsButtons">
-                    <li><button id = "buildMaze">Построить лабиринт <span class = "advanced">бонус</span></button></li>
-                    <li><button id = "clearField">Очистить поле</button></li>
+                    <li><button class = "blockable" id = "buildMaze">Построить лабиринт <span class = "advanced">бонус</span></button></li>
+                    <li><button class = "blockable" id = "clearField">Очистить поле</button></li>
                 </ul>
             </div>
         </div>

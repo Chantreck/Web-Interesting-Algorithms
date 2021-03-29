@@ -165,6 +165,15 @@ button:focus {
     margin: 0 auto;
 }
 
+.blockable:disabled {
+    cursor: default;
+    border-color: darkgray !important;
+}
+
+.blockable:hover:disabled {
+    background-color: white !important;
+}
+
 /* ОФОРМЛЕНИЕ МЕНЮ */
 
 .menu {
@@ -255,9 +264,8 @@ button:focus {
     border: 1px solid lightgray;
 }
 
-.error {
+#error {
     border: 3px solid var(--red);
-    display: none;
 }
 
 #field {
@@ -277,10 +285,6 @@ button:focus {
 }
 
 /* НАСТРОЙКИ */
-
-.settingsBlock {
-    margin-bottom: 10px;
-}
 
 .settingsBlock li {
     list-style-type: none;
