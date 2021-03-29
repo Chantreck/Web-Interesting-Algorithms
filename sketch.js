@@ -46,6 +46,6 @@ function mouseClicked() {
 }
 
 function windowResized() {
-    let size = placeHolder.clientWidth;
+    size = placeHolder.clientWidth;
     resizeCanvas(size, size);
 }

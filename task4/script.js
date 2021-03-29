@@ -13,7 +13,20 @@ window.addEventListener("load", () => {
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
     window.test.addEventListener("click", startTest);
     window.clearField.addEventListener("click", clearField);
-})
+});
+
+window.addEventListener("resize", () => {
+    if (window.action != "running") {
+        let size = window.field.clientWidth;
+        for (let dot of window.dots) {
+            if (dot.x > size - 10 || dot.y > size - 10) {
+                window.dots.remove(dot.x, dot.y);
+            }
+        }
+        window.lines = [];
+        updateInfo();
+    }
+});
 
 function changeAction(actionName) {
     let statusMap = new Map([['default', 'Не выбрано'], ['add', 'Добавление городов'], ['remove', 'Удаление городов'], ['running', 'Эволюционирование']]);
