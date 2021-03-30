@@ -7,7 +7,7 @@ function setup() {
     size = placeHolder.clientWidth;
     let canvas = createCanvas(size, size);
     canvas.parent('field');
-    frameRate(30);
+    frameRate(15);
 }
 
 function draw() {
