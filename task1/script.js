@@ -136,11 +136,11 @@ function markCell(event) {
 
 function checkStart(startCell, endCell, fieldSize) {
     if (startCell == undefined || startCell.x > fieldSize || startCell.y > fieldSize) {
-        showError("block", "Выберите корректную начальную клетку");
+        showError("block", "Ошибочка вышла", "Выберите корректную начальную клетку");
         return false;
     }
     if (endCell == undefined || endCell.x > fieldSize || endCell.y > fieldSize) {
-        showError("block", "Выберите корректную конечную клетку");
+        showError("block", "Ошибочка вышла", "Выберите корректную конечную клетку");
         return false;
     }
     showError("none");

@@ -93,7 +93,7 @@ async function showSolution(check, startCell, endCell) {
         }
     }
     else {
-        alert("Решений нет");
+        showError("block", "Решений нет", "Попробуйте что-нибудь поменять");
     }
 }
 
@@ -113,4 +113,4 @@ export async function runAlgorithm(matrix, start, end, size) {
     await showSolution(check, startCell, endCell);
 }
 
-import {sleep} from '../general.js';
+import {showError, sleep} from '../general.js';

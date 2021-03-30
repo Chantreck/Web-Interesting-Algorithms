@@ -48,7 +48,7 @@ function clearField() {
 
 function startCheck() {
     if (window.dots.length <= 1) {
-        showError("block", "Должно быть не меньше двух городов");
+        showError("block", "А в чем смысл?", "Должно быть не меньше двух городов");
         return false;
     }
     showError("none");
