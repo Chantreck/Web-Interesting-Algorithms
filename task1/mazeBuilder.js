@@ -54,6 +54,7 @@ function random(min, max) {
 
 function build_maze(fieldSize) {    
     n = fieldSize;
+    if (!(n % 2)) n += 1; 
     
     for (let i = 0; i < n; i++) {
         status[i] = [];
@@ -95,5 +96,6 @@ function build_maze(fieldSize) {
             }
         }
     } while (unvisited > 0);
+
     return status;
 }
