@@ -1,10 +1,34 @@
 /* ПОЛЕ */
 
-#field {
-    border: 3px solid;
+textarea {
+    border: 3px solid var(--gray);
+    margin: 10px 0px;
+    width: calc(100% - 10px);
+    resize: vertical;
+    display: inline-block;
 }
 
-.p5Canvas {
-    box-sizing: border-box;
-    border-radius: 10px;
+textarea:focus {
+    outline: none;
+}
+
+#saveSample {
+    width: 50%;
+    margin-left: auto;
+}
+
+/* КНОПКИ */
+
+#makeTree, #getResult {
+    font-size: 18px;
+    font-weight: 800;
+    border-color: var(--green);
+}
+
+#makeTree:hover, #getResult:hover {
+    background-color: var(--light-green);
+}
+
+#makeTree:focus, #getResult:focus {
+    box-shadow: 0 0 0 3px var(--light-green);
 }
