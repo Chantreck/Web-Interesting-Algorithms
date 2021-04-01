@@ -37,7 +37,7 @@
             </div>
             <div class = "secondColumn">
                 <div class = "block" id = "sampleBlock" style = "display: none">
-                    <h2>Ввод обучающей выборки</h2>
+                    <h2>Обучающая выборка</h2>
                     <textarea id = "sampleTextArea"></textarea>
                     <button id = "saveSample">Сохранить</button>
                 </div>
@@ -57,13 +57,11 @@
                         <li><button class = "selectActionButton blockable" id = "shortenTree">Сократить размер дерева<span class = "advanced">бонус</span></button></li>
                         <li><button class = "blockable" id = "clearField">Удалить дерево</button></li>
                     </ul>
-                    <div class = "deliminator"></div>
-
-                    <p><b>Получение решения:</b></p>
-                    <ul id = "actionButtons">
-                        <li><button class = "blockable" id = "enterRequest">Ввести запрос</button></li>
-                        <li><button class = "blockable" id = "getResult">Получить результат</button></li>
-                    </ul>
+                </div>
+                <div class = "block" id = "requestBlock">
+                    <h2>Запрос</h2>
+                    <input type = "text" class = "blockable" id = "requestTextArea" disabled></input>
+                    <button class = "blockable" id = "getResult" disabled>Получить результат</button>
                 </div>
             </div>
         </div>

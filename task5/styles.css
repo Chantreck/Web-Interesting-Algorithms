@@ -1,14 +1,32 @@
 /* ПОЛЕ */
 
 textarea {
+    font-family: var(--default-font);
+    font-size: 16px;
     border: 3px solid var(--gray);
+    padding: 10px;
     margin: 10px 0px;
-    width: calc(100% - 10px);
+    width: 100%;
     resize: vertical;
+    box-sizing: border-box;
     display: inline-block;
 }
 
 textarea:focus {
+    outline: none;
+}
+
+#requestTextArea {
+    font-family: var(--default-font);
+    font-size: 16px;
+    border: 3px solid var(--gray);
+    padding: 10px;
+    margin: 10px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#requestTextArea:focus {
     outline: none;
 }
 
