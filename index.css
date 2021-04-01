@@ -1,24 +1,22 @@
+.titleContainer {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+}
+
 .title {
     border-radius: 10px;
     padding: 15px 50px 15px 15px;
     display: inline-block;
-    position: relative;
-    font-size: 1.5vw;
-    margin-left: 5%;
-    top: 150px;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--background-alpha50);
+    color: var(--text-color);
     backdrop-filter: blur(2px);
 }
 
 .title p {
     font-size: 2vw; 
     font-weight: 700;
-}
-
-.photo {
-    position: absolute;
-    top: 0px;
-    left: 941px;
-    background-position: right top;
 }
