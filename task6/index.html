@@ -28,7 +28,7 @@
                 <div class = "block">
                     <h2>Инструкция:</h2>
                     <ul class = "instructionList">
-                        <li>Выберите режим работы (обычный или продвинутый)</li>
+                        <li>Выберите режим работы (обычный или бонусный)</li>
                         <li>Нарисуйте цифру</li>
                         <li>Запустите алгоритм</li>
                     </ul>
@@ -37,14 +37,25 @@
                 <button id = "backButton">На главную</button>
             </div>
             <div class = "secondColumn">
+                <div id = "table" style = "display: none">
 
+                </div>
+                <div id = "field" style = "display: none">
+
+                </div>
             </div>
             <div class = "thirdColumn">
                 <div class="block settingsBlock">
-                    <h2>Настройки:</h2>  
+                    <h2>Настройки:</h2>
+                    <p>режим работы:</p>
+                    <ul id = "actionButtons">
+                        <li><button class = "selectModeButton blockable" id = "defaultMode">Сетка 5 × 5</button></li>
+                        <li><button class = "selectModeButton blockable" id = "bonusMode">Рисование<span class = "advanced">бонус</span></button></li>
+                    </ul>
                 </div>
                 <div class = "block">
-                    <h2>Решение:</h2>
+                    <h2>Результат:</h2>
+                    
                 </div>
             </div>
         </div>
