@@ -333,3 +333,8 @@ button:focus {
     margin-left: 5px;
     border-radius: 30px;
 }
+
+:disabled .advanced {
+    color: darkgray !important;
+    border: 2px solid darkgray !important;
+}
