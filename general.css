@@ -200,6 +200,7 @@ button:focus {
 
 .blockable:disabled {
     cursor: default;
+    color: darkgray !important;
     border-color: darkgray !important;
 }
 
