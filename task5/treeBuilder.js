@@ -1,7 +1,15 @@
 class Node {
     constructor(sampleSet) {
         this.sampleSet = sampleSet;
-        this.parameter = this.selectParam();
+
+        if (sampleSet.length > 1) {
+            this.parameter = this.selectParam();
+            this.isDiscrete = sampleSet[0].parameter.isNaN();
+            this.branches = new Map();
+            this.makeBranches();
+        } else {
+            this.class = sampleSet[0][parameterCount];
+        }
     }
 
     selectParam() {
@@ -23,6 +31,15 @@ class Node {
             }
         }
         return parameterIndex;
+    }
+
+    makeBranches() {
+        let parameterValues = new Set();
+        for (let i = 0; i < this.sampleSet.length; i++) parameterValues.add(this.sampleSet[i][this.parameter]);
+        for (let value of parameterValues) {
+            let newSampleSet = this.sampleSet.filter(str => str[this.parameter] == value);
+            this.branches.set(value, new Node(newSampleSet));
+        }
     }
 }
 
