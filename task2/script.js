@@ -22,4 +22,4 @@ function clearField() {
     window.dotsCollection = new DotCollection();
 }
 
-import {DotCollection} from '../dots.js'
+import {DotCollection} from '../task2/dots_task2.js'
