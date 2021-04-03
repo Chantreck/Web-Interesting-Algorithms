@@ -164,7 +164,7 @@ var bestPath = 999999999;
     var ind = -1;
 
  
-    for(var k = 0; k < 5000; k++){
+    for(var k = 0; k < 1000; k++){
 
         for(let i = 0; i < doots.length; i++){
             var a = new Ant();
