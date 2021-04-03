@@ -14,7 +14,7 @@ function setup() {
 function draw() {
     background("white");
     let i = 0;
-    for (let dot of dots) {
+    for (let dot of window.dots) {
         if (dot.claster != undefined) {
             fill(colors[dot.claster]);
         } else {
