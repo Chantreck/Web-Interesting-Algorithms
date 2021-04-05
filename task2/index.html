@@ -31,7 +31,7 @@
                         <li>Выберите алгоритм кластеризации</li>
                         <li>Запустите алгоритм</li>
                     </ul>
-                    <button id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button><br>
+                    <button id = "startAlgorithmButton">Запустить</button><br>
                 </div>
                 <button id = "backButton">На главную</button>
             </div>
@@ -45,9 +45,7 @@
                     <h2>Настройки:</h2>
                     <p>выберите алгоритм: </p>
                     <ul id = "algorithmButtons">
-                        <li><button>K-средних</button></li>
-                        <li><button>K-медиан</button></li>
-                        <li><button>...</button></li>
+                        <li><button class = "blockable" disabled>K-средних</button></li>
                     </ul>
                     <div class = "deliminator"></div>
     
@@ -55,7 +53,6 @@
                     <ul id = "actionButtons">
                         <li><button class = "selectActionButton" data-action = "add">Добавить точку</button></li>
                         <li><button class = "selectActionButton" data-action = "remove">Удалить точку</button></li>
-                        <li><button class = "selectActionButton" data-action = "info">Информация о точке</button></li>
                     </ul>
                     <p>текущее действие:</p>
                     <span id = "currentAction">Не выбрано</span>
@@ -68,7 +65,7 @@
             </div>
         </div>
         <script src = "./script.js" type="module"></script>
-        <script src = "../sketch.js"></script>
+        <script src = "./sketch.js"></script>
         <script src = "../p5.min.js"></script>
         <canvas class = "background"></canvas>
         <script src="../particles.min.js"></script>

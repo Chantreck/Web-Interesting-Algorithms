@@ -1,14 +1,56 @@
+/* РАЗМЕТКА КОЛОНОК */
+
+.firstColumn {
+    margin-right: 1%;
+    width: 28%;
+}
+.secondColumn {
+    width: 50%;
+}
+
+.thirdColumn {
+    margin-left: 1%;
+    width: 20%;
+}
+
 /* ПОЛЕ */
 
+#field {
+    background: var(--background-alpha70) !important;
+    backdrop-filter: blur(2px);
+}
+
+#fieldContainer {
+    overflow-x: auto;
+}
+
 textarea {
+    font-family: var(--default-font);
+    font-size: 16px;
     border: 3px solid var(--gray);
+    padding: 10px;
     margin: 10px 0px;
-    width: calc(100% - 10px);
+    width: 100%;
     resize: vertical;
+    box-sizing: border-box;
     display: inline-block;
 }
 
 textarea:focus {
+    outline: none;
+}
+
+#requestTextArea {
+    font-family: var(--default-font);
+    font-size: 16px;
+    border: 3px solid var(--gray);
+    padding: 10px;
+    margin: 10px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#requestTextArea:focus {
     outline: none;
 }
 
@@ -18,6 +60,12 @@ textarea:focus {
 }
 
 /* КНОПКИ */
+
+#sampleBlock button {
+    margin-right: 10px;
+    min-height: 30px;
+    max-width: 200px;
+}
 
 #makeTree, #getResult {
     font-size: 18px;
@@ -31,4 +79,26 @@ textarea:focus {
 
 #makeTree:focus, #getResult:focus {
     box-shadow: 0 0 0 3px var(--light-green);
+}
+
+#clearSample {
+    border-color: var(--blue);
+}
+
+#clearSample:hover {
+    background-color: var(--light-blue);
+}
+
+#clearSample:focus {
+    box-shadow: 0 0 0 3px var(--light-blue);
+}
+
+#shortenTree:disabled {
+    cursor: default;
+    color: darkgray !important;
+    border: 2px solid darkgray;
+}
+
+#shortenTree:hover:disabled {
+    background-color: white !important;
 }

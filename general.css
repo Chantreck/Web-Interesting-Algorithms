@@ -200,6 +200,7 @@ button:focus {
 
 .blockable:disabled {
     cursor: default;
+    color: darkgray !important;
     border-color: darkgray !important;
 }
 
@@ -332,4 +333,9 @@ button:focus {
     padding: 3px 5px;
     margin-left: 5px;
     border-radius: 30px;
+}
+
+:disabled .advanced {
+    color: darkgray !important;
+    border: 2px solid darkgray !important;
 }

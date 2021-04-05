@@ -1,9 +1,10 @@
 window.addEventListener("load", () => {
     window.action = "default";
-    window.dotsCollection = new DotCollection();
+    window.dots = new DotCollection();
     window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", buttonClickHandler);
     window.clearField.addEventListener("click", clearField);
+    window.startAlgorithmButton.onclick = run;
 })
 
 function buttonClickHandler(event) {
@@ -19,7 +20,8 @@ function changeAction(actionName) {
 }
 
 function clearField() {
-    window.dotsCollection = new DotCollection();
+    window.dots = new DotCollection();
 }
 
-import {DotCollection} from '../dots.js'
+import {DotCollection} from './dots_task2.js'
+import {run} from './node.js'
