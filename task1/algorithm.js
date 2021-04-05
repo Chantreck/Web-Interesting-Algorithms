@@ -75,8 +75,6 @@ async function findPath(matrix, cellMatrix, startCell, endCell, size) {
     return false;
 }
 
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
-
 function changeColor (current, mode) {
     document.querySelector(`td[data-row = '${current.x}'][data-column = '${current.y}']`).dataset.mode = mode;
 }
@@ -95,7 +93,7 @@ async function showSolution(check, startCell, endCell) {
         }
     }
     else {
-        alert("Решений нет");
+        showError("block", "Решений нет", "Попробуйте что-нибудь поменять");
     }
 }
 
@@ -114,3 +112,5 @@ export async function runAlgorithm(matrix, start, end, size) {
     let check = await findPath(matrix, cellMatrix, startCell, endCell, size);
     await showSolution(check, startCell, endCell);
 }
+
+import {showError, sleep} from '../general.js';

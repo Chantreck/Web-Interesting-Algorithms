@@ -41,7 +41,7 @@ export class DotCollection extends Array {
     }
 } */
 
-class Dot {
+export class Dot {
     constructor(x, y,claster) {
         this.x = x;
         this.y = y;

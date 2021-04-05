@@ -1,7 +1,8 @@
 var size;
 var placeHolder = window.field;
 var dots = window.dots;
-var lines = window.lines;
+
+var colors = ["red", "green", "blue", "yellow", "gray"]
 
 function setup() {
     size = placeHolder.clientWidth;
@@ -13,12 +14,14 @@ function setup() {
 function draw() {
     background("white");
     let i = 0;
-    for (let curLine of lines) {
-        line(curLine.x1, curLine.y1, curLine.x2, curLine.y2);
-        stroke("black");
-    }
     for (let dot of dots) {
+        if (dot.claster != undefined) {
+            fill(colors[dot.claster]);
+        } else {
+            fill("white");
+        }
         circle(dot.x, dot.y, 20);
+        fill("black");
         text(`${i}`, dot.x, dot.y);
         textAlign(CENTER, CENTER);
         i++;
@@ -36,7 +39,6 @@ function manageDots(x, y) {
             dots.remove(x, y);
             break;
     }
-    window.objectCount.innerText = dots.length;
 }
 
 function mouseClicked() {

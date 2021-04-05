@@ -1,12 +1,43 @@
 :root {
     --default-font: "SF Display";
-    --green: #4CAF50;
-    --light-green: #dfffe0;
-    --red: #f44336;
-    --light-red: #ffe6e4;
-    --blue: #2c7ac2;
-    --light-blue: #e0f6ff;
+    --background-color: rgb(237,238,240);
+    --background: rgb(255, 255, 255);
+    --background-alpha50: rgba(255, 255, 255, 0.5);
+    --background-alpha70: rgba(255, 255, 255, 0.7);
+    --background-alpha75: rgba(255, 255, 255, 0.75);
+    --button-background: var(--background);
+    --button-background-second: var(--light-gray);
+    --button-border: var(--text-color);
+    --green: rgb(76, 175, 80);
+    --light-green: rgb(224, 255, 225);
+    --red: rgb(244, 67, 54);
+    --light-red: rgb(255, 230, 228);
+    --blue: rgb(44, 122, 194);
+    --light-blue: rgb(224, 246, 255);
+    --gray: rgb(179, 179, 179);
     --light-gray: rgb(237,238,240);
+    --menu-hover: var(--light-gray);
+    --deliminator: var(--light-gray);
+    --text-color: black;
+}
+
+.darkTheme {
+    --background-color: rgb(30, 30, 30);
+    --background: rgb(50, 50, 50);
+    --background-alpha50: rgba(50, 50, 50, 0.5);
+    --background-alpha70: rgba(50, 50, 50, 0.7);
+    --background-alpha75: rgba(50, 50, 50, 0.75);
+    --green: rgb(81, 173, 84);
+    --light-green: rgb(47, 78, 48);
+    --red: rgb(185, 45, 35);
+    --light-red: rgb(73, 33, 31);
+    --light-blue: rgb(12, 39, 61);
+    --button-background: var(--background-color);
+    --button-background-second: rgb(49, 49, 49);
+    --button-border: rgb(100, 100, 100);
+    --menu-hover: rgb(60, 60, 60);
+    --deliminator: rgb(80, 80, 80);
+    --text-color: rgb(235, 235, 235);
 }
 
 @font-face {
@@ -65,15 +96,18 @@
 }
 
 body {
-    background-color: var(--light-gray);
+    background-color: var(--background-color);
     font-family: var(--default-font);
     font-weight: normal;
+    color: var(--text-color);
     margin: 0;
     font-size: 0;
 }
 
 h1 {
+    display: inline;
     margin: 0;
+    margin-right: 10px;
     font-weight: 900;
     font-size: 3vw;
     text-decoration: underline;
@@ -86,8 +120,12 @@ h2 {
 }
 
 a {
+    color: var(--text-color);
     text-decoration: none; 
-    color: black;
+}
+
+p {
+    margin: 8px 0px;
 }
 
 span {
@@ -104,32 +142,33 @@ ul {
 button {
     margin: 5px 0px;
     padding: 10px 10px;
-    background-color:white;
-    border: 3px solid black;
+    background-color: var(--button-background);
+    border: 3px solid var(--button-border);
     border-radius: 0;
     min-height: 50px;
     cursor: pointer;
     font-size: 16px;
     font-family: var(--default-font);
-    font-weight: "regular";
+    font-weight: normal;
+    color: var(--text-color);
     width: 100%;
     max-width: 300px;
 }
 
 button:hover {
-    background-color: #e9e9e9;
+    background-color: var(--button-background-second);
 }
 
 button:focus {
     outline: none;
-    background-color:white;
-    box-shadow: 0 0 0 3px #e9e9e9;
+    background-color: var(--button-background);
+    box-shadow: 0 0 0 3px var(--button-background-second);
 }
 
 #startAlgorithmButton {
     font-size: 18px;
     font-weight: 800;
-    margin-bottom: 15px;
+    margin: 0;
     border-color: var(--green);
 }
 
@@ -141,20 +180,32 @@ button:focus {
     box-shadow: 0 0 0 3px var(--light-green);
 }
 
-.clearField {
+#clearField {
     border-color: var(--blue);
 }
 
-.clearField:hover {
+#clearField:hover {
     background-color: var(--light-blue);
 }
 
-.clearField:focus {
+#clearField:focus {
     box-shadow: 0 0 0 3px var(--light-blue);
 }
 
 #backButton {
-    display: none;
+    max-width: none;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.blockable:disabled {
+    cursor: default;
+    color: darkgray !important;
+    border-color: darkgray !important;
+}
+
+.blockable:hover:disabled {
+    background-color: white !important;
 }
 
 /* ОФОРМЛЕНИЕ МЕНЮ */
@@ -167,8 +218,8 @@ button:focus {
     padding-bottom: 15px;
     font-size: 16px;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(2px);
+    background: var(--background-alpha75);
     position: fixed;
     display: flex;
     z-index: 1;
@@ -179,7 +230,7 @@ button:focus {
     padding-left: 10px;
     padding-right: 10px;
     width: 16%;
-    border-left: 3px solid;
+    border-left: 3px solid var(--text-color);
     text-align: left;
 }
 
@@ -190,7 +241,7 @@ button:focus {
 }
 
 .menu div:hover {
-    background-color: var(--light-gray);
+    background-color: var(--menu-hover);
 }
 
 #currentTask {
@@ -210,39 +261,56 @@ button:focus {
 .container > div {
     display: inline-block;
     vertical-align: top;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(2px);
-    border-radius: 10px;
+    box-sizing: border-box;
     font-size: 16px;
 }
 
-.about {
-    padding: 15px;
+.firstColumn {
     margin-right: 1%;
     width: 33%;
-    box-sizing: border-box;
 }
 
-.about h2 {
+.firstColumn h2 {
     margin-bottom: 10px;
 }
 
-#field {
+.secondColumn {
     width: 40%;
-    box-sizing: border-box;
 }
 
-.settings {
-    padding: 15px;
+.thirdColumn {
     margin-left: 1%;
     width: 25%;
-    box-sizing: border-box;
+}
+
+.block {
+    background: var(--background-alpha70);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.deliminator {
+    height: 0;
+    width: 100%;
+    margin: 20px 0px;
+    border: 1px solid var(--deliminator);
+}
+
+#error {
+    border: 3px solid var(--red);
+}
+
+#field {
+    border-radius: 10px;
+    background: var(--background);
 }
 
 /* ПАНЕЛЬ ИНФОРМАЦИИ */
 
 .instructionList {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .instructionList li {
@@ -252,16 +320,22 @@ button:focus {
 
 /* НАСТРОЙКИ */
 
-.settingsBlock {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.settingsBlock p {
-    margin-bottom: 8px;
-}
-
 .settingsBlock li {
     list-style-type: none;
     display: inline;
+}
+
+.advanced {
+    color: var(--green);
+    border: 2px solid var(--green);
+    font-size: 12px;
+    text-decoration: none !important;
+    padding: 3px 5px;
+    margin-left: 5px;
+    border-radius: 30px;
+}
+
+:disabled .advanced {
+    color: darkgray !important;
+    border: 2px solid darkgray !important;
 }

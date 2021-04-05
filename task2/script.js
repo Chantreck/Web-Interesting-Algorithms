@@ -1,17 +1,14 @@
 window.addEventListener("load", () => {
     window.action = "default";
-    window.dotsCollection = new DotCollection();
+    window.dots = new DotCollection();
     window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", buttonClickHandler);
+    window.clearField.addEventListener("click", clearField);
+    window.startAlgorithmButton.onclick = run;
 })
 
 function buttonClickHandler(event) {
-    if (event.target.className == "selectActionButton") {
-        changeAction(event.target.dataset.action);
-    }
-    if (event.target.className == "clearField") {
-        clearField();
-    }
+    changeAction(event.target.dataset.action);
 }
 
 let statusMap = new Map([['default', 'Не выбрано'], ['add', 'Добавление точки'], ['remove', 'Удаление точки'], ['info', 'Просмотр информации о точке']]);
@@ -23,7 +20,8 @@ function changeAction(actionName) {
 }
 
 function clearField() {
-    window.dotsCollection = new DotCollection();
+    window.dots = new DotCollection();
 }
 
-import {DotCollection} from '../task2/dots_task2.js'
+import {DotCollection} from './dots_task2.js'
+import {run} from './node.js'

@@ -6,6 +6,7 @@
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel = "stylesheet" href = "../general.css">
         <link rel = "stylesheet" href = "./styles.css">
+        <link rel="stylesheet" href="./treeStyle.css">
         <link type="image/png" rel="icon" href="../img/icon64.png">
         <title>Дерево решений</title>
     </head>
@@ -19,25 +20,61 @@
             <div><a href="../task6/index.html">Нейронная сеть</a></div>
         </div>
         <div class = "main container">
-            <div class = "about">
-                <h1>Дерево<br>решений</h1>
-                <p>Алгоритм на основе предоставленной обучающей выборки строит дерево решений, после чего в ответ на запросы выдает решение</p>
-                <h2>Инструкция:</h2>
-                <ul class = "instructionList">
-                    <li>Загрузите выборку в формате csv-текста</li>
-                    <li>Запустите генерацию дерева решений</li>
-                    <li>Введите запрос</li>
-                    <li>Запустите поиск решения</li>
-                </ul>
-                <button id = "startAlgorithmButton">Запустить</button><br>
-                <button id = "backButton" style = "width: 50%">На главную</button>
+            <div class = "firstColumn">
+                <div class = "block">
+                    <h1>Дерево решений</h1>
+                    <p>Алгоритм на основе предоставленной обучающей выборки строит дерево решений, после чего в ответ на запросы выдает решение</p>
+                </div>
+                <div class = "block">
+                    <h2>Инструкция:</h2>
+                    <ul class = "instructionList">
+                        <li>Введите выборку в формате csv-текста</li>
+                        <li>Запустите генерацию дерева решений</li>
+                        <li>Введите запрос</li>
+                        <li>Запустите поиск решения</li>
+                    </ul>
+                </div>
+                <div class = "block" id = "error" style = "display: none;">
+                    <h2 id = "errorTitle">Ошибка!</h2>
+                    <p id = "errorMessage">Текст сообщения</p>
+                </div>
+                <button id = "backButton">На главную</button>
             </div>
-<!--             <div id = "field">
-            </div> -->
-            <div class = "settings">
-                <h2>Настройки:</h2>
-                <div class = "settingsBlock">
-                    
+            <div class = "secondColumn">
+                <div class = "block" id = "sampleBlock" style = "display: none">
+                    <h2>Обучающая выборка</h2>
+                    <textarea id = "sampleTextArea"></textarea>
+                    <button class = "blockable" id = "saveSample">Сохранить</button>
+                    <button class = "blockable" id = "clearSample">Очистить поле</button>
+                    <button class = "blockable" id = "closeSampleBlock">Закрыть</button>
+                </div>
+                <div class = "block" id = "field" style = "display: none">
+                    <h2>Дерево решений</h2>
+                    <div id = "fieldContainer">
+                        <ul class = "tree" id = "0"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class = "thirdColumn">
+                <div class="block settingsBlock">
+                    <h2>Действия:</h2>
+                    <p><b>Обучение:</b></p>
+                    <ul id = "actionButtons">
+                        <li><button class = "selectActionButton blockable" id = "enterSample">Ввести обучающую выборку</button></li>
+                        <li><button class = "blockable" id = "makeTree">Сгенерировать дерево</button></li>
+                    </ul>
+                    <div class = "deliminator"></div>
+
+                    <p><b>Работа с деревом:</b></p>
+                    <ul id = "actionButtons">
+                        <li><button class = "selectActionButton" id = "shortenTree" disabled>Сократить размер дерева<span class = "advanced">бонус</span></button></li>
+                        <li><button class = "blockable" id = "clearField">Удалить дерево</button></li>
+                    </ul>
+                </div>
+                <div class = "block" id = "requestBlock">
+                    <h2>Запрос</h2>
+                    <input type = "text" class = "blockable" id = "requestTextArea" disabled></input>
+                    <button class = "blockable" id = "getResult" disabled>Получить результат</button>
                 </div>
             </div>
         </div>

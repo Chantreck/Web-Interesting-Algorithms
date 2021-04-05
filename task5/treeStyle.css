@@ -1,0 +1,92 @@
+.tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    display: table;
+}
+
+.tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+.tree li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: table-cell;
+    padding: .5em 0;
+    vertical-align: top;
+}
+
+.tree li:before {
+    outline: solid 1px #666;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tree li:first-child:before {
+    left: 50%;
+}
+
+.tree li:last-child:before {
+    right: 50%;
+}
+
+.tree span {
+    font-size: 14px;
+    font-weight: normal;
+    border: solid .1em #666;
+    border-radius: .2em;
+    display: inline-block;
+    margin: 0 .2em .5em;
+    padding: 5px 15px;
+    position: relative;
+}
+
+.tree ul:before, .tree code:before, .tree span:before {
+    outline: solid 1px #666;
+    content: "";
+    height: .5em;
+    left: 50%;
+    position: absolute;
+}
+
+.tree ul:before {
+    top: -.5em;
+}
+
+.tree code:before, .tree span:before {
+    top: -.55em;
+}
+
+.tree>li {
+    margin-top: 0;
+}
+
+.tree>li:before, .tree>li:after, .tree>li>code:before, .tree>li>span:before {
+    outline: none;
+}
+
+.paramName {
+    background-color: var(--light-gray);
+}
+
+.finalNode {
+    background-color: var(--light-green);
+}
+
+.current {
+    background-color: var(--light-blue);
+}

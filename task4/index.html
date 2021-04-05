@@ -19,30 +19,55 @@
             <div><a href="../task6/index.html">Нейронная сеть</a></div>
         </div>
         <div class = "main container">
-            <div class = "about">
-                <h1>Генетический алгоритм</h1>
-                <p>Алгоритм решает задачу коммивояжера на плоскости с помощью генетического алгоритма</p>
-                <h2>Инструкция:</h2>
-                <ul class = "instructionList">
-                    <li>Выставьте точки на плоскости</li>
-                    <li>Запустите алгоритм</li>
-                </ul>
-                <button id = "startAlgorithmButton">Запустить</button><br>
-                <button id = "backButton" style = "width: 50%">На главную</button>
+            <div class = "firstColumn">
+                <div class = "block">
+                    <h1>Генетический алгоритм</h1>
+                    <p>Алгоритм решает задачу коммивояжера на плоскости с помощью генетического алгоритма</p>
+                </div>
+                <div class = "block">
+                    <h2>Инструкция:</h2>
+                    <ul class = "instructionList">
+                        <li>Выставите города на плоскости</li>
+                        <li>Запустите алгоритм</li>
+                    </ul>
+                    <button class = "blockable" id = "startAlgorithmButton" onclick = "window.mode = 'default'">Запустить</button>
+                    <button class = "blockable" id = "test">Тест</button>
+                </div>
+                <div class = "block" id = "error" style = "display: none;">
+                    <h2 id = "errorTitle">Ошибка!</h2>
+                    <p id = "errorMessage">Текст сообщения</p>
+                </div>
+                <button id = "backButton">На главную</button>
             </div>
-            <div id = "field">
+            <div class = "secondColumn">
+                <div id = "field">
+
+                </div>
             </div>
-            <div class = "settings">
-                <h2>Настройки:</h2>
-                <div class = "settingsBlock">
+            <div class = "thirdColumn">
+                <div class="block settingsBlock">
+                    <h2>Настройки:</h2>  
                     <p>выберите действие: </p>
                     <ul id = "actionButtons">
-                        <li><button class = "selectActionButton" data-action = "add">Добавить город</button></li>
-                        <li><button class = "selectActionButton" data-action = "remove">Удалить город</button></li>
-                        <li><button class = "clearField">Очистить поле</button></li>
+                        <li><button class = "selectActionButton blockable" data-action = "add">Добавить город</button></li>
+                        <li><button class = "selectActionButton blockable" data-action = "remove">Удалить город</button></li>
                     </ul>
                     <p>текущее действие:</p>
                     <span id = "currentAction">Не выбрано</span>
+                    <div class = "deliminator"></div>
+    
+                    <ul class="settingsButtons">
+                        <li><button class = "blockable" id = "clearField">Очистить поле</button></li>
+                    </ul>
+                </div>
+                <div class = "block">
+                    <h2>Информация:</h2>
+                    <p>Количество городов: <span id = "objectCount">0</span></p>
+                    <section id = "hiddenInfo" style = "display: none">
+                        <p>Поколение: <span id = "generationNumber"></span></p>
+                        <p>Длина пути: <span id = "tourLength"></span></p>
+                    </section>
+                    
                 </div>
             </div>
         </div>
