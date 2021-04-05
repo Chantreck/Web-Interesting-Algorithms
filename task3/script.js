@@ -156,7 +156,10 @@ if(indf != -1){
 
 function start() {
 doots = window.dots.slice();
-
+ants = [];
+bestPathArr = [];
+doots;
+pheromone = [];
 
   var isStarted = true;
   var bestPath = 999999999;
@@ -168,9 +171,7 @@ doots = window.dots.slice();
         ants.push(a);
     }
 
-    /*for(let i = 0; i < doots.length; i++){
-        doots[i].pheromone = 0.2;
-    } */
+   
 
 
     pheromone.length = doots.length;
@@ -215,11 +216,6 @@ doots = window.dots.slice();
                 bestPathArr = ants[j].path;
             }
         }
-        
-        /*for(var i = 0; i < doots.length; i++){
-            doots[i].pheromone = 0.3;
-            ants.splice(0,ants.length);
-        }*/
 
         for(var i = 0; i < doots.length; i++){
             for(var j = 0; j < doots.length; j++){
