@@ -13,7 +13,7 @@ import { DotCollection, Dot } from  "./dots_task2.js"
 
 export function run() {
     var dotsCollection = window.dots;
-    let count_claster = 5;
+    let count_claster = Math.min(5, dotsCollection.length);
     let count = [];
     function getRandom(size) { // рандомные
         let rand = Math.floor(Math.random() * (size));
@@ -25,14 +25,7 @@ export function run() {
     while (random.size != count_claster) // рандомные центры класстеров
         random.add(getRandom(dotsCollection.length));
     
-    var arr = Array.from(random);
-    /*arr[0]=0;
-    arr[1]=1;
-    arr[2]=2;
-    console.dir(arr);
-    */
-    
-    
+    var arr = Array.from(random);  
     
     var centre_mass = new DotCollection();
     for (let i = 0; i < count_claster; i++) {
