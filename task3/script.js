@@ -231,9 +231,6 @@ pheromone = [];
     
             ants[j].dist = 0;
         }
-
-        
-        //console.log(bestPathArr);
     }
     visualize(doots, lines);
     isStarted = false;

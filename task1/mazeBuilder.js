@@ -68,8 +68,8 @@ function build_maze(fieldSize) {
                 status[i][j] = "blocked";
         }
     } 
-    
-    //генерация лабиринта
+
+
     let CurrentCell = new Cell(0,0);
     let NeighbourCell = new Cell();
     let Neighbours;
@@ -91,9 +91,7 @@ function build_maze(fieldSize) {
             if (size > 0) {
                 CurrentCell = stack[size-1];
                 size--;
-            } else {
-                alert("У нас проблемы");
-            }
+            } 
         }
     } while (unvisited > 0);
 
