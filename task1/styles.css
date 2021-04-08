@@ -54,11 +54,6 @@ td[data-mode = "trace"] {
 
 /* НАСТРОЙКИ */
 
-#chooseSize {
-    width: 100%;
-    max-width: 300px;
-}
-
 .changeCellButton[data-mode="start"]{
     border-color: var(--green);
 }

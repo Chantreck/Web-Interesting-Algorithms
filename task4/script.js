@@ -10,6 +10,9 @@ window.addEventListener("load", () => {
             clearSolution();
         }
     });
+    window.populationSizeSelector.addEventListener("input", selectPopulationSize);
+    window.mutationRateSelector.addEventListener("input", selectMutationRate);
+
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
     window.test.addEventListener("click", startTest);
     window.clearField.addEventListener("click", clearField);
@@ -33,6 +36,23 @@ function changeAction(actionName) {
     let label = document.getElementById("currentAction");
     window.action = actionName;
     label.innerText = statusMap.get(window.action);
+}
+
+function selectPopulationSize() {
+    switch (window.populationSizeSelector.value) {
+        case '0':
+            window.populationSize.innerText = "маленький";
+            break;
+        case '1':
+            window.populationSize.innerText = "средний";
+            break;
+        case '2':
+            window.populationSize.innerText = "большой";
+    }
+}
+
+function selectMutationRate() {
+    window.mutationRate.innerText = window.mutationRateSelector.value;
 }
 
 function clearSolution() {

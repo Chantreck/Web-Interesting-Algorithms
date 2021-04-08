@@ -1,8 +1,8 @@
 var citiesCount;
 var distances;
 var crossoverConstant;
-var mutationRate = 0.15;
-var populationSize = 10000;
+var mutationRate;
+var populationSize;
 var calculatedFitness = new Map();
 
 class Chromosome {
@@ -194,6 +194,18 @@ export async function evolution(cities, lines) {
     citiesCount = cities.length;
     crossoverConstant = getRandom(citiesCount / 2);
     distances = calculateDistances(cities);
+
+    mutationRate = window.mutationRateSelector.value / 100;
+    switch (window.populationSizeSelector.value) {
+        case '0':
+            populationSize = 1000;
+            break;
+        case '1':
+            populationSize = 5000;
+            break;
+        case '2':
+            populationSize = 10000;
+    }
 
     let generationNumber = 0;
     let generation = new Population();
