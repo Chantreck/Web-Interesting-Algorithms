@@ -1,10 +1,24 @@
-/* ПОЛЕ */
+/* ТАБЛИЦА */
 
-#field {
-    border: 3px solid;
+#field, #table {
+    background: var(--background);
 }
 
-.p5Canvas {
-    box-sizing: border-box;
-    border-radius: 10px;
+table {
+    margin: 0 auto;
+    table-layout: fixed;
+    border: 2px solid gray;
+    border-collapse: collapse;
+}
+
+#table td {
+    border: 1px solid gray;
+}
+
+td[data-state = "1"] {
+    background-color:gray;
+}
+
+td:hover {
+    background-color:lightgray;
 }
