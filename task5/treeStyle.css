@@ -33,6 +33,7 @@
 
 .tree li:before {
     outline: solid 1px #666;
+    content: "";
     left: 0;
     position: absolute;
     right: 0;
