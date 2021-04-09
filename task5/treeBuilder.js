@@ -3,6 +3,7 @@ var classesSet;
 var classesCount;
 var treeNodesCount = 0;
 var root;
+var visitedNodes = [];
 
 class Node {
     constructor(sampleSet, value, depth, parent) {
@@ -172,12 +173,12 @@ function visualize(treeNode) {
 
     let li = document.createElement("li");
     if (treeNode.isFinal) {
-        li.innerHTML = `<span>${treeNode.value}</span><br><span class = "finalNode">Результат:<br><b>${treeNode.class}</b></span>`;
+        li.innerHTML = `<span id = "${treeNode.nodeID}_${treeNode.value}">${treeNode.value}</span><br><span class = "finalNode">Результат:<br><b>${treeNode.class}</b></span>`;
         li.class = "finalNode";
         node.append(li);
     } else {
         //debugger;
-        li.innerHTML = `<span>${treeNode.value}</span><br><span class = "paramName">Параметр ${treeNode.parameter + 1}</span>`;
+        li.innerHTML = `<span id = "${treeNode.nodeID}_${treeNode.value}">${treeNode.value}</span><br><span class = "paramName">Параметр ${treeNode.parameter + 1}</span>`;
         node.append(li);
         let ul = document.createElement("ul");
         ul.id = treeNode.nodeID;
@@ -190,18 +191,32 @@ function visualize(treeNode) {
 
 export async function processRequest(request) {
     console.log(request);
+
+    clearSolution();
+
     let node = root;
     while (!node.isFinal) {
         //debugger;
+        visitedNodes.push(`${node.nodeID}_${node.value}`);
+        document.getElementById(`${node.nodeID}_${node.value}`).classList.add("current");
         //window[node.nodeID].classList.add("current");
         if (node.isDiscrete) {
             node = node.branches.get(request[node.parameter]);
         } else {
             node = (request[node.parameter] < node.keyValue) ? node.branches.get("<") : node.branches.get(">=");
         }
-        await sleep(500);
+        await sleep(100);
     }
+    visitedNodes.push(`${node.nodeID}_${node.value}`);
+    document.getElementById(`${node.nodeID}_${node.value}`).classList.add("current");
     return node.class;
+}
+
+function clearSolution() {
+    for (let node of visitedNodes) {
+        document.getElementById(node).classList.remove("current");
+    }
+    visitedNodes = [];
 }
 
 /* let sample = ["a"];
