@@ -5,10 +5,17 @@ var treeNodesCount = 0;
 var root;
 
 class Node {
-    constructor(sampleSet, value, parent) {
+    constructor(sampleSet, value, depth, parent) {
+        this.depth = depth;
         this.parent = parent;
         this.sampleSet = sampleSet;
         this.value = value;
+
+        if (this.depth >= 20) {
+            this.isFinal = true;
+            this.class = this.findMostPopularClass();
+            return;
+        }
 
         if (!this.checkClassEquality()) {
             this.isFinal = false;
@@ -24,6 +31,27 @@ class Node {
             this.isFinal = true;
             this.class = sampleSet[0][parameterCount];
         }
+    }
+
+    findMostPopularClass() {
+        let samples = this.sampleSet;
+        let classes = new Map();
+        for (let i = 0; i < samples.length; i++) {
+            if (classes.has(samples[i][parameterCount])) {
+                classes.set(samples[i][parameterCount], classes.get(samples[i][parameterCount]) + 1);
+            } else {
+                classes.set(samples[i][parameterCount], 1);
+            }
+        }
+        let maxCount = -1;
+        let maxClass;
+        for (let entry of classes) {
+            if (entry[1] > maxCount) {
+                maxCount = entry[1];
+                maxClass = entry[0];
+            }
+        }
+        return maxClass;
     }
 
     checkClassEquality() {
@@ -71,13 +99,25 @@ class Node {
         for (let i = 0; i < this.sampleSet.length; i++) parameterValues.add(this.sampleSet[i][this.parameter]);
         for (let value of parameterValues) {
             let newSampleSet = this.sampleSet.filter(str => str[this.parameter] == value);
-            this.branches.set(value, new Node(newSampleSet, value, this));
+            try {
+                this.branches.set(value, new Node(newSampleSet, value, this.depth + 1, this));
+            } catch (e) {
+                console.log("Call Stack:", this.depth);
+            }
         }
     }
 
     makeContinuousBranches() {
-        this.branches.set("<", new Node(this.sampleSet.filter(str => str[this.parameter] < this.keyValue), `< ${this.keyValue}`, this));
-        this.branches.set(">=", new Node(this.sampleSet.filter(str => str[this.parameter] >= this.keyValue), `⩾ ${this.keyValue}`, this))
+        try {
+            this.branches.set("<", new Node(this.sampleSet.filter(str => str[this.parameter] < this.keyValue), `< ${this.keyValue}`, this.depth + 1, this));
+        } catch (e) {
+            console.log("Call Stack:", this.depth);
+        }
+        try {
+            this.branches.set(">=", new Node(this.sampleSet.filter(str => str[this.parameter] >= this.keyValue), `⩾ ${this.keyValue}`, this.depth + 1, this))
+        } catch (e) {
+            console.log("Call Stack:", this.depth);
+        }
     }
 }
 
@@ -178,7 +218,7 @@ export function run(sample) {
     for (let i = 0; i < sample.length; i++) classesSet.add(sample[i][parameterCount]);
     classesCount = classesSet.size;
     
-    root = new Node(sample, "Корень");
+    root = new Node(sample, "Корень", 0);
     console.dir(root);
     visualize(root, 0);
 }
