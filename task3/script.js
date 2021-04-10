@@ -117,7 +117,7 @@ function calculate(a) {
         if(a.visited[i] == 0){
             var r = a.distance(doots[i].x,doots[i].y );
             doots[i].tendency = 1 / r;
-            denominator += (Math.pow(pheromone[a.currentPos][i],1.5) * Math.pow(doots[i].tendency,2));
+            denominator += (Math.pow(pheromone[a.currentPos][i],1) * Math.pow(doots[i].tendency,3));
 
         }
         else {
@@ -127,7 +127,7 @@ function calculate(a) {
 
     for (var i = 0; i < doots.length; i++) {
         if (a.visited[i] == 0){
-            numerator = Math.pow(pheromone[a.currentPos][i], 1.5) * Math.pow(doots[i].tendency, 2);
+            numerator = Math.pow(pheromone[a.currentPos][i], 1) * Math.pow(doots[i].tendency, 3);
             doots[i].chance = (numerator / denominator);
         }
         else {
@@ -193,7 +193,7 @@ async function start() {
         }
     }
 
-    for (var k = 0; k < 100; k++) {
+    for (var k = 0; k < 3000; k++) {
         for (var j = 0; j < ants.length; j++) {
             ants[j].visited.length =  doots.length;
             ants[j].visited.fill(0);
@@ -237,7 +237,7 @@ async function start() {
 
         visualize(doots, lines);
         updateInfo(k, bestPath);
-        await sleep(100);
+        await sleep(10);
     }
     isStarted = false;
 }
