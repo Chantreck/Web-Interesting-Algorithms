@@ -1,8 +1,11 @@
 var size;
 var placeHolder = window.field;
 var dots = window.dots;
-
-var colors = ["red", "green", "blue", "yellow", "gray"]
+/*function generateColor() {
+    return '#' + Math.floor(Math.random()*16777215).toString(16)
+  }
+  */
+var colors = ["red", "green", "blue", "yellow", "gray","violet","orange", "white", "aqua","lime"]
 
 function setup() {
     size = placeHolder.clientWidth;

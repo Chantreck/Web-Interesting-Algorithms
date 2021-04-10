@@ -4,6 +4,7 @@ window.addEventListener("load", () => {
     window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", buttonClickHandler);
     window.clearField.addEventListener("click", clearField);
+   // window.chooseSize.addEventListener("input", run);
     window.startAlgorithmButton.onclick = run;
 })
 
@@ -25,3 +26,4 @@ function clearField() {
 
 import {DotCollection} from './dots_task2.js'
 import {run} from './node.js'
+//import{run} from './node_2.js'
