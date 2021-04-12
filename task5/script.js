@@ -1,12 +1,21 @@
 var sample;
+var control;
+var tree;
 
 window.addEventListener("load", () => {
     window.enterSample.onclick = () => window.sampleBlock.style.display = "block";
-    window.saveSample.onclick = () => sample = normalizeData(window.sampleTextArea.value.split('\n').filter(str => str.length >= 1));
+    window.saveSample.onclick = () => {
+        sample = normalizeData(window.sampleTextArea.value.split('\n').filter(str => str.length >= 1));
+        let sampleSize = Math.round(sample.length * 0.7);
+        let controlSize = sample.length - sampleSize;
+        control = sample.splice(sampleSize, controlSize);
+        console.log(sample, control);
+    };
     window.clearSample.onclick = () => window.sampleTextArea.value = "";
     window.closeSampleBlock.onclick = () => window.sampleBlock.style.display = "none";
 
     window.makeTree.onclick = makeTree;
+    window.shortenTree.onclick = () => runControlSet(control, tree);
     window.clearField.onclick = clearField;
 
     window.getResult.onclick = obtainRequest;
@@ -19,6 +28,7 @@ function clearField() {
     window.field.style.display = "none";
     window.requestTextArea.disabled = true;
     window.getResult.disabled = true;
+    window.shortenTree.disabled = true;
 }
 
 function normalizeData(strings) {
@@ -34,7 +44,7 @@ function normalizeData(strings) {
     return result;
 }
 
-function makeTree() {
+async function makeTree() {
     if (!sample || sample.length == 0) {
         showError("block", "Обучение не задалось", "Должно быть не меньше одного примера");
         return;
@@ -42,9 +52,11 @@ function makeTree() {
     clearField();
     window.field.style.display = "block";
 
-    run(sample);
+    tree = await run(sample);
+    
     window.requestTextArea.disabled = false;
     window.getResult.disabled = false;
+    window.shortenTree.disabled = false;
 }
 
 async function obtainRequest() {
@@ -102,4 +114,5 @@ function getValuesSet() {
 }
 
 import {run, processRequest} from './treeBuilder.js'
+import {runControlSet} from './treeCutter.js'
 import {buttonsActivity, showError} from '../general.js'

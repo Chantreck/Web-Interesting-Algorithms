@@ -1,7 +1,7 @@
 var parameterCount ;
 var classesSet;
 var classesCount;
-var treeNodesCount = 0;
+var treeNodesCount;
 var root;
 var visitedNodes = [];
 
@@ -10,11 +10,12 @@ class Node {
         this.depth = depth;
         this.parent = parent;
         this.sampleSet = sampleSet;
+        this.controlSet = [];
         this.value = value;
 
         if (this.depth >= 20) {
             this.isFinal = true;
-            this.class = this.findMostPopularClass();
+            this.class = this.findMostPopularClass("sampleSet");
             return;
         }
 
@@ -34,8 +35,8 @@ class Node {
         }
     }
 
-    findMostPopularClass() {
-        let samples = this.sampleSet;
+    findMostPopularClass(setName) {
+        let samples = this[setName];
         let classes = new Map();
         for (let i = 0; i < samples.length; i++) {
             if (classes.has(samples[i][parameterCount])) {
@@ -115,7 +116,7 @@ class Node {
             console.log("Call Stack:", this.depth);
         }
         try {
-            this.branches.set(">=", new Node(this.sampleSet.filter(str => str[this.parameter] >= this.keyValue), `⩾ ${this.keyValue}`, this.depth + 1, this))
+            this.branches.set("⩾", new Node(this.sampleSet.filter(str => str[this.parameter] >= this.keyValue), `⩾ ${this.keyValue}`, this.depth + 1, this))
         } catch (e) {
             console.log("Call Stack:", this.depth);
         }
@@ -161,7 +162,8 @@ function calcContinuousEntropy(parameterValues, samples, parameter) {
     return [keyValue, minEntropy];
 }
 
-function visualize(treeNode) {
+export async function visualize(treeNode) {
+    if (treeNode == root) treeNodesCount = 0;
     let node;
     if (!treeNode.parent) {
         node = window[0];
@@ -190,20 +192,18 @@ function visualize(treeNode) {
 }
 
 export async function processRequest(request) {
-    console.log(request);
+    //console.log(request);
 
     clearSolution();
 
     let node = root;
     while (!node.isFinal) {
-        //debugger;
         visitedNodes.push(`${node.nodeID}_${node.value}`);
         document.getElementById(`${node.nodeID}_${node.value}`).classList.add("current");
-        //window[node.nodeID].classList.add("current");
         if (node.isDiscrete) {
             node = node.branches.get(request[node.parameter]);
         } else {
-            node = (request[node.parameter] < node.keyValue) ? node.branches.get("<") : node.branches.get(">=");
+            node = (request[node.parameter] < node.keyValue) ? node.branches.get("<") : node.branches.get("⩾");
         }
         await sleep(100);
     }
@@ -225,8 +225,8 @@ let sample = [["a", "a", "a", "a"], ["a", "b", "b", "b"], ["a", "c", "c", "c"], 
 let sample = [["a", "a", "a", "a"], ["a", "a", "b", "b"], ["a", "b", "b", "b"], ["a", "c", "c", "c"], ["a", "b", "c", "d"]];
 let sample = [["М", 14, 2, "УМЕР"], ["М", 14, 3, "УМЕР"], ["М", 5, 2, "ВЫЖИЛ"], ["М", 5, 3, "УМЕР"], ["Ж", 14, 2, "ВЫЖИЛ"], ["Ж", 14, 3, "ВЫЖИЛ"], ["Ж", 5, 2, "ВЫЖИЛ"], ["Ж", 5, 3, "ВЫЖИЛ"]] */
 
-export function run(sample) {
-    console.log(sample);
+export async function run(sample) {
+    // console.log(sample);
     parameterCount = sample[0].length - 1;
     
     classesSet = new Set();
@@ -235,7 +235,9 @@ export function run(sample) {
     
     root = new Node(sample, "Корень", 0);
     console.dir(root);
-    visualize(root, 0);
+    await visualize(root);
+
+    return root;
 }
 
 import {sleep} from '../general.js';
