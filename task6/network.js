@@ -21,6 +21,16 @@ function readCoeffiecients() {
 }
 
 function scaleTable(values) {
+    let vector = [];
+    for (let i = 0; i < 784; i++) {
+        vector[i] = []
+        vector[i][0] = values[i];
+    }
+    vector = math.matrix(vector);
+    return math.column(vector, 0);
+}
+
+/* function scaleTable(values) {
     let scaled = [];
     for (let i = 0; i < 28; i++) {
         scaled[i] = [];
@@ -33,12 +43,12 @@ function scaleTable(values) {
             scaled[i + 4][j + 4] = +values[math.floor(i / 4)][math.floor(j / 4)];
         }
     }
-/*     for (let i = 1; i <= 28; i++) {
+    for (let i = 1; i <= 28; i++) {
         scaled[i - 1] = [];
         for (let j = 1; j <= 28; j++) {
             scaled[i - 1][j - 1] = +values[math.floor(i / 6)][math.floor(j / 6)];
         }
-    } */
+    } 
     let vector = [];
     for (let i = 0; i < 784; i++) {
         vector[i] = []
@@ -46,15 +56,16 @@ function scaleTable(values) {
     }
     vector = math.matrix(vector);
     return math.column(vector, 0);
-}
+} */
 
 function feed_forward(value) {
     let hiddenLayer = sigmoid(math.add(math.multiply(weightsMatrix[0], value), biasesMatrix[0]));
     let output = sigmoid(math.add(math.multiply(weightsMatrix[1], hiddenLayer), biasesMatrix[1]));
     let maxArg = -Infinity;
     let number = -1;
-    for (let i = 0; i < 9; i++) {
-        console.log(output._data[i][0]);
+    console.log("-----");
+    for (let i = 0; i < 10; i++) {
+        console.log(`${i}: ${output._data[i][0]}`);
         if (output._data[i][0] > maxArg) {
             maxArg = output._data[i][0];
             number = i;
@@ -67,7 +78,6 @@ function sigmoid(vector) {
     let exp = math.exp(math.multiply(vector, -1));
     let denominator = math.add(1.0, exp);
     let result = math.dotDivide(1, denominator);
-    console.log(result);
     return result;
 }
 

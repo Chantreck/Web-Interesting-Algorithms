@@ -47,14 +47,16 @@
                         <li><button class = "blockable" id = "clearField">Очистить поле</button></li>
                     </ul>
                 </div>
-                <div id = "resultBlock" class = "block">
-                <!-- <div id = "resultBlock" class = "block" style = "display: none"> -->
+                <div id = "resultBlock" class = "block" style = "display: none">
                     <h2>Результат:</h2>
                     <p id = "result">0</span>
                 </div>
             </div>
         </div>
+        <canvas id = "hiddenCanvas" style = "display: none"></canvas>
         <script src = "./script.js" type="module"></script>
+        <script src = "./sketch.js"></script>
+        <script src = "../p5.min.js"></script>
         <script src="../math.js"></script>
         <canvas class = "background"></canvas>
         <script src="../particles.min.js"></script>
