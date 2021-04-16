@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 function changeAction(action) {
     let statusMap = new Map([['default', 'Не выбрано'], ['blocked', 'Выбор преград'], ['start', 'Выбор стартовой клетки'], ['end', 'Выбор конечной клетки'], ['running', 'Поиск пути']]);
     mode = action;
-    document.getElementById("currentMode").innerText = statusMap.get(action);
+    document.currentMode.innerText = statusMap.get(action);
 }
 
 function buttonClickListener(event) {
@@ -30,7 +30,7 @@ function cleanField() {
 
 function mazeBuilder() {
     buildMatrix();
-    let size = document.getElementById("chooseSize").value;
+    let size = document.chooseSize.value;
     let maze = interact(size);
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
@@ -46,7 +46,7 @@ function Cell(cellObject) {
 }
 
 function buildMatrix() {
-    const MAX_SIZE = document.getElementById("chooseSize").max;
+    const MAX_SIZE = document.chooseSize.max;
     for (let i = 0; i < MAX_SIZE; i++) {
         matrix[i] = [];
         for (let j = 0; j < MAX_SIZE; j++) {
@@ -56,9 +56,9 @@ function buildMatrix() {
 }
 
 function generateField() {
-    let fieldPlaceHolder = document.getElementById("field");
-    let fieldSize = document.getElementById("chooseSize").value;
-    document.getElementById("fieldSize").innerText = fieldSize;
+    let fieldPlaceHolder = document.field;
+    let fieldSize = document.chooseSize.value;
+    document.fieldSize.innerText = fieldSize;
     
     let field = new Array(fieldSize);
     for (let i = 0; i < fieldSize; i++){
@@ -150,7 +150,7 @@ function checkStart(startCell, endCell, fieldSize) {
 async function startAlgorithm() {
     let startCell = document.querySelector("td[data-mode = 'start']");
     let endCell = document.querySelector("td[data-mode = 'end']");
-    let fieldSize = document.getElementById("chooseSize").value;
+    let fieldSize = document.chooseSize.value;
 
     if (!checkStart(startCell, endCell, fieldSize)) return;
     
