@@ -3,6 +3,7 @@ var placeHolder = window.field;
 var dots = window.dots;
 
 function setup() {
+    placeHolder = window.field;
     size = placeHolder.clientWidth;
     let canvas = createCanvas(size, size);
     canvas.parent('field');
@@ -10,6 +11,7 @@ function setup() {
 }
 
 function draw() {
+    resizeCanvas(placeHolder.clientWidth, placeHolder.clientWidth);
     background("white");
     let i = 0;
     for (let dot of dots) {
