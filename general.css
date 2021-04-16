@@ -21,25 +21,6 @@
     --text-color: black;
 }
 
-.darkTheme {
-    --background-color: rgb(30, 30, 30);
-    --background: rgb(50, 50, 50);
-    --background-alpha50: rgba(50, 50, 50, 0.5);
-    --background-alpha70: rgba(50, 50, 50, 0.7);
-    --background-alpha75: rgba(50, 50, 50, 0.75);
-    --green: rgb(81, 173, 84);
-    --light-green: rgb(47, 78, 48);
-    --red: rgb(185, 45, 35);
-    --light-red: rgb(73, 33, 31);
-    --light-blue: rgb(12, 39, 61);
-    --button-background: var(--background-color);
-    --button-background-second: rgb(49, 49, 49);
-    --button-border: rgb(100, 100, 100);
-    --menu-hover: rgb(60, 60, 60);
-    --deliminator: rgb(80, 80, 80);
-    --text-color: rgb(235, 235, 235);
-}
-
 @font-face {
     font-family: "SF Display";
     font-style: normal;
