@@ -1,37 +1,37 @@
 var n;
-var status;
+var value;
 var visited;
 var unvisited;
 
 export function interact(size){
     n = size;
-    status = [];
+    value = [];
     visited = [];
     unvisited = -1;
     return build_maze(size);
 }
     
-class Cell {
+class Point {
     constructor(x = -1, y = -1) {
         this.x = x;
         this.y = y;
     }
 }
 
-function getNeighbours(cell) {
-    let up = new Cell(cell.x, cell.y-2);
-    let dw = new Cell(cell.x, cell.y+2);
-    let rt = new Cell(cell.x+2, cell.y);
-    let lt = new Cell(cell.x-2, cell.y);
+function getNeighbours(point) {
+    let up = new Point(point.x, point.y-2);
+    let down = new Point(point.x, point.y+2);
+    let right= new Point(point.x+2, point.y);
+    let left = new Point(point.x-2, point.y);
 
-    let d = [dw, rt, up, lt];
+    let sides = [down, right, up, left];
     let result = [];
     let size = 0;
         
     for (let i = 0; i < 4; i++) {                  
-        if (d[i].x >= 0 && d[i].x < n && d[i].y >= 0 && d[i].y < n) {       
-            if (visited[d[i].x][d[i].y] == false && status[d[i].x][d[i].y] == "default") {                            
-                result[size] = d[i];
+        if (sides[i].x >= 0 && sides[i].x < n && sides[i].y >= 0 && sides[i].y < n) {       
+            if (visited[sides[i].x][sides[i].y] == false && value[sides[i].x][sides[i].y] == "default") {                            
+                result[size] = sides[i];
                 size++;
             }
         }           
@@ -39,11 +39,11 @@ function getNeighbours(cell) {
     return result;
 }
 
-function RemoveWall(CellFirst, CellSecond) {
-    let x = (CellFirst.x + CellSecond.x) / 2;
-    let y = (CellFirst.y + CellSecond.y) / 2;
-    status[x][y] = "default";
-    visited[CellSecond.x][CellSecond.y] = true;
+function RemoveWall(PointFirst, PointSecond) {
+    let x = (PointFirst.x + PointSecond.x) / 2;
+    let y = (PointFirst.y + PointSecond.y) / 2;
+    value[x][y] = "default";
+    visited[PointSecond.x][PointSecond.y] = true;
     unvisited--;
 }
 
@@ -57,43 +57,43 @@ function build_maze(fieldSize) {
     if (!(n % 2)) n += 1; 
     
     for (let i = 0; i < n; i++) {
-        status[i] = [];
+        value[i] = [];
         visited[i] = [];
         for (let j = 0; j < n; j++) {
             visited[i][j] = false;
             if (i % 2 == 0 && j % 2 == 0) {
                 unvisited++;
-                status[i][j] = "default";
+                value[i][j] = "default";
             } else
-                status[i][j] = "blocked";
+                value[i][j] = "blocked";
         }
     } 
 
 
-    let CurrentCell = new Cell(0,0);
-    let NeighbourCell = new Cell();
+    let CurrentPoint = new Point(0,0);
+    let NeighbourPoint = new Point();
     let Neighbours;
     let stack = [];
     let size = 0;
     visited[0][0] = true;
 
     do {         
-        Neighbours = getNeighbours(CurrentCell);
+        Neighbours = getNeighbours(CurrentPoint);
         
         if (Neighbours.length > 0) {
-            stack[size] = CurrentCell;           
+            stack[size] = CurrentPoint;           
             size++;        
-            NeighbourCell = Neighbours[random(0, Neighbours.length - 1)];           
-            RemoveWall(CurrentCell, NeighbourCell);
-            CurrentCell = NeighbourCell;
+            NeighbourPoint = Neighbours[random(0, Neighbours.length - 1)];           
+            RemoveWall(CurrentPoint, NeighbourPoint);
+            CurrentPoint = NeighbourPoint;
         }
         else {
             if (size > 0) {
-                CurrentCell = stack[size-1];
+                CurrentPoint = stack[size-1];
                 size--;
             } 
         }
     } while (unvisited > 0);
 
-    return status;
+    return value;
 }
