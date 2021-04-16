@@ -1,12 +1,6 @@
 var size;
 var placeHolder = window.field;
 var dots = window.dots;
-/*
-function generateColor() {
-    return '#' + Math.floor(Math.random()*16777215).toString(16)
-  }
-  */
-//var colors = ["red", "green", "blue", "yellow", "gray","orange", "white", "aqua","lime"]
 
 function setup() {
     size = placeHolder.clientWidth;
@@ -20,8 +14,7 @@ function draw() {
     let i = 0;
     for (let dot of dots) {
         if (dot.cluster != undefined) {
-            if (dot.cluster >= colors.length) fill(generateColor());
-            else fill(colors[dot.cluster]);
+            fill(colors[dot.cluster]);
         } else {
             fill("white");
         }

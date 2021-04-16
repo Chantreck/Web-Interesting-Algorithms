@@ -70,9 +70,9 @@ function calculateCentroids(centroid, count) {
     }
 }
 
-export function kmeans(count_cluster) {
+export function kmeans(countCluster) {
     dotsCollection = window.dots;
-    clusterCount = count_cluster;
+    clusterCount = countCluster;
     var count = [];
 
     let random = Array.from(getRandomClusters());
@@ -99,15 +99,6 @@ export function kmeans(count_cluster) {
 
         calculateCentroids(centroid, count);
     }
-
-    let clusters = new Set();
-    dotsCollection.map(i => clusters.add(i.cluster));
-    clusters = Array.from(clusters);
-    for (let i = 0; i < clusters.length; i++) {
-        let clusterNum = clusters[i];
-        clusters[i] = dotsCollection.filter(i => i.cluster == clusterNum)
-    }
-    console.log(clusters);
 }
 
 import {DotCollection, Dot} from "./dots.js"

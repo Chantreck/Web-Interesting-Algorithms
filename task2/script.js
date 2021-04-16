@@ -18,6 +18,14 @@ function changeAlgorithm(algorithmName) {
     let algorithmMap = new Map([['kmeans', kmeans], ['hierarchy', hierarchy], ['compare', compare]]);
     window.algorithm = algorithmMap.get(algorithmName);
     window.currentAlgorithm.innerText = nameMap.get(algorithmName);
+
+    if (algorithmName == "compare") {
+        window.hiddenField.style.display = "block";
+        window.field.style.display = "none";
+    } else {
+        window.field.style.display = "block";
+        window.hiddenField.style.display = "none";
+    }
 }
 
 function changeAction(actionName) {
@@ -50,4 +58,4 @@ function runAlgorithm() {
 import {DotCollection} from './dots.js'
 import {kmeans} from './k-means.js'
 import {hierarchy} from './hierarchy.js'
-import {compare} from './comparison'
+import {compare} from './comparison.js'

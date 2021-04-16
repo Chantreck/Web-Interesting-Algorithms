@@ -21,6 +21,8 @@ export class Dot {
     constructor(x, y, cluster) {
         this.x = x;
         this.y = y;
-        this.cluster=undefined;
+        this.cluster = undefined;
+        this.kmeansColor = undefined;
+        this.hierarchyColor = undefined;
     }
 }
