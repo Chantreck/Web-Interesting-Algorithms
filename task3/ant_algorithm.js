@@ -48,7 +48,7 @@ function computation_references(a) {
     }
 }
 
-function findNextNode(a) {
+function findNextPoint(a) {
     var X;
     var Y;
     var vertex = -1;
@@ -135,7 +135,7 @@ export async function start() {
 
             for (var i = 0; i < doots.length; i++) {
                 computation_references(points[j]);
-                findNextNode(points[j]);
+                findNextPoint(points[j]);
             }
 
 
