@@ -77,14 +77,12 @@ export function kmeans(countCluster) {
 
     let random = Array.from(getRandomClusters());
 
-    console.log("80")
 
     var centroid = new DotCollection();
     for (let i = 0; i < clusterCount; i++) {
         centroid.push(new Dot(dotsCollection[random[i]].x, dotsCollection[random[i]].y));
     }
 
-    console.log("87")
 
     let change = true;
 
