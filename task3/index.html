@@ -27,16 +27,17 @@
                 <div class = "block">
                     <h2>Инструкция:</h2>
                     <ul class = "instructionList">
-                        <li>Выставите города на плоскости</li>
+                        <li>Выставите города на плоскости или <br> воспользуйтесь готовым набором</li>
                         <li>Запустите алгоритм</li>
+                        <li>При необходимости, вы можете остановить алгоритм,
+                        но не гарантируется, что после<br> остановки будет отображено
+                        одно из лучших решений</li>
                     </ul>
                     <button class = "blockable" id = "startAlgorithmButton">Запустить</button>
+                    <button class = "unblockable" id = "endAlgorithmButton">Остановить алгоритм</button>
                     <button class = "blockable" id = "test">Тест</button>
                 </div>
-                <div class = "block" id = "error" style = "display: none;">
-                    <h2 id = "errorTitle">Ошибка!</h2>
-                    <p id = "errorMessage">Текст сообщения</p>
-                </div>
+                
                 <button id = "backButton">На главную</button>
             </div>
             <div class = "secondColumn">
@@ -52,6 +53,7 @@
                         <li><button class = "selectActionButton blockable" data-action = "add">Добавить город</button></li>
                         <li><button class = "selectActionButton blockable" data-action = "remove">Удалить город</button></li>
                     </ul>
+                   
                     <p>текущее действие:</p>
                     <span id = "currentAction">Не выбрано</span>
                     <div class = "deliminator"></div>
@@ -66,7 +68,11 @@
                     <section id = "hiddenInfo" style = "display: none">
                         <p>Номер итерации: <span id = "iterationNumber"></span></p>
                         <p>Длина пути: <span id = "tourLength"></span></p>
-                    </section>                  
+                    </section> 
+                    <div class = "block" id = "error" style = "display: none;">
+                        <h2 id = "errorTitle">Ошибка!</h2>
+                        <p id = "errorMessage">Текст сообщения</p>
+                    </div>                 
                 </div>
             </div>
         </div>

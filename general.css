@@ -180,6 +180,20 @@ button:focus {
     box-shadow: 0 0 0 3px var(--light-green);
 }
 
+#endAlgorithmButton {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 10;
+    border-color: var(--red);
+}
+#endAlgorithmButton:hover {
+    background-color: var(--light-red);
+}
+
+#endAlgorithmButton:focus {
+    box-shadow: 0 0 0 3px var(--light-red);
+}
+
 #clearField {
     border-color: var(--blue);
 }
