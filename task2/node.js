@@ -96,4 +96,12 @@ export function run() {
     }
     */
     console.log(dotsCollection);
+    let clusters = new Set()
+    dotsCollection.map(i => clusters.add(i.cluster));
+    clusters=Array.from(clusters);
+    for (let i = 0; i < clusters.length; i++) {
+        let clusterNum = clusters[i];
+        clusters[i] = dotsCollection.filter(i => i.cluster == clusterNum)
+    }
+    console.log(clusters);
 }

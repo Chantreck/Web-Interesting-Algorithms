@@ -40,3 +40,12 @@
     width: 100%;
     max-width: 300px;
 }
+.advanced {
+    color: var(--green);
+    border: 2px solid var(--green);
+    font-size: 12px;
+    text-decoration: none !important;
+    padding: 3px 5px;
+    margin-left: 5px;
+    border-radius: 30px;
+}
