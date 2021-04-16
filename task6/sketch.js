@@ -18,7 +18,7 @@ function draw() {
     if (mouseIsPressed == true) {
         if (mouseButton == LEFT) {
             stroke("black");
-            strokeWeight(30);
+            strokeWeight(50);
             line(x1, y1, x2, y2);
         }
     }

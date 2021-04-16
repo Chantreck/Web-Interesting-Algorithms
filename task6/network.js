@@ -9,6 +9,7 @@ export function run(values) {
 
     readCoeffiecients();
     let input = scaleTable(values);
+    console.log(input);
     let result = feed_forward(input);
     window.result.innerText = result;
 }
