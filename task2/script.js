@@ -48,7 +48,7 @@ function generateColors() {
 
 function startCheck() {
     if (window.dots.length < window.chooseSize.value ) {
-        showError("block", "А в чем смысл?", "Должно быть больше кластеров");
+        showError("block", "А в чем смысл?", "Должно быть больше точек или меньше кластеров");
         return false;
     }
     showError("none");
