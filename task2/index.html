@@ -29,9 +29,14 @@
                     <ul class = "instructionList">
                         <li>Выставьте точки на плоскости</li>
                         <li>Выберите алгоритм кластеризации</li>
+                        <li>Выберите количество кластеров</li>
                         <li>Запустите алгоритм</li>
                     </ul>
                     <button id = "startAlgorithmButton">Запустить</button><br>
+                </div>
+                <div class = "block" id = "error" style = "display: none;">
+                    <h2 id = "errorTitle">Ошибка!</h2>
+                    <p id = "errorMessage">Количество кластеров слишком маленькое</p>
                 </div>
                 <button id = "backButton">На главную</button>
             </div>
@@ -42,13 +47,17 @@
             </div>
             <div class = "thirdColumn">
                 <div class="block settingsBlock">
-                    <h2>Настройки:</h2>
+                    <h2>Настройки:</h2>             
                     <p>выберите алгоритм: </p>
                     <ul id = "algorithmButtons">
-                        <li><button class = "blockable" disabled>K-средних</button></li>
+                        <li><button class = "settingsButtons">K-средних</button></li>
+                        <li><button class = "settingsButtons" >Иерархический</button></li>
+                        <li><button class = "settingsButtons" >Сравнение алгоритмов<span class = "advanced">бонус</span></button></li>
                     </ul>
                     <div class = "deliminator"></div>
-    
+                    <p>выберите количество кластеров: </p>
+                    <input class = "blockable" id = "chooseSize" type = "range" min = "2" max = "10"></input>
+                    <div class = "deliminator"></div>
                     <p>выберите действие: </p>
                     <ul id = "actionButtons">
                         <li><button class = "selectActionButton" data-action = "add">Добавить точку</button></li>

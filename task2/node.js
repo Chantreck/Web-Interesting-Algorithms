@@ -1,136 +1,79 @@
-import { DotCollection, Dot } from  "./dots_task2.js"
-
-
-
-/*function getCenterMass(j, centre_mass, count) {// пересчет центра масс
-    let center = new DotCollection();
-    center.push((centre_mass[j].x / count[j]), (centre_mass[j].y / count[j]));
-    // center[j].x=centre_mass[j].x/count[j];
-    //center[j].j=centre_mass[j].j/count[j];
-    return center;
-}
-*/
+import { DotCollection, Dot } from "./dots_task2.js"
 
 export function run() {
     var dotsCollection = window.dots;
-    let count_claster = Math.min(5, dotsCollection.length);
-    let count = [];
+    var count_cluster = window.count;
+    count_cluster = Math.min(3, dotsCollection.length);
+    var count = [];
+
+
     function getRandom(size) { // рандомные
         let rand = Math.floor(Math.random() * (size));
         return rand;
     }
-    
-    
     let random = new Set();
-    while (random.size != count_claster) // рандомные центры класстеров
+    while (random.size != count_cluster) { // рандомные центры класстеров
         random.add(getRandom(dotsCollection.length));
-    
-    var arr = Array.from(random);  
-    
-    var centre_mass = new DotCollection();
-    for (let i = 0; i < count_claster; i++) {
-        centre_mass.push(new Dot(0, 0));
     }
-    
-    var center_ = new DotCollection();
-    
-    for (let i = 0; i < count_claster; i++) {
-        center_.push(new Dot(dotsCollection[arr[i]].x, dotsCollection[arr[i]].y));
+    console.log(random);
+    var randomCentre = Array.from(random);
+
+    var centroid = new DotCollection();
+
+    for (let i = 0; i < count_cluster; i++) {
+        centroid.push(new Dot(dotsCollection[randomCentre[i]].x, dotsCollection[randomCentre[i]].y));
     }
-    console.dir(center_);
-    //console.dir(centre_mass);
-    
-    
-    /*for (let i = 0; i < count_claster; i++) {
-        centre_mass[i].x -= dotsCollection[arr[i]].x;
-        centre_mass[i].y -= dotsCollection[arr[i]].y;
-    }*/
-    
-    
-    
-    
-    let k = 0;
+
     let Change = true;
-    let minim;
-    console.dir(center_);
-    while (Change == true && k < 1000) {
-        k++;
+    let min_cluster;
+
+    while (Change == true) {
+
         Change = false;
         for (let i = 0; i < dotsCollection.length; i++) {
-    
-            minim = calculationMinDistation(i, center_); //вернула индекс
-            //dotsCollection[i].claster = minim; // присвоила 
-    
-            //centre_mass[minim].x += dotsCollection[i].x; // центра масс в виде суммы по икс
-            //centre_mass[minim].y += dotsCollection[i].y; // центра масс в виде суммы по игрек
-    
-            if (dotsCollection[i].claster != minim) { // проверка
+
+            min_cluster = calculationMinDistation(i, centroid); //вернула индекс
+
+            if (dotsCollection[i].cluster != min_cluster) { // проверка меняется ли кластер
                 Change = true;
-                dotsCollection[i].claster = minim;
+                dotsCollection[i].cluster = min_cluster;
             }
-    
-    
-    
         }
-        for (let i = 0; i < count_claster; i++) {
-            center_[i].x = 0;
-            center_[i].y = 0;
-            center_[i].claster = 0;
-        }
-    
-        /*for (let i = 0; i < count_claster; i++) {
-            centre_mass.shift();
-            centre_mass.push(new Dot (0,0));
-        }*/
-    
-        /*for (let i = 0; i < count_claster; i++) { //кол-во точек в кластере
+        for (let i = 0; i < count_cluster; i++) {
+            centroid[i].x = 0;
+            centroid[i].y = 0;
             count[i] = 0;
         }
-        for (let i = 0; i < count_claster; i++) {
+
+        for (let i = 0; i < dotsCollection.length; i++) {
+            centroid[dotsCollection[i].cluster].x += dotsCollection[i].x;
+            centroid[dotsCollection[i].cluster].y += dotsCollection[i].y;
+        }
+        for (let i = 0; i < count_cluster; i++)
             for (let j = 0; j < dotsCollection.length; j++) {
-                if (dotsCollection[j].claster == i) {
+                if (i == dotsCollection[j].cluster) {
                     count[i] += 1;
                 }
             }
+
+        for (let i = 0; i < count_cluster; i++) { //центроид 
+            centroid[i].x = centroid[i].x / count[i];
+            centroid[i].y = centroid[i].y / count[i];
         }
-        */
-        for (let i = 0; i < dotsCollection.length; i++) {
-            center_[dotsCollection[i].claster].x += dotsCollection[i].x; // центра масс в виде суммы по икс
-            center_[dotsCollection[i].claster].y += dotsCollection[i].y;
-            center_[dotsCollection[i].claster].claster++; // центра масс в виде суммы по игрек
-        }
-        console.dir(center_);
-        for (let i = 0; i < count_claster; i++) { //центроид 
-            //center_[i]= getCenterMass(i, centre_mass, count);
-            center_[i].x = center_[i].x / center_[i].claster;
-            center_[i].y = center_[i].y / center_[i].claster;
-        }
-        /*for (let i = 0; i < count_claster; i++) {
-            centre_mass.shift();
-            centre_mass.push(new Dot (0,0));
-        }
-        */
-    
-        console.dir(k);
-        //console.dir(center_);
-        //
+
     }
-    console.dir(dotsCollection);
-    function calculationMinDistation(j, center_) { // расстояние от 1 точки до другой
-        //console.dir(centre_mass);
-    
+
+    function calculationMinDistation(j, centroid) { // расстояние от 1 точки до другой
         let x1 = dotsCollection[j].x;
         let y1 = dotsCollection[j].y;
-        let distance_point = new Array(count_claster);
-    
-        for (let i = 0; i < count_claster; i++) {
-            let x2 = center_[i].x;
-            let y2 = center_[i].y;
-            //if (x1 == x2 && y1 == y2) {
-            //  return i;
-            //}
+        let distance_point = new Array(count_cluster);
+
+        for (let i = 0; i < count_cluster; i++) {
+            let x2 = centroid[i].x;
+            let y2 = centroid[i].y;
             distance_point[i] = sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
         }
+
         let min = Number.MAX_SAFE_INTEGER;
         let index = 0;
         for (let i = 0; i < distance_point.length; i++) {
@@ -138,8 +81,27 @@ export function run() {
                 min = distance_point[i];
                 index = i;
             }
-    
+
         }
         return index;
     }
+    /*function getDistance(random){
+        let distance=0;
+        for(let i=0;i<random.size-1;i++){
+            distance = sqrt((dotsCollection[random].x - dotsCollection[random+1].x) ** 2 + (dotsCollection[random].y - dotsCollection[random+1].y) ** 2;
+            if(distance<10)
+                return false;
+        }
+
+    }
+    */
+    console.log(dotsCollection);
+    let clusters = new Set()
+    dotsCollection.map(i => clusters.add(i.cluster));
+    clusters=Array.from(clusters);
+    for (let i = 0; i < clusters.length; i++) {
+        let clusterNum = clusters[i];
+        clusters[i] = dotsCollection.filter(i => i.cluster == clusterNum)
+    }
+    console.log(clusters);
 }

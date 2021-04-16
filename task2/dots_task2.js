@@ -8,7 +8,7 @@ export class DotCollection extends Array {
     }
     add(x, y) {
         if (this.search(x, y, 20) == undefined) {
-            this.push(new Dot(x, y));
+            this.push(new Dot(+x.toFixed(3), +y.toFixed(3)));
         }
     }
     remove(x, y) {
@@ -42,9 +42,13 @@ export class DotCollection extends Array {
 } */
 
 export class Dot {
-    constructor(x, y,claster) {
+    constructor(x, y,cluster) {
         this.x = x;
         this.y = y;
-        this.claster=undefined;
+        this.cluster=undefined;
+    }
+    NULL(){
+        this.x = 0;
+        this.y = 0; 
     }
 }

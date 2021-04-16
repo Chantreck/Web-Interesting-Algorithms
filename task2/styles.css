@@ -33,4 +33,19 @@
 
 .selectActionButton[data-action="remove"]:focus {
     box-shadow: 0 0 0 3px var(--light-red);
+} 
+
+
+#chooseSize {
+    width: 100%;
+    max-width: 300px;
+}
+.advanced {
+    color: var(--green);
+    border: 2px solid var(--green);
+    font-size: 12px;
+    text-decoration: none !important;
+    padding: 3px 5px;
+    margin-left: 5px;
+    border-radius: 30px;
 }
