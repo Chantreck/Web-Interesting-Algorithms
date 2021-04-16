@@ -28,7 +28,6 @@
                 <div class = "block">
                     <h2>Инструкция:</h2>
                     <ul class = "instructionList">
-                        <li>Выберите режим работы (обычный или бонусный)</li>
                         <li>Нарисуйте цифру</li>
                         <li>Запустите алгоритм</li>
                     </ul>
@@ -37,34 +36,26 @@
                 <button id = "backButton">На главную</button>
             </div>
             <div class = "secondColumn">
-                <div id = "table">
+                <div id = "field">
 
-                </div>
-                <div id = "field" style = "display: none">
-                    
                 </div>
             </div>
             <div class = "thirdColumn">
                 <div class="block settingsBlock">
                     <h2>Настройки:</h2>
-                    <p>режим работы:</p>
-                    <ul id = "actionButtons">
-                        <li><button class = "selectModeButton blockable" id = "defaultMode">Сетка 5 × 5</button></li>
-                        <li><button class = "selectModeButton blockable" id = "bonusMode" disabled>Рисование<span class = "advanced">бонус</span></button></li>
-                    </ul>
-                    <div class = "deliminator"></div>
-
                     <ul class="settingsButtons">
                         <li><button class = "blockable" id = "clearField">Очистить поле</button></li>
                     </ul>
                 </div>
-                <div class = "block">
+                <div id = "resultBlock" class = "block">
+                <!-- <div id = "resultBlock" class = "block" style = "display: none"> -->
                     <h2>Результат:</h2>
-                    
+                    <p id = "result">0</span>
                 </div>
             </div>
         </div>
         <script src = "./script.js" type="module"></script>
+        <script src="../math.js"></script>
         <canvas class = "background"></canvas>
         <script src="../particles.min.js"></script>
         <script>

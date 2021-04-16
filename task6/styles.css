@@ -1,6 +1,6 @@
 /* ТАБЛИЦА */
 
-#field, #table {
+#field {
     background: var(--background);
 }
 
@@ -21,4 +21,11 @@ td[data-state = "1"] {
 
 td:hover {
     background-color:lightgray;
+}
+
+#result {
+    font-size: 200px;
+    text-align: center;
+    font-weight: 800;
+    margin: 0 auto;
 }

@@ -1,6 +1,4 @@
 var cells;
-var pixels;
-var mode;
 
 window.addEventListener("load", () => {
     cells = [];
@@ -11,33 +9,16 @@ window.addEventListener("load", () => {
         }
     }
 
-    selectDefaultMode();
-    /* window.defaultMode.onclick = selectDefaultMode;
-    window.bonusMode.onclick = selectBonusMode; */
-    
-    window.clearField.onclick = clearField;
-
-    window.backButton.onclick = () => location.href="../index.html";
+    generateTable(5);
+    window.clearField.addEventListener("click", clearField);
+    window.startAlgorithmButton.addEventListener("click", () => run(cells));
+    window.backButton.addEventListener("click", () => location.href="../index.html");
 })
 
-function selectDefaultMode() {
-    mode = "default";
-    window.field.style.display = "none";
-    window.table.style.display = "block";
-    generateTable(5, window.table);
-}
-
-function selectBonusMode() {
-    mode = "bonus";
-    window.table.style.display = "none";
-    window.field.style.display = "block";
-
-    generateField(50, window.field);
-}
-
-function generateTable(tableSize, tablePlaceHolder) {
+function generateTable(tableSize) {
     let table = document.createElement("TABLE");
-    let width = tablePlaceHolder.clientWidth;
+    let tablePlaceholder = window.field;
+    let width = tablePlaceholder.clientWidth;
     table.width = width;
 
     for (let i = 0; i < tableSize; i++){
@@ -52,29 +33,8 @@ function generateTable(tableSize, tablePlaceHolder) {
     }
 
     table.addEventListener("click", markCell);
-    tablePlaceHolder.innerHTML = "";
-    tablePlaceHolder.appendChild(table);
-}
-
-function generateField(tableSize, tablePlaceHolder) {
-    let table = document.createElement("TABLE");
-    let width = tablePlaceHolder.clientWidth;
-    table.width = width;
-
-    for (let i = 0; i < tableSize; i++){
-        let row = table.insertRow(-1);
-        for (let j = 0; j < tableSize; j++){
-            let cell = row.insertCell(-1);
-            cell.dataset.state = pixels[i][j];
-            cell.dataset.row = i;
-            cell.dataset.column = j;
-            cell.height = width / tableSize;
-        }
-    }
-
-    table.addEventListener("click", markCell);
-    tablePlaceHolder.innerHTML = "";
-    tablePlaceHolder.appendChild(table);
+    tablePlaceholder.innerHTML = "";
+    tablePlaceholder.appendChild(table);
 }
 
 function markCell(event) {
@@ -84,17 +44,12 @@ function markCell(event) {
 }
 
 function clearField() {
-    switch (mode) {
-        case 'default':
-            for (let i = 0; i < 5; i++) {
-                for (let j = 0; j < 5; j++) {
-                    cells[i][j] = 0;
-                }
-            }
-            generateTable(5, window.table);
-            break;
-
-        case 'bonus':
-
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            cells[i][j] = 0;
+        }
     }
+    generateTable(5, window.table);
 }
+
+import {run} from './network.js'
