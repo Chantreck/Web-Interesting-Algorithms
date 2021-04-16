@@ -1,4 +1,4 @@
-import { DotCollection, Dot } from "./dots_task2.js"
+import { DotCollection, Dot } from "./dots.js"
 
 export function run() {
     var dotsCollection = window.dots;
@@ -8,16 +8,10 @@ export function run() {
 
     }
     console.log(dotsCollection);
-    function generateColor() {
-        return '#' + Math.floor(Math.random() * 16777215).toString(16)
-    }
-
-    for (let i = 9; i < dotsCollection.length; i++) {
-        window.colors[i] = generateColor();
-    }
+    
 
     for (let i = 0; i < dotsCollection.length; i++) {
-        dotsCollection[i].cluster = i;э
+        dotsCollection[i].cluster = i;
     }
     var count_cluster = window.count;
 
