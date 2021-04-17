@@ -44,20 +44,29 @@
                 <div id = "field">
 
                 </div>
+                <div class = "block" id = "compareInfo" style = "display: none">
+                    <p>Если точки относятся к одному кластеру, то они раскрашены в один цвет.</p>
+                    <p>Если точка относится к разным кластерам, то верхний цвет показывает цвет кластера по иерархическому алгоритму, нижний - по К-средних.</p>
+                    <p>Генерация цвета случайна, поэтому у разных кластеров могут быть одинаковые (похожие) цвета, но кластеры все еще разные!!!</p>
+                </div>
             </div>
             <div class = "thirdColumn">
                 <div class="block settingsBlock">
                     <h2>Настройки:</h2>             
                     <p>выберите алгоритм: </p>
                     <ul id = "algorithmButtons">
-                        <li><button class = "settingsButtons">K-средних</button></li>
-                        <li><button class = "settingsButtons" >Иерархический</button></li>
-                        <li><button class = "settingsButtons" >Сравнение алгоритмов<span class = "advanced">бонус</span></button></li>
+                        <li><button class = "settingsButtons" data-algorithm = "kmeans">K-средних</button></li>
+                        <li><button class = "settingsButtons" data-algorithm = "hierarchy">Иерархический</button></li>
+                        <li><button class = "settingsButtons" data-algorithm = "compare">Сравнение алгоритмов<span class = "advanced">бонус</span></button></li>
                     </ul>
+                    <p>текущий алгоритм: <span id = "currentAlgorithm">K-средних</span></p>
                     <div class = "deliminator"></div>
+
                     <p>выберите количество кластеров: </p>
                     <input class = "blockable" id = "chooseSize" type = "range" min = "2" max = "10"></input>
+                    <p>количество кластеров: <span id = "countCluster">6</span></p>
                     <div class = "deliminator"></div>
+
                     <p>выберите действие: </p>
                     <ul id = "actionButtons">
                         <li><button class = "selectActionButton" data-action = "add">Добавить точку</button></li>
@@ -75,6 +84,7 @@
         </div>
         <script src = "./script.js" type="module"></script>
         <script src = "./sketch.js"></script>
+        <!-- <script src = "./sketchCompare.js"></script> -->
         <script src = "../p5.min.js"></script>
         <canvas class = "background"></canvas>
         <script src="../particles.min.js"></script>

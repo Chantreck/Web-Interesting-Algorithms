@@ -3,7 +3,6 @@ window.addEventListener("load", () => {
     window.lines = [];
     window.dots = new DotCollection();
 
-    window.backButton.onclick = () => location.href="../index.html";
     window.actionButtons.addEventListener("click", (event) => changeAction(event.target.dataset.action));
     window.field.addEventListener("click", () => {
         if (window.action == "add" || window.action == "remove") {
@@ -16,6 +15,8 @@ window.addEventListener("load", () => {
     window.startAlgorithmButton.addEventListener("click", startAlgorithm);
     window.test.addEventListener("click", startTest);
     window.clearField.addEventListener("click", clearField);
+
+    window.backButton.addEventListener("click", () => location.href="../index.html");
 });
 
 window.addEventListener("resize", () => {
@@ -33,9 +34,8 @@ window.addEventListener("resize", () => {
 
 function changeAction(actionName) {
     let statusMap = new Map([['default', 'Не выбрано'], ['add', 'Добавление городов'], ['remove', 'Удаление городов'], ['running', 'Эволюционирование']]);
-    let label = document.getElementById("currentAction");
     window.action = actionName;
-    label.innerText = statusMap.get(window.action);
+    window.currentAction.innerText = statusMap.get(window.action);
 }
 
 function selectPopulationSize() {

@@ -4,14 +4,12 @@ var tree;
 
 window.addEventListener("load", () => {
     window.enterSample.onclick = () => window.sampleBlock.style.display = "block";
-    window.saveSample.onclick = () => {
-        sample = normalizeData(window.sampleTextArea.value.split('\n').filter(str => str.length >= 1));
-        let sampleSize = Math.round(sample.length * 0.7);
-        let controlSize = sample.length - sampleSize;
-        control = sample.splice(sampleSize, controlSize);
-        console.log(sample, control);
-    };
-    window.clearSample.onclick = () => window.sampleTextArea.value = "";
+    window.saveSample.onclick = save;
+    window.clearSample.onclick = () => {
+        window.sampleTextArea.value = "";
+        save();
+    }
+    window.sampleTextArea.value = "";
     window.closeSampleBlock.onclick = () => window.sampleBlock.style.display = "none";
 
     window.makeTree.onclick = makeTree;
@@ -31,11 +29,23 @@ function clearField() {
     window.shortenTree.disabled = true;
 }
 
+function save() {
+    sample = normalizeData(window.sampleTextArea.value.split('\n').filter(str => str.length >= 1));
+    let sampleSize = Math.round(sample.length * 0.7);
+    let controlSize = sample.length - sampleSize;
+    control = sample.splice(sampleSize, controlSize);
+    console.log(sample, control);
+}
+
 function normalizeData(strings) {
     let result = [];
     for (let string of strings) {
         let resultString = [];
         for (let value of string.split(',')) {
+            if (value == "") {
+                showError("block", "Кажется, произошла утечка", "Какие-то из примеров содержат пустые значения. Такие данные не могут быть обработаны");
+                return;
+            }
             if (parseFloat(value) == value) resultString.push(+value);
             else resultString.push(value);
         }

@@ -3,9 +3,9 @@ var bestPathArr = [];
 var bestPath;
 var doots;
 var pheromone = [];
-var A = 1;
-var B = 3;
-var Q = 4;
+const A = 1;
+const B = 3;
+const Q = 4;
 
 var Point = function () {
     this.x;

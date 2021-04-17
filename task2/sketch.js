@@ -1,14 +1,9 @@
 var size;
 var placeHolder = window.field;
 var dots = window.dots;
-/*
-function generateColor() {
-    return '#' + Math.floor(Math.random()*16777215).toString(16)
-  }
-  */
-//var colors = ["red", "green", "blue", "yellow", "gray","orange", "white", "aqua","lime"]
 
 function setup() {
+    placeHolder = window.field;
     size = placeHolder.clientWidth;
     let canvas = createCanvas(size, size);
     canvas.parent('field');
@@ -16,16 +11,24 @@ function setup() {
 }
 
 function draw() {
+    resizeCanvas(window.field.clientWidth, window.field.clientWidth);
     background("white");
     let i = 0;
     for (let dot of dots) {
-        if (dot.cluster != undefined) {
-            if (dot.cluster >= colors.length) fill(generateColor());
-            else fill(colors[dot.cluster]);
+        if (dot.kmeansCluster != undefined) {
+            console.log("aa");
+            fill(window.kmeansColors[dot.kmeansCluster]);
+            arc(dot.x, dot.y, 20, 20, 0, PI, OPEN);
+            fill(window.hierarchyColors[dot.hierarchyCluster]);
+            arc(dot.x, dot.y, 20, 20, PI, TWO_PI, OPEN);
         } else {
-            fill("white");
+            if (dot.cluster != undefined) {
+                fill(colors[dot.cluster]);
+            } else {
+                fill("white");
+            }
+            circle(dot.x, dot.y, 20);
         }
-        circle(dot.x, dot.y, 20);
         fill("black");
         text(`${i}`, dot.x, dot.y);
         textAlign(CENTER, CENTER);

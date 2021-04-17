@@ -1,7 +1,8 @@
 /* ПОЛЕ */
 
-#field {
+#field, #hiddenField {
     border: 3px solid;
+    margin-bottom: 10px;
 }
 
 .p5Canvas {

@@ -1,7 +1,13 @@
 /* ТАБЛИЦА */
 
 #field {
-    background: var(--background);
+    /* display: inline-block; */
+    border: 3px solid;
+}
+
+.p5Canvas {
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 table {
