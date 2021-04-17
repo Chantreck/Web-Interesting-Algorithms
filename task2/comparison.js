@@ -3,6 +3,8 @@ var dotsCollection = window.dots;
 function makeClusterArray(algorithm) {
     algorithm(window.chooseSize.value);
 
+    console.log("algo ended")
+
     let clusters = new Set();
     dotsCollection.map(dot => clusters.add(dot.cluster));
 

@@ -62,6 +62,12 @@ function runAlgorithm() {
         window.colors[i] = generateColors();
     }
 
+    if (algorithm == compare) {
+        window.compareInfo.style.display = "block";
+    } else {
+        window.compareInfo.style.display = "none";
+    }
+
     algorithm(window.chooseSize.value);
 }
 

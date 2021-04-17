@@ -37,7 +37,7 @@ export function hierarchy(countCluster) {
     let minDistance = Infinity;
     let min_i = 0;
     let min_j = 0;
-    let currentClusterCount = 0;
+    let currentClusterCount = dotsCollection.length;
 
     while (currentClusterCount != clusterCount) {
         currentClusterCount = 0;
