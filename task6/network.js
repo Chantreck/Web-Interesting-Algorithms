@@ -25,7 +25,7 @@ function scaleTable(values) {
     let vector = [];
     for (let i = 0; i < 784; i++) {
         vector[i] = []
-        vector[i][0] = values[i];
+        vector[i][0] = values[i] > 0.5 ? 1 : 0;
     }
     vector = math.matrix(vector);
     return math.column(vector, 0);

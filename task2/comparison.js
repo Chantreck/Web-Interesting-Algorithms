@@ -16,9 +16,7 @@ function makeClusterArray(algorithm) {
 }
 
 function findIntersection(kmeansCluster, hierarchyCluster) {
-    console.log("Intersection", kmeansCluster, hierarchyCluster);
     let result = hierarchyCluster.filter(i => kmeansCluster.includes(i));
-    console.log(result);
     return result;
 }
 
@@ -56,19 +54,21 @@ function clearDots(list, kmeans, hierarchy) {
 
 export function compare() {
     dotsCollection = window.dots;
-    let kmeansClusters = makeClusterArray(kmeans);
-    let hierarchyClusters = makeClusterArray(hierarchy);
+    let kmeansClusters = makeClusterArray(kmeans); //список К-средних 
+    let hierarchyClusters = makeClusterArray(hierarchy); //список кластеров иерарихии
 
     let list = makeJaccardList(kmeansClusters, hierarchyClusters);
-    list.sort((a, b) => a.jaccard - b.jaccard);
+    list.sort((a, b) => b.jaccard - a.jaccard);
 
     window.kmeansColors = [];
     window.hierarchyColors = [];
 
+    console.log(list);
+
     while(list.length) {
-        let currentCluster = list[0];
-        let kmeansCluster = currentCluster.kmeans;
-        let hierarchyCluster = currentCluster.hierarchy;
+        let currentCluster = list[0]; //пара кластеров, наибольшая похожая друг на друга
+        let kmeansCluster = currentCluster.kmeans; //номер кластера по К-средних
+        let hierarchyCluster = currentCluster.hierarchy; //номер кластера по иерархии
 
         let clusterColor = generateColors();
         window.kmeansColors[kmeansCluster] = clusterColor;
@@ -76,20 +76,20 @@ export function compare() {
 
         let intersection = findIntersection(kmeansClusters[kmeansCluster], hierarchyClusters[hierarchyCluster]);
         for (let dot of intersection) {
-            dot.kmeansCluster = kmeansClusters;
+            dot.kmeansCluster = kmeansCluster;
             dot.hierarchyCluster = hierarchyCluster;
         }
 
-        console.log(intersection);
-
         let difference = getDifference(kmeansClusters[kmeansCluster], hierarchyClusters[hierarchyCluster]);
         for (let dot of difference) {
-            dot.kmeansCluster = kmeansClusters;
+            dot.kmeansCluster = kmeansCluster;
             dot.hierarchyCluster = hierarchyCluster;
         }
 
         list = clearDots(list, kmeansCluster, hierarchyCluster);
     }
+
+    console.log(window.dots);
 }
 
 import {kmeans} from './k-means.js'
