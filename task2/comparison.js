@@ -63,21 +63,22 @@ export function compare() {
     window.kmeansColors = [];
     window.hierarchyColors = [];
 
-    console.log(list);
+    let count = 0;
+    window.colors = ["red", "green", "blue", "yellow", "gray", "orange", "pink", "aqua", "lime", "magenta", "white"];
 
     while(list.length) {
         let currentCluster = list[0]; //пара кластеров, наибольшая похожая друг на друга
         let kmeansCluster = currentCluster.kmeans; //номер кластера по К-средних
         let hierarchyCluster = currentCluster.hierarchy; //номер кластера по иерархии
 
-        let clusterColor = generateColors();
-        window.kmeansColors[kmeansCluster] = clusterColor;
-        window.hierarchyColors[hierarchyCluster] = clusterColor;
+        window.kmeansColors[kmeansCluster] = window.colors[count];
+        window.hierarchyColors[hierarchyCluster] = window.colors[count];
+        count++;
 
         let intersection = findIntersection(kmeansClusters[kmeansCluster], hierarchyClusters[hierarchyCluster]);
         for (let dot of intersection) {
             dot.kmeansCluster = kmeansCluster;
-            dot.hierarchyCluster = hierarchyCluster;
+            dot.hierarchyCluster = kmeansCluster;
         }
 
         let difference = getDifference(kmeansClusters[kmeansCluster], hierarchyClusters[hierarchyCluster]);
@@ -88,8 +89,6 @@ export function compare() {
 
         list = clearDots(list, kmeansCluster, hierarchyCluster);
     }
-
-    console.log(window.dots);
 }
 
 import {kmeans} from './k-means.js'

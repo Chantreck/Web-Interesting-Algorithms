@@ -11,16 +11,24 @@ function setup() {
 }
 
 function draw() {
-    resizeCanvas(placeHolder.clientWidth, placeHolder.clientWidth);
+    resizeCanvas(window.field.clientWidth, window.field.clientWidth);
     background("white");
     let i = 0;
     for (let dot of dots) {
-        if (dot.cluster != undefined) {
-            fill(colors[dot.cluster]);
+        if (dot.kmeansCluster != undefined) {
+            console.log("aa");
+            fill(window.kmeansColors[dot.kmeansCluster]);
+            arc(dot.x, dot.y, 20, 20, 0, PI, OPEN);
+            fill(window.hierarchyColors[dot.hierarchyCluster]);
+            arc(dot.x, dot.y, 20, 20, PI, TWO_PI, OPEN);
         } else {
-            fill("white");
+            if (dot.cluster != undefined) {
+                fill(colors[dot.cluster]);
+            } else {
+                fill("white");
+            }
+            circle(dot.x, dot.y, 20);
         }
-        circle(dot.x, dot.y, 20);
         fill("black");
         text(`${i}`, dot.x, dot.y);
         textAlign(CENTER, CENTER);

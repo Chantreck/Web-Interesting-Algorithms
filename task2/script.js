@@ -19,12 +19,11 @@ function changeAlgorithm(algorithmName) {
     window.algorithm = algorithmMap.get(algorithmName);
     window.currentAlgorithm.innerText = nameMap.get(algorithmName);
 
-    if (algorithmName == "compare") {
-        window.hiddenField.style.display = "block";
-        window.field.style.display = "none";
-    } else {
-        window.field.style.display = "block";
-        window.hiddenField.style.display = "none";
+    if (algorithmName != "compare") {
+        for (let dot of window.dots) {
+            dot.kmeansCluster = undefined;
+            dot.hierarchyCluster = undefined;
+        }
     }
 }
 
@@ -47,8 +46,8 @@ function generateColors() {
 }
 
 function runAlgorithm() {
-    window.colors = ["red", "green", "blue", "yellow", "gray", "orange", "white", "aqua","lime"];
-    for (let i = 9; i < window.dots.length; i++) {
+    window.colors = ["red", "green", "blue", "yellow", "gray", "orange", "pink", "aqua", "lime", "magenta", "white"];
+    for (let i = 11; i < window.dots.length; i++) {
         window.colors[i] = generateColors();
     }
 
