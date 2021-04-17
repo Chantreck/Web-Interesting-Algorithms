@@ -11,7 +11,6 @@ function nearestClusterToPoint(point, centroidArray) { // ближайший к�
     let y1 = dotsCollection[point].y;
 
     let distancesToPoint = new Array(clusterCount);
-    console.log(clusterCount);
     for (let i = 0; i < clusterCount; i++) {
         let x2 = centroidArray[i].x;
         let y2 = centroidArray[i].y;
@@ -77,12 +76,10 @@ export function kmeans(countCluster) {
 
     let random = Array.from(getRandomClusters());
 
-
     var centroid = new DotCollection();
     for (let i = 0; i < clusterCount; i++) {
         centroid.push(new Dot(dotsCollection[random[i]].x, dotsCollection[random[i]].y));
     }
-
 
     let change = true;
 

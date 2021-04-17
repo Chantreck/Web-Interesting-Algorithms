@@ -22,7 +22,7 @@ export class Dot {
         this.x = x;
         this.y = y;
         this.cluster = undefined;
-        this.kmeansColor = undefined;
-        this.hierarchyColor = undefined;
+        this.kmeansCluster = undefined;
+        this.hierarchyCluster = undefined;
     }
 }
