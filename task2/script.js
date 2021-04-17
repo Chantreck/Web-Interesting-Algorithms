@@ -45,7 +45,18 @@ function generateColors() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16)
 }
 
+function startCheck() {
+    if (window.dots.length < window.chooseSize.value ) {
+        showError("block", "А в чем смысл?", "Должно быть больше точек или меньше кластеров");
+        return false;
+    }
+    showError("none");
+    return true;
+}
+
 function runAlgorithm() {
+    if (!startCheck()) return;
+    
     window.colors = ["red", "green", "blue", "yellow", "gray", "orange", "pink", "aqua", "lime", "magenta", "white"];
     for (let i = 11; i < window.dots.length; i++) {
         window.colors[i] = generateColors();
@@ -58,3 +69,4 @@ import {DotCollection} from './dots.js'
 import {kmeans} from './k-means.js'
 import {hierarchy} from './hierarchy.js'
 import {compare} from './comparison.js'
+import {showError} from '../general.js'
