@@ -3,7 +3,9 @@ var classesSet;
 var classesCount;
 var treeNodesCount;
 var root;
+var valuesSetsArray;
 var visitedNodes = [];
+var discretes;
 
 class Node {
     constructor(sampleSet, value, depth, parent) {
@@ -13,7 +15,7 @@ class Node {
         this.controlSet = [];
         this.value = value;
 
-        if (this.depth >= 20) {
+        if (this.depth >= 10) {
             this.isFinal = true;
             this.class = this.findMostPopularClass("sampleSet");
             return;
@@ -23,7 +25,7 @@ class Node {
             this.isFinal = false;
             this.selectParam();
             this.branches = new Map();
-            this.isDiscrete = isNaN(sampleSet[0][this.parameter]);
+            this.isDiscrete = discretes[this.parameter];
             if (this.isDiscrete) {
                 this.makeBranches();
             } else {
@@ -73,13 +75,11 @@ class Node {
         let keyValue = 0;
 
         for (let curParameter = 0; curParameter < parameterCount; curParameter++) {
-            let parameterValues = new Set();
-            for (let i = 0; i < samples.length; i++) parameterValues.add(samples[i][curParameter]);
-            parameterValues = Array.from(parameterValues);
+            let parameterValues = Array.from(valuesSetsArray[curParameter]);
             let entropy;
             let currentKeyValue = -Infinity;
 
-            if (isNaN(parameterValues[0])) {
+            if (discretes[curParameter]) {
                 entropy = calcDiscreteEntropy(parameterValues, samples, curParameter);
             } else {
                 [currentKeyValue, entropy] = calcContinuousEntropy(parameterValues, samples, curParameter);
@@ -192,8 +192,6 @@ export async function visualize(treeNode) {
 }
 
 export async function processRequest(request) {
-    //console.log(request);
-
     clearSolution();
 
     let node = root;
@@ -225,16 +223,36 @@ let sample = [["a", "a", "a", "a"], ["a", "b", "b", "b"], ["a", "c", "c", "c"], 
 let sample = [["a", "a", "a", "a"], ["a", "a", "b", "b"], ["a", "b", "b", "b"], ["a", "c", "c", "c"], ["a", "b", "c", "d"]];
 let sample = [["М", 14, 2, "УМЕР"], ["М", 14, 3, "УМЕР"], ["М", 5, 2, "ВЫЖИЛ"], ["М", 5, 3, "УМЕР"], ["Ж", 14, 2, "ВЫЖИЛ"], ["Ж", 14, 3, "ВЫЖИЛ"], ["Ж", 5, 2, "ВЫЖИЛ"], ["Ж", 5, 3, "ВЫЖИЛ"]] */
 
+function isDiscrete(set) {
+    let discrete = false;
+    for (let value of set) {
+        if (isNaN(value)) {
+            discrete = true;
+        }
+    }
+    return discrete;
+}
+
 export async function run(sample) {
-    // console.log(sample);
     parameterCount = sample[0].length - 1;
     
-    classesSet = new Set();
-    for (let i = 0; i < sample.length; i++) classesSet.add(sample[i][parameterCount]);
+    valuesSetsArray = [];
+
+    for (let i = 0; i <= parameterCount; i++) {
+        valuesSetsArray[i] = new Set();
+        for (let j = 0; j < sample.length; j++) {
+            valuesSetsArray[i].add(sample[j][i]);
+        }
+    }
+    classesSet = valuesSetsArray[parameterCount];
     classesCount = classesSet.size;
+
+    discretes = [];
+    for (let i = 0; i < parameterCount; i++) {
+        discretes[i] = isDiscrete(valuesSetsArray[i]);
+    }
     
     root = new Node(sample, "Корень", 0);
-    console.dir(root);
     await visualize(root);
 
     return root;
